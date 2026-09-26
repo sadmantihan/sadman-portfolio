@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Vercel local configuration
+.vercel/
+
+# Environment variables and secrets
+.env*
+!.env.example
+!.env.sample
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Test coverage
+coverage/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Keep package.json and package-lock.json tracked.
+# Only put placeholder values in .env.example and .env.sample.
