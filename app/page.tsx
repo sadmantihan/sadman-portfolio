@@ -260,8 +260,8 @@ export default function Home() {
                 ["Languages", "Python, R, C, C++, Java, JavaScript, PHP"],
                 ["AI & machine learning", "PyTorch, TensorFlow"],
                 ["Web & mobile", "Next.js, Flutter, HTML, CSS"],
-                ["Data & databases", "MySQL, PostgreSQL, PowerBI"],
-                ["Development & writing", "Git, GitHub, LaTeX"],
+                ["Data & databases", "MySQL, PostgreSQL"],
+                ["Development & writing", "Git, GitHub, LaTeX, PowerBI"],
               ].map(([title, values]) => (
                 <div className="skill-row" key={title}>
                   <h3>{title}</h3>
