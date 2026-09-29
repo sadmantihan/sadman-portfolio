@@ -1,68 +1,135 @@
-# Sadman Sami Khan — Next.js portfolio
+# Md. Sadman Sami Khan — Personal Portfolio
 
-Standard Next.js App Router + TypeScript + Tailwind CSS. Ready for Vercel.
-White/violet light theme and black/violet dark theme are preserved.
-The portrait and About statistics row have been removed. Articles remain.
+My personal portfolio showcasing projects, research, technical skills, education, certifications, and articles, with a focus on data analysis, AI/ML, and software development.
 
-## Run on Windows / PowerShell
-Install Node.js 22.13+ (Node 22 LTS is suitable).
-Extract this ZIP into a NEW folder; do not merge with the old Vinext project.
-Open the extracted folder containing package.json in VS Code.
+**Website:** [sadman-sami-khan.vercel.app](https://sadman-sami-khan.vercel.app/)
 
-```powershell
-npm install
+**Repository:** [sadmantihan/sadman-portfolio](https://github.com/sadmantihan/sadman-portfolio)
+
+## Features
+
+- Responsive layout with desktop navigation and a mobile sidebar.
+- Light and dark themes with a saved theme preference.
+- Project cards with technology logos and GitHub Source Code buttons.
+- Toolkit section with technology icons, including MASM.
+- Education details and HSC/SSC Board-merit scholarship recognition.
+- Certifications with PDF links and a separate Other Training group for the Flutter EDGE course.
+- Downloadable CV and individual article pages.
+- Contact form that submits through Formspree without opening an email application.
+
+## Technology Stack
+
+- Next.js 16 with the App Router
+- React 19 and TypeScript
+- Tailwind CSS 4, global CSS, and CSS Modules
+- Radix UI, Lucide React, and React Icons
+- Formspree for contact submissions and email notifications
+- Vercel for hosting
+
+## Run Locally
+
+Install Git and Node.js 22.13.0 or newer, with npm. Run these commands in your terminal or Windows PowerShell:
+
+```bash
+git clone https://github.com/sadmantihan/sadman-portfolio.git
+cd sadman-portfolio
+npm ci
 npm run dev
 ```
-Open http://localhost:3000. No pnpm is required.
 
-## Verify production
-```powershell
+Open [http://localhost:3000](http://localhost:3000).
+
+If you already have the project locally, open the folder containing `package.json` and run the npm commands above.
+
+## Available Commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run typecheck` | Check TypeScript types |
+| `npm run build` | Create the production build |
+| `npm start` | Serve the production build locally |
+
+To check the production version:
+
+```bash
 npm run build
 npm start
 ```
 
-## Deploy to Vercel without GitHub
-1. Create or sign in to your account at https://vercel.com.
-2. Open PowerShell in this project's folder (where package.json is).
-3. Run `npx vercel login` and finish login in your browser.
-4. Run `npx vercel --prod`.
-5. Accept setup, select your account, choose not to link an existing project,
-   name the project `sadman-portfolio`, and use `./` for the code directory.
-6. Accept the detected Next.js settings. No environment variables are needed.
-7. Open the production URL printed by Vercel.
+## Where to Make Changes
 
-If asked to install the Vercel CLI package by npx, choose yes.
-For subsequent updates, run `npx vercel --prod` in this same folder.
+| File or directory | What to edit |
+| --- | --- |
+| `app/page.tsx` | Homepage content, projects, education, and section layout |
+| `app/globals.css` | Global colors, typography, layout, and Source Code button styles |
+| `app/layout.tsx` | Site metadata and root layout |
+| `components/mobile-nav.tsx` | Mobile sidebar navigation |
+| `components/toolkit.tsx` | Skill categories, technology names, and logos |
+| `components/toolkit.module.css` | Toolkit and project technology badge styles |
+| `components/project-tags.tsx` | Project technology icons |
+| `components/certifications.tsx` | Course details, training groups, and certificate links |
+| `components/certifications.module.css` | Certification layout and responsive styles |
+| `components/contact-form.tsx` | Contact form fields, submission handling, and Formspree endpoint |
+| `app/articles/article-list.ts` | Article titles, summaries, categories, and slugs |
+| `app/articles/<slug>/page.tsx` | Individual article content |
+| `public/Sadman_Sami_Khan_CV.pdf` | Downloadable CV |
+| `public/certificates/` | Certificate PDFs |
 
-## Optional GitHub deployment
-Create a GitHub repository and push the CONTENTS of this project folder.
-Do not commit node_modules, .next, or .vercel.
-On Vercel select Add New > Project, import the GitHub repository, and use:
-- Framework preset: Next.js
-- Root directory: directory containing package.json
-- Build command: npm run build
-- Output directory: leave the Next.js default
-- Install command: npm install (or npm ci if the included lockfile is present)
-- Environment variables: none
-Click Deploy. Future pushes to the production branch trigger redeployment.
+## Certificates
 
-## Contact form
-The form collects name, reply email, subject, and message, then opens an email
-application using mailto. It does NOT send mail from a server or store messages.
-Visitors review and send the draft in their mail application. A direct email
-link is also supplied. Actual in-page email delivery needs an email provider
-and a server-side integration; no credentials are included or required here.
+Keep the certificate files in `public/certificates/`:
 
-## Edit
-- app/page.tsx: portfolio sections and text
-- app/globals.css: colors, typography, layout
-- components/contact-form.tsx: email draft form
-- app/layout.tsx: metadata
-- public/Sadman_Sami_Khan_CV.pdf: downloadable CV
+- `data-science-machine-learning.pdf`
+- `python-basics.pdf`
+- `data-science-math-skills.pdf`
+- `edge-flutter.pdf`
 
-Your CGPA remains under Education and in the original downloadable CV.
-The previous ChatGPT-hosted site is separate from this Vercel-ready export.
+Reference them without `public` in the URL. For example:
 
-Official deployment references:
-https://vercel.com/docs/frameworks/full-stack/nextjs
-https://vercel.com/docs/cli/deploy
+```tsx
+pdf: "/certificates/python-basics.pdf"
+```
+
+When adding or renaming a certificate, update its entry in `components/certifications.tsx` and commit the PDF alongside the code change.
+
+## Contact Form
+
+The form collects the visitor's name, email, subject, and message, then submits them to Formspree. It displays a sending state and a success or error message. A direct email link remains available as a fallback.
+
+Formspree manages submission storage and email notifications. The notification recipient should be configured as **samisadman6@gmail.com** in the Formspree dashboard.
+
+To configure your own copy:
+
+1. Create a [Formspree account](https://formspree.io/) and verify your email.
+2. Create a form and configure its notification recipient.
+3. Copy the form endpoint from the Integration section.
+4. Replace `FORM_ENDPOINT` in `components/contact-form.tsx` with your endpoint.
+5. Submit a test message and check both the Formspree dashboard and the recipient's inbox or Spam folder.
+
+A website success message confirms that Formspree accepted the submission; inbox delivery should be checked separately. Formspree account limits and notification settings apply.
+
+The current implementation does not require environment variables or a Gmail password. If you fork this repository, replace the endpoint so submissions go to your own Formspree form.
+
+## Deploy to Vercel
+
+1. Sign in to [Vercel](https://vercel.com/) and import the GitHub repository as a new project.
+2. Select **Next.js** as the framework and the folder containing `package.json` as the root directory.
+3. Use `npm run build` as the build command and keep the default Next.js output settings.
+4. Deploy the project.
+
+For a connected Git repository, pushes to the configured production branch trigger production deployments. Other branches can generate preview deployments.
+
+For future changes, create a Git branch, review the diff, run the relevant checks, and commit your changes. Push the branch and merge it into the production branch when ready.
+
+## Contact
+
+- Email: [samisadman6@gmail.com](mailto:samisadman6@gmail.com)
+- GitHub: [sadmantihan](https://github.com/sadmantihan)
+- LinkedIn: [Md. Sadman Sami Khan](https://linkedin.com/in/md-sadman-sami-khan)
+
+## Documentation
+
+- [Next.js documentation](https://nextjs.org/docs)
+- [Vercel Git deployment](https://vercel.com/docs/git)
+- [Formspree form setup](https://help.formspree.io/articles/building-your-form/building-an-html-form)
