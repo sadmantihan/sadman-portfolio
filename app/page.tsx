@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Switch } from "@/components/ui/switch";
+import { MobileNav } from "@/components/mobile-nav";
 
 const projects = [
   {
@@ -85,12 +86,12 @@ export default function Home() {
   };
   return (
     <>
-      <header>
+      <header className="portfolio-header">
         <div className="nav wrap">
           <a className="brand" href="#home" aria-label="Sadman Sami Khan home">
             ssk
           </a>
-          <nav aria-label="Main navigation">
+          <nav className="desktop-nav" aria-label="Main navigation">
             {[
               ["about", "About"],
               ["projects", "Projects"],
@@ -117,6 +118,7 @@ export default function Home() {
             />
             <Moon size={16} />
           </div>
+          <MobileNav active={active} />
         </div>
       </header>
       <main id="home">
