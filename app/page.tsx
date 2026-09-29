@@ -223,10 +223,19 @@ export default function Home() {
                     <span className="eyebrow">{p.type}</span>
                     <span>{p.year}</span>
                   </div>
-                  <a className="project-title" href={p.url}>
+                  <div className="project-title">
                     <h3>{p.name}</h3>
-                    <ArrowUpRight size={25} />
-                  </a>
+
+                    <a
+                      className="source-code-button"
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View source code for ${p.name} on GitHub (opens in a new tab)`}
+                    >
+                      Source Code
+                    </a>
+                  </div>
                   <p>{p.desc}</p>
                   {p.detail && <p className="project-note">{p.detail}</p>}
                   <div className="project-bottom">
