@@ -1,0 +1,103 @@
+.toolkit {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Category on the left, horizontal tool badges on the right. */
+.row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+
+.label {
+  margin: 0;
+  padding-top: 10px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/* Tools sit beside one another and wrap when necessary. */
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Logo and tool name remain on the same line. */
+.badge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.logoBox,
+.monochromeLogo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+}
+
+/* Keeps black logos visible in dark mode without recolouring them. */
+.monochromeLogo {
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.logo {
+  display: block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* On smaller screens, category titles appear above the badges. */
+@media (max-width: 850px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .label {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .list {
+    gap: 8px;
+  }
+
+  .badge {
+    padding-right: 9px;
+    padding-left: 9px;
+    gap: 6px;
+    font-size: 13px;
+  }
+}

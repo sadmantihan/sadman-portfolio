@@ -1,5 +1,7 @@
 "use client";
+import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
+import { Toolkit } from "@/components/toolkit";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { useEffect, useState } from "react";
@@ -228,11 +230,7 @@ export default function Home() {
                   <p>{p.desc}</p>
                   {p.detail && <p className="project-note">{p.detail}</p>}
                   <div className="project-bottom">
-                    <div className="tags">
-                      {p.tags.map((t) => (
-                        <span key={t}>{t}</span>
-                      ))}
-                    </div>
+                    <ProjectTags tags={p.tags} />
                     <span className="project-number">{p.n}</span>
                   </div>
                 </article>
@@ -241,27 +239,14 @@ export default function Home() {
           </div>
         </section>
         <section id="articles" className="section wrap">
-          <div className="section-label">LATEST ARTICLES</div>   
+          <div className="section-label">LATEST ARTICLES</div>
           <ArticleCards />
         </section>
         <section className="section wrap" id="skills">
           <div className="section-label">MY TOOLKIT</div>
           <div className="section-body">
             <h2>Tools and Technologies</h2>
-            <div className="skills">
-              {[
-                ["Languages", "Python, R, C, C++, Java, JavaScript, PHP"],
-                ["AI / ML", "Scikit-learn, PyTorch, TensorFlow"],
-                ["Web & Mobile", "Next.js, Flutter, HTML, CSS"],
-                ["Databases", "MySQL, PostgreSQL"],
-                ["Tools", "Git, GitHub, LaTeX, PowerBI"],
-              ].map(([title, values]) => (
-                <div className="skill-row" key={title}>
-                  <h3>{title}</h3>
-                  <p>{values}</p>
-                </div>
-              ))}
-            </div>
+            <Toolkit />
           </div>
         </section>
         <section id="education" className="section wrap">
@@ -283,9 +268,11 @@ export default function Home() {
                 <h3>Higher Secondary Certificate</h3>
                 <p>Chandpur Government College · 2020</p>
                 <p>GPA 5.00 / 5.00</p>
+                <p>Board-merit scholarship awardee</p>
                 <h3>Secondary School Certificate</h3>
                 <p>Hasan Ali Government High School · 2018</p>
                 <p>GPA 5.00 / 5.00</p>
+                <p>Board-merit scholarship awardee</p>
               </div>
             </div>
             <h3 className="training-title">Certifications & training</h3>
