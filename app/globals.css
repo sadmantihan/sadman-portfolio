@@ -1104,24 +1104,30 @@ nav.mobile-menu-links a[aria-current="location"] {
   justify-content: center;
   flex-shrink: 0;
   min-height: 44px;
-  padding: 10px 16px;
-  border: 1px solid var(--line);
+  padding: 11px 20px;
+  border: 1px solid transparent;
   border-radius: 6px;
-  background: var(--background);
-  color: var(--ink);
+  background: #713bd1;
+  color: #ffffff;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
   white-space: nowrap;
   text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .source-code-button:hover {
-  border-color: var(--violet);
-  color: var(--violet);
+  background: #5d2caf;
+  color: #ffffff;
+}
+
+.source-code-button:active {
+  background: #4d2394;
 }
 
 .source-code-button:focus-visible {
   outline: 2px solid var(--violet);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
