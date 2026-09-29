@@ -132,7 +132,7 @@ export default function Home() {
                 <br className="desktop" /> clear, meaningful solutions.
               </p>
               <p className="summary">
-                CSE graduate with a focus on data analytics, AI research, and
+                CSE graduate with a focus on data analytics, AI/ML research, and
                 full-stack development. From structured data to smarter systems.
               </p>
               <div className="actions">
@@ -150,7 +150,7 @@ export default function Home() {
             </div>
             <aside className="hero-aside">
               <div>
-                <MapPin size={16} /> Chandpur, Bangladesh
+                <MapPin size={16} /> Chandpur, Chattogram, Bangladesh
               </div>
               <p>Seeking opportunities in</p>
               <strong>
@@ -192,7 +192,7 @@ export default function Home() {
           </a>
         </section>
         <section id="about" className="section wrap">
-          <div className="section-label">01 / ABOUT</div>
+          <div className="section-label">ABOUT</div>
           <div className="section-body">
             <h2>
               A curious mind.
@@ -212,14 +212,8 @@ export default function Home() {
           </div>
         </section>
         <section id="projects" className="section wrap">
-          <div className="section-label">02 / SELECTED WORK</div>
+          <div className="section-label">SELECTED WORK</div>
           <div className="section-body">
-            <div className="section-heading">
-              <h2>Built with purpose.</h2>
-              <a className="text-link" href="https://github.com/sadmantihan">
-                GitHub <ArrowUpRight size={17} />
-              </a>
-            </div>
             <div className="projects">
               {projects.map((p) => (
                 <article className="project" key={p.n}>
@@ -247,23 +241,20 @@ export default function Home() {
           </div>
         </section>
         <section id="articles" className="section wrap">
-          <div className="section-label">03 / ARTICLES</div> 
-          <div className="section-body">
-            <h2>Articles.</h2>
-            <ArticleCards />
-          </div>
+          <div className="section-label">LATEST ARTICLES</div>   
+          <ArticleCards />
         </section>
         <section className="section wrap" id="skills">
-          <div className="section-label">04 / TOOLKIT</div>
+          <div className="section-label">MY TOOLKIT</div>
           <div className="section-body">
-            <h2>The tools behind the work.</h2>
+            <h2>Tools and Technologies</h2>
             <div className="skills">
               {[
                 ["Languages", "Python, R, C, C++, Java, JavaScript, PHP"],
-                ["AI & machine learning", "PyTorch, TensorFlow"],
-                ["Web & mobile", "Next.js, Flutter, HTML, CSS"],
-                ["Data & databases", "MySQL, PostgreSQL"],
-                ["Development & writing", "Git, GitHub, LaTeX, PowerBI"],
+                ["AI / ML", "Scikit-learn, PyTorch, TensorFlow"],
+                ["Web & Mobile", "Next.js, Flutter, HTML, CSS"],
+                ["Databases", "MySQL, PostgreSQL"],
+                ["Tools", "Git, GitHub, LaTeX, PowerBI"],
               ].map(([title, values]) => (
                 <div className="skill-row" key={title}>
                   <h3>{title}</h3>
@@ -274,7 +265,7 @@ export default function Home() {
           </div>
         </section>
         <section id="education" className="section wrap">
-          <div className="section-label">05 / EDUCATION</div>
+          <div className="section-label">EDUCATION</div>
           <div className="section-body">
             <h2>A foundation to build on.</h2>
             <div className="education">
