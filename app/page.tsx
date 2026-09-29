@@ -2,6 +2,7 @@
 import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
 import { Toolkit } from "@/components/toolkit";
+import { Certifications } from "@/components/certifications";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { useEffect, useState } from "react";
@@ -13,7 +14,6 @@ import {
   Moon,
   Sun,
   MapPin,
-  ChevronRight,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Switch } from "@/components/ui/switch";
@@ -275,40 +275,7 @@ export default function Home() {
                 <p>Board-merit scholarship awardee</p>
               </div>
             </div>
-            <h3 className="training-title">Certifications & training</h3>
-            <div className="training">
-              {[
-                [
-                  "Data Science and Machine Learning with Python and R",
-                  "Data Solution 360 · 6-month program",
-                  "Mar 2026",
-                ],
-                [
-                  "Python Basics",
-                  "University of Michigan · Coursera",
-                  "Sep 2025",
-                ],
-                [
-                  "Mobile App Development",
-                  "University of Chittagong · EDGE Project · 80 hours",
-                  "Apr 2025",
-                ],
-                [
-                  "Data Science Math Skills",
-                  "Duke University · Coursera",
-                  "Mar 2025",
-                ],
-              ].map(([t, o, d]) => (
-                <div className="training-row" key={t}>
-                  <ChevronRight size={17} />
-                  <div>
-                    <h4>{t}</h4>
-                    <p>{o}</p>
-                  </div>
-                  <span className="date">{d}</span>
-                </div>
-              ))}
-            </div>
+            <Certifications />
           </div>
         </section>
         <section id="contact" className="contact">

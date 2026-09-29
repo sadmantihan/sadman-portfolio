@@ -1,0 +1,97 @@
+.certifications {
+  min-width: 0;
+  color: var(--ink);
+}
+
+.heading {
+  margin: 45px 0 20px;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .date {
+    grid-column: 1;
+    white-space: normal;
+  }
+}
+
+.details {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.organization {
+  margin: 4px 0 12px;
+  color: var(--sub);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.date {
+  padding-top: 3px;
+  color: var(--sub);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.button:hover {
+  border-color: currentColor;
+}
+
+.button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 17px minmax(0, 1fr);
+  }
+
+  .date {
+    grid-column: 2;
+    white-space: normal;
+  }
+}
