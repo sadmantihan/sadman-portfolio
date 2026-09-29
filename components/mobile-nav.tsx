@@ -72,12 +72,6 @@ export function MobileNav({ active }: { active: string }) {
                 </Dialog.Close>
               ))}
             </nav>
-
-            <Dialog.Close asChild>
-              <a className="button solid mobile-menu-contact" href="#contact">
-                Hire me <span aria-hidden="true">↗</span>
-              </a>
-            </Dialog.Close>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
