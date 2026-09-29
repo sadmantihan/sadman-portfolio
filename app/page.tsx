@@ -252,7 +252,7 @@ export default function Home() {
         <section id="education" className="section wrap">
           <div className="section-label">EDUCATION</div>
           <div className="section-body">
-            <h2>A foundation to build on.</h2>
+            <h2>A foundation to build on</h2>
             <div className="education">
               <div>
                 <span className="eyebrow">FEB 2022 – OCT 2026</span>

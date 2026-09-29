@@ -5,9 +5,16 @@
 
 .heading {
   margin: 45px 0 20px;
-  font-size: clamp(26px, 4vw, 34px);
+  font-size: 38px;
   font-weight: 500;
   line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+
+@media (max-width: 600px) {
+  .heading {
+    font-size: 31px;
+  }
 }
 
 .list {
