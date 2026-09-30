@@ -9,8 +9,6 @@ import { Textarea } from "@/components/ui/textarea";
 const FORM_ENDPOINT = "https://formspree.io/f/xnpnwgql";
 const NAME_PATTERN = String.raw`\p{L}[\p{L}\p{M}]*(?: +\p{L}[\p{L}\p{M}]*)*`;
 
-const EMAIL_PATTERN = String.raw`(?=.{1,64}@)[A-Za-z]+(?:\.[A-Za-z]+)*@[A-Za-z]{1,63}(?:\.[A-Za-z]{1,63})*\.[A-Za-z]{2,63}`;
-
 export function ContactForm() {
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState("");
@@ -104,20 +102,19 @@ export function ContactForm() {
             autoCapitalize="none"
             spellCheck={false}
             placeholder="you@example.com"
-            pattern={EMAIL_PATTERN}
-            required
-            maxLength={200}
-            disabled={sending}
             onInvalid={(event) => {
               event.currentTarget.setCustomValidity(
                 event.currentTarget.validity.valueMissing
                   ? "Please enter your email address."
-                  : "Invalid email address. Use letters, @ and dots only, such as name@example.com.",
+                  : "Invalid email address. Please enter a valid email.",
               );
             }}
             onInput={(event) => {
               event.currentTarget.setCustomValidity("");
             }}
+            required
+            maxLength={200}
+            disabled={sending}
           />
         </div>
       </div>

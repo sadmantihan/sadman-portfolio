@@ -325,14 +325,6 @@ export default function Home() {
                     <p>Chandpur, Bangladesh</p>
                   </div>
                 </div>
-                <div className="contact-links">
-                  <a href="https://github.com/sadmantihan">
-                    GitHub <ArrowUpRight size={16} />
-                  </a>
-                  <a href="https://linkedin.com/in/md-sadman-sami-khan">
-                    LinkedIn <ArrowUpRight size={16} />
-                  </a>
-                </div>
               </div>
               <ContactForm />
             </div>
