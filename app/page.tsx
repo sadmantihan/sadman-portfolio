@@ -3,6 +3,7 @@ import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
 import { Toolkit } from "@/components/toolkit";
 import { Certifications } from "@/components/certifications";
+import { Experience } from "@/components/experience";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { useEffect, useState } from "react";
@@ -57,6 +58,7 @@ export default function Home() {
     const sections = [
       "about",
       "projects",
+      "experience",
       "articles",
       "skills",
       "education",
@@ -97,6 +99,7 @@ export default function Home() {
             {[
               ["about", "About"],
               ["projects", "Projects"],
+              ["experience", "Experience"],
               ["articles", "Articles"],
               ["skills", "Skills"],
               ["education", "Education"],
@@ -130,12 +133,13 @@ export default function Home() {
           <div className="hero-bottom">
             <div>
               <p className="intro">
-                Turning complex data into
-                <br className="desktop" /> clear, meaningful solutions.
+                Aspiring Junior Data &amp; Business Analyst
+                <br className="desktop" /> and AI/ML Engineer.
               </p>
+
               <p className="summary">
-                CSE graduate with a focus on data analytics, AI/ML research, and
-                full-stack development. From structured data to smarter systems.
+                CSE graduate and former Data Annotator at BDAI-HEAT Sub-project
+                (HEAT-13211-CU), with a particular interest in FinTech.
               </p>
               <div className="actions">
                 <a className="button solid" href="#projects">
@@ -195,21 +199,33 @@ export default function Home() {
         </section>
         <section id="about" className="section wrap">
           <div className="section-label">ABOUT</div>
+
           <div className="section-body">
             <h2>
               A curious mind.
               <br />A practical approach.
             </h2>
+
             <p className="lead">
-              I work across the data-to-decision pipeline: cleaning and modeling
-              data, evaluating results, and communicating findings clearly.
+              I’m a Computer Science and Engineering graduate from the
+              University of Chittagong, aspiring to junior roles in data
+              analysis, business analysis, and AI/ML engineering, with a
+              particular interest in FinTech.
             </p>
+
             <p>
-              My background in Computer Science and Engineering at the
-              University of Chittagong connects research in multi-hop knowledge
-              graph reasoning with hands-on data work and software development.
-              I enjoy bringing structure to complex problems and building tools
-              that make that structure useful.
+              As a former Data Annotator at the World Bank-funded BDAI-HEAT
+              Sub-project (HEAT-13211-CU), I guided students in collecting
+              socio-economic data, designing an ER diagram, and building an ETL
+              pipeline to structure, clean, and validate the data.
+            </p>
+
+            <p>
+              My research in multi-hop knowledge graph reasoning and my
+              full-stack development skills complement this hands-on experience.
+              I enjoy working from raw data through analysis and evaluation to
+              clear findings that support decisions, and I’m keen to apply these
+              skills to financial technology.
             </p>
           </div>
         </section>
@@ -247,6 +263,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <Experience />
         <section id="articles" className="section wrap">
           <div className="section-label">LATEST ARTICLES</div>
           <ArticleCards />
