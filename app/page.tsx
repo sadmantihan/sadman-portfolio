@@ -331,11 +331,11 @@ export default function Home() {
               </div>
               <div className="school">
                 <h3>Higher Secondary Certificate</h3>
-                <p>Chandpur Government College · 2020</p>
+                <p>Chandpur Government College, Chandpur · 2020</p>
                 <p>GPA 5.00 / 5.00</p>
                 <p>Board-merit scholarship awardee</p>
                 <h3>Secondary School Certificate</h3>
-                <p>Hasan Ali Government High School · 2018</p>
+                <p>Hasan Ali Government High School, Chandpur · 2018</p>
                 <p>GPA 5.00 / 5.00</p>
                 <p>Board-merit scholarship awardee</p>
               </div>
