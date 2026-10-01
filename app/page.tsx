@@ -28,6 +28,10 @@ const projects = [
     desc: "Making multi-hop knowledge graph reasoning more efficient with adaptive, uncertainty-aware search-space pruning. Evaluated on WebQSP and CWQ within the RoG reasoning pipeline.",
     tags: ["Python", "PyTorch", "Knowledge graphs"],
     url: "https://github.com/sadmantihan/AdaPruner-KGQA",
+    supervisor: "Prof. Dr. Rudra Pratap Deb Nath",
+    supervisorUrl:
+      "https://scholar.google.com/citations?user=TkQGAWoAAAAJ&hl=en",
+    thesisPdf: "/thesis/AdaPrunerKGQA-thesis.pdf",
     detail:
       "2.24% / 5.05% fewer graph edges examined on WebQSP / CWQ; 99.20% / 98.72% of RoG-reachable answers retained.",
     year: "2026",
@@ -224,7 +228,7 @@ export default function Home() {
             <p>
               As a former Data Annotator at the World Bank-funded BDAI-HEAT
               Sub-project (HEAT-13211-CU), I guided students in collecting
-              socio-economic data, designing an ER diagram, and building an ETL
+              socio-economics data, designing an ER diagram, and building an ETL
               pipeline to structure, clean, and validate the data.
             </p>
 
@@ -250,16 +254,43 @@ export default function Home() {
                   <div className="project-title">
                     <h3>{p.name}</h3>
 
-                    <a
-                      className="source-code-button"
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View source code for ${p.name} on GitHub (opens in a new tab)`}
-                    >
-                      Source Code
-                    </a>
+                    <div className="project-actions">
+                      <a
+                        className="source-code-button"
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`View source code for ${p.name} on GitHub (opens in a new tab)`}
+                      >
+                        Source Code
+                      </a>
+
+                      {p.thesisPdf && (
+                        <a
+                          className="button outline"
+                          href={p.thesisPdf}
+                          download
+                        >
+                          Download Thesis
+                          <Download size={17} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
                   </div>
+
+                  {p.supervisor && p.supervisorUrl && (
+                    <p className="project-supervisor">
+                      Supervisor:{" "}
+                      <a
+                        href={p.supervisorUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {p.supervisor}
+                        <ArrowUpRight size={16} aria-hidden="true" />
+                      </a>
+                    </p>
+                  )}
                   <p>{p.desc}</p>
                   {p.detail && <p className="project-note">{p.detail}</p>}
                   <div className="project-bottom">

@@ -1,3 +1,4 @@
+import { VoluntaryCertificates } from "./voluntary-certificates";
 import styles from "./experience.module.css";
 import { ArrowUpRight } from "lucide-react";
 
@@ -52,7 +53,7 @@ export function Experience() {
           <ul className={styles.points}>
             <li>
               Served as a Scrum Level 2 mentor, guiding a team of Scrum Level 3
-              students in collecting raw data for the project’s socio-economic
+              students in collecting raw data for the project’s socio-economics
               sector, one of its core focus areas.
             </li>
             <li>
@@ -90,6 +91,8 @@ export function Experience() {
                 <li key={point}>{point}</li>
               ))}
             </ul>
+
+            {role.title === "General Member" && <VoluntaryCertificates />}
           </article>
         ))}
       </div>

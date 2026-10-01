@@ -79,3 +79,86 @@
     font-size: 22px;
   }
 }
+
+.certificates {
+  margin-top: 22px;
+}
+
+.certificateToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 11px 18px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.certificateToggle::-webkit-details-marker {
+  display: none;
+}
+
+.certificateToggle:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 4px;
+}
+
+.certificateToggle:hover {
+  border-color: var(--violet);
+}
+
+.certificates[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.certificateList {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.certificateList li + li {
+  border-top: 1px solid var(--line);
+}
+
+.certificateList a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 14px 16px;
+  color: var(--ink);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.certificateList a:hover {
+  background: var(--background);
+}
+
+.certificateList a:focus-visible {
+  outline-offset: -3px;
+}
+
+.certificateList span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.certificateList svg,
+.chevron {
+  flex-shrink: 0;
+}
