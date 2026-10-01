@@ -162,3 +162,23 @@
 .chevron {
   flex-shrink: 0;
 }
+
+.withLogo {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.organizationLogo {
+  display: block;
+  width: 48px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.withLogo > a,
+.withLogo > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

@@ -1,4 +1,5 @@
 import { VoluntaryCertificates } from "./voluntary-certificates";
+import Image from "next/image";
 import styles from "./experience.module.css";
 import { ArrowUpRight } from "lucide-react";
 
@@ -35,7 +36,15 @@ export function Experience() {
             <span className={styles.date}>Apr 2026 – Sep 2026</span>
           </div>
 
-          <p className={styles.organization}>
+          <p className={`${styles.organization} ${styles.withLogo}`}>
+            <Image
+              src="/logos/bdai.png"
+              alt=""
+              width={48}
+              height={36}
+              className={styles.organizationLogo}
+            />
+
             <a
               href="https://bdai-csecu.vercel.app/"
               target="_blank"
@@ -46,8 +55,16 @@ export function Experience() {
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </p>
-          <p className={styles.meta}>
-            World Bank-funded · Chattogram, Bangladesh
+          <p className={`${styles.meta} ${styles.withLogo}`}>
+            <Image
+              src="/logos/world-bank.png"
+              alt=""
+              width={48}
+              height={36}
+              className={styles.organizationLogo}
+            />
+
+            <span>World Bank-funded · Chattogram, Bangladesh</span>
           </p>
 
           <ul className={styles.points}>
@@ -80,8 +97,16 @@ export function Experience() {
               <span className={styles.date}>{role.date}</span>
             </div>
 
-            <p className={styles.organization}>
-              Chittagong University Scientific Society
+            <p className={`${styles.organization} ${styles.withLogo}`}>
+              <Image
+                src="/logos/cuss.png"
+                alt=""
+                width={48}
+                height={36}
+                className={styles.organizationLogo}
+              />
+
+              <span>Chittagong University Scientific Society</span>
             </p>
 
             <p className={styles.meta}>Chattogram, Bangladesh</p>
