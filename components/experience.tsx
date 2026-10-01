@@ -1,4 +1,5 @@
 import styles from "./experience.module.css";
+import { ArrowUpRight } from "lucide-react";
 
 const voluntaryRoles = [
   {
@@ -34,9 +35,16 @@ export function Experience() {
           </div>
 
           <p className={styles.organization}>
-            BDAI-HEAT Sub-project (HEAT-13211-CU)
+            <a
+              href="https://bdai-csecu.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="profile-link"
+            >
+              BDAI-HEAT Sub-project (HEAT-13211-CU)
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
           </p>
-
           <p className={styles.meta}>
             World Bank-funded · Chattogram, Bangladesh
           </p>
@@ -48,8 +56,9 @@ export function Experience() {
               sector, one of its core focus areas.
             </li>
             <li>
-              Directed the team in designing the sector’s ER diagram and building
-              its ETL pipeline to structure, clean, and validate the collected data.
+              Directed the team in designing the sector’s ER diagram and
+              building its ETL pipeline to structure, clean, and validate the
+              collected data.
             </li>
             <li>
               Oversaw a collection effort that produced a 130-file dataset with

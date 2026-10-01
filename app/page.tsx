@@ -134,12 +134,12 @@ export default function Home() {
             <div>
               <p className="intro">
                 Aspiring Junior Data &amp; Business Analyst
-                <br className="desktop" /> and AI/ML Engineer.
+                <br className="desktop" /> and AI/ML Engineer
               </p>
 
               <p className="summary">
                 CSE graduate and former Data Annotator at BDAI-HEAT Sub-project
-                (HEAT-13211-CU), with a particular interest in FinTech.
+                (HEAT-13211-CU), with a particular interest in FinTech
               </p>
               <div className="actions">
                 <a className="button solid" href="#projects">
@@ -207,10 +207,18 @@ export default function Home() {
             </h2>
 
             <p className="lead">
-              I’m a Computer Science and Engineering graduate from the
-              University of Chittagong, aspiring to junior roles in data
-              analysis, business analysis, and AI/ML engineering, with a
-              particular interest in FinTech.
+              I’m a Computer Science and Engineering graduate from the{" "}
+              <a
+                href="https://cu.ac.bd/cse/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="profile-link"
+              >
+                University of Chittagong
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+              , aspiring to junior roles in data analysis, business analysis,
+              and AI/ML engineering, with a particular interest in FinTech.
             </p>
 
             <p>
@@ -230,7 +238,7 @@ export default function Home() {
           </div>
         </section>
         <section id="projects" className="section wrap">
-          <div className="section-label">SELECTED WORK</div>
+          <div className="section-label">PROJECTS AND THESIS</div>
           <div className="section-body">
             <div className="projects">
               {projects.map((p) => (

@@ -1135,3 +1135,16 @@ nav.mobile-menu-links a[aria-current="location"] {
 .portfolio-header .desktop-nav {
   gap: clamp(12px, 2vw, 28px);
 }
+
+.profile-link,
+.profile-link:hover {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.profile-link svg {
+  display: inline-block;
+  margin-left: 4px;
+  vertical-align: -2px;
+}
