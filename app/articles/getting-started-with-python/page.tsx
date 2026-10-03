@@ -1,4 +1,33 @@
+import type { Metadata } from "next";
 import { CodeBlock } from "@/components/code-block";
+
+export const metadata: Metadata = {
+  title: "Getting Started with Python",
+
+  description:
+    "Learn Python basics with practical examples covering variables, input, conditions, loops, lists, and functions.",
+
+  alternates: {
+    canonical: "/articles/getting-started-with-python",
+  },
+
+  openGraph: {
+    type: "article",
+    title: "Getting Started with Python",
+    description:
+      "A beginner-friendly introduction to Python with practical examples.",
+    url: "/articles/getting-started-with-python",
+    images: ["/opengraph-image.png"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Getting Started with Python",
+    description:
+      "A beginner-friendly introduction to Python with practical examples.",
+    images: ["/twitter-image.png"],
+  },
+};
 
 export default function GettingStartedWithPython() {
   return (
@@ -21,15 +50,11 @@ export default function GettingStartedWithPython() {
         version:
       </p>
 
-      <CodeBlock
-        language="terminal"
-        code="python --version"
-      />
+      <CodeBlock language="terminal" code="python --version" />
 
       <p>
-        Depending on your installation, you may need to use{" "}
-        <code>python3</code> or <code>py</code> instead of{" "}
-        <code>python</code>.
+        Depending on your installation, you may need to use <code>python3</code>{" "}
+        or <code>py</code> instead of <code>python</code>.
       </p>
 
       <h2>2. Write your first program</h2>
@@ -38,26 +63,15 @@ export default function GettingStartedWithPython() {
         Create a file named <code>hello.py</code> and add:
       </p>
 
-      <CodeBlock
-        language="python"
-        code={`print("Hello, Python!")`}
-      />
+      <CodeBlock language="python" code={`print("Hello, Python!")`} />
 
-      <p>
-        Save the file. Open a terminal in the same folder and run:
-      </p>
+      <p>Save the file. Open a terminal in the same folder and run:</p>
 
-      <CodeBlock
-        language="terminal"
-        code="python hello.py"
-      />
+      <CodeBlock language="terminal" code="python hello.py" />
 
       <p>The output will be:</p>
 
-      <CodeBlock
-        language="output"
-        code="Hello, Python!"
-      />
+      <CodeBlock language="output" code="Hello, Python!" />
 
       <h2>3. Variables and data types</h2>
 
@@ -94,9 +108,7 @@ print(age)`}
 print(f"Hello, {name}!")`}
       />
 
-      <p>
-        An f-string lets you insert values into text using curly braces.
-      </p>
+      <p>An f-string lets you insert values into text using curly braces.</p>
 
       <h3>Convert text to a number</h3>
 
@@ -151,15 +163,11 @@ else:
     print(number)`}
       />
 
-      <p>
-        This prints 1 through 5. The ending value, 6, is excluded.
-      </p>
+      <p>This prints 1 through 5. The ending value, 6, is excluded.</p>
 
       <h2>7. Store multiple values in a list</h2>
 
-      <p>
-        Lists hold multiple items. List indexing starts at zero:
-      </p>
+      <p>Lists hold multiple items. List indexing starts at zero:</p>
 
       <CodeBlock
         language="python"

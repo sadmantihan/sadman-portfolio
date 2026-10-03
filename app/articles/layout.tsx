@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { articles } from "./article-list";
 import "./articles.css";
 
@@ -17,20 +12,14 @@ type Heading = {
   level: number;
 };
 
-export default function ArticlesLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function ArticlesLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const contentRef = useRef<HTMLDivElement>(null);
 
   const [dark, setDark] = useState(false);
   const [headings, setHeadings] = useState<Heading[]>([]);
 
-  const categories = [
-    ...new Set(articles.map((article) => article.category)),
-  ];
+  const categories = [...new Set(articles.map((article) => article.category))];
 
   const currentArticle = articles.find(
     (article) => pathname === `/articles/${article.slug}`,
@@ -41,9 +30,7 @@ export default function ArticlesLayout({
     const isDark = savedTheme === "dark";
 
     setDark(isDark);
-    document.documentElement.dataset.theme = isDark
-      ? "dark"
-      : "light";
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
   }, []);
 
   useEffect(() => {
@@ -54,8 +41,7 @@ export default function ArticlesLayout({
     const usedIds = new Set<string>();
 
     const nextHeadings = elements.map((element, index) => {
-      const text =
-        element.textContent?.trim() || `Section ${index + 1}`;
+      const text = element.textContent?.trim() || `Section ${index + 1}`;
 
       const baseId =
         element.id ||
@@ -109,9 +95,7 @@ export default function ArticlesLayout({
                 key={article.slug}
                 href={`/articles/${article.slug}`}
                 aria-current={
-                  pathname === `/articles/${article.slug}`
-                    ? "page"
-                    : undefined
+                  pathname === `/articles/${article.slug}` ? "page" : undefined
                 }
               >
                 {article.title}
@@ -124,6 +108,9 @@ export default function ArticlesLayout({
 
   return (
     <div className="docs-shell">
+      <a href="#article-content" className="skip-link">
+        Skip to article
+      </a>
       <header className="docs-header">
         <Link href="/" className="docs-brand">
           Md. Sadman Sami Khan
@@ -139,14 +126,11 @@ export default function ArticlesLayout({
       </header>
 
       <div className="docs-grid">
-        <nav
-          className="docs-sidebar"
-          aria-label="Article navigation"
-        >
+        <nav className="docs-sidebar" aria-label="Article navigation">
           {articleNavigation}
         </nav>
 
-        <main className="docs-main">
+        <main id="article-content" className="docs-main" tabIndex={-1}>
           <details className="docs-mobile-nav">
             <summary>Browse articles</summary>
             {articleNavigation}
@@ -163,27 +147,18 @@ export default function ArticlesLayout({
           </div>
 
           <div className="docs-end">
-            <Link href="/#articles">
-              ← Back to all articles
-            </Link>
+            <Link href="/#articles">← Back to all articles</Link>
           </div>
         </main>
 
-        <aside
-          className="docs-toc"
-          aria-label="On this page"
-        >
+        <aside className="docs-toc" aria-label="On this page">
           <p className="docs-label">ON THIS PAGE</p>
 
           {headings.map((heading) => (
             <a
               key={heading.id}
               href={`#${heading.id}`}
-              className={
-                heading.level === 3
-                  ? "docs-subheading"
-                  : undefined
-              }
+              className={heading.level === 3 ? "docs-subheading" : undefined}
             >
               {heading.text}
             </a>

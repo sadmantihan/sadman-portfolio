@@ -133,6 +133,9 @@ export default function Home() {
 
   return (
     <>
+      <a href="#home" className="skip-link">
+        Skip to main content
+      </a>
       <header className="portfolio-header">
         <div className="nav wrap">
           <a
@@ -157,7 +160,7 @@ export default function Home() {
             {[
               ["news", "Recent News"],
               ["about", "About"],
-              ["projects and thesis", "Projects & Thesis"],
+              ["projects", "Projects & Thesis"],
               ["experience", "Experience"],
               ["articles", "Articles"],
               ["skills", "Skills"],
@@ -190,7 +193,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main id="home">
+      <main id="home" tabIndex={-1}>
         <ScrollReveal />
 
         <section className="hero wrap">
