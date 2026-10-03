@@ -1,12 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <clipPath id="badge">
-      <circle cx="32" cy="32" r="30" />
-    </clipPath>
-  </defs>
-  <circle cx="32" cy="32" r="30" fill="#713bd1" />
-  <g clip-path="url(#badge)" fill="#ffffff">
-    <path d="M21 23c-2-6 1-12 7-13 4-3 11-1 14 3 3 4 2 8 0 11v4c0 6-4 11-10 11s-10-5-10-11v-5z" />
-    <path d="M27 34h10v8l7 3c7 3 10 9 11 19H9c1-10 4-16 11-19l7-3z" />
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1280 1280">
+  <title>Sadman Sami Khan — ribbon monogram</title>
+  <rect x="96" y="112" width="1088" height="1088" rx="256" fill="#713BD1" />
+  <g fill="#FFFFFF">
+    <path d="M564 290 846 412C896 434 921 478 921 538V608C921 644 906 674 872 692C896 664 880 642 852 622L424 444C388 427 385 389 419 366Z" />
+    <path d="M379 599C420 575 474 563 529 568V708C448 685 369 655 379 599Z" />
+    <path d="M367 608C357 644 415 669 464 691L839 817C891 837 896 884 851 911L700 991 405 856C357 832 332 804 332 756V681C332 652 343 628 367 608Z" />
+    <path d="M578 577H676V676H578Z" />
   </g>
 </svg>
