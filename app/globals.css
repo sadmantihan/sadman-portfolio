@@ -1880,3 +1880,14 @@ footer.wrap {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Space between section labels and content on mobile */
+@media (max-width: 768px) {
+  #home .section {
+    row-gap: 0;
+  }
+
+  #home .section > .section-label {
+    margin-bottom: 24px;
+  }
+}
