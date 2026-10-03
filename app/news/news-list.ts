@@ -8,22 +8,8 @@ export type NewsItem = {
 
 export const news: NewsItem[] = [
   {
-    id: "sample-project",
-    date: "2026-10-03",
-    text: "Example: Added a new project to my portfolio.",
-    href: "#projects",
-    linkLabel: "View projects",
-  },
-  {
-    id: "sample-training",
-    date: "2026-09-20",
-    text: "Example: Completed a training course and added the certificate.",
-    href: "#education",
-    linkLabel: "View training",
-  },
-  {
-    id: "sample-research",
-    date: "2026-09-10",
-    text: "Example: Shared an update on my undergraduate research.",
+    id: "data-annotator-bdai",
+    date: "2026-04-01",
+    text: "Joined BDAI-HEAT Sub-Project (HEAT-13211-CU), funded by World Bank as a Data Annotator in the Department of Computer Science and Engineering, University of Chittagong.",
   },
 ];
