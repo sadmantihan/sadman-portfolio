@@ -1,30 +1,36 @@
 "use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
+import {
+  ArrowUpRight,
+  Download,
+  Mail,
+  Moon,
+  Sun,
+  MapPin,
+  Network,
+  Cpu,
+  PanelsTopLeft,
+} from "lucide-react";
+
 import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
 import { Toolkit } from "@/components/toolkit";
 import { Certifications } from "@/components/certifications";
 import { Experience } from "@/components/experience";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-import { useEffect, useState } from "react";
-import {
-  ArrowUpRight,
-  ArrowDown,
-  Download,
-  Mail,
-  Moon,
-  Sun,
-  MapPin,
-} from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Switch } from "@/components/ui/switch";
 import { MobileNav } from "@/components/mobile-nav";
-import Image from "next/image";
 
 const projects = [
   {
-    n: "01",
+    category: "Research",
+    coverIcon: Network,
+    image: "",
     type: "RESEARCH · UNDERGRADUATE THESIS",
     name: "AdaPruner-KGQA",
     desc: "Making multi-hop knowledge graph reasoning more efficient with adaptive, uncertainty-aware search-space pruning. Evaluated on WebQSP and CWQ within the RoG reasoning pipeline.",
@@ -39,7 +45,9 @@ const projects = [
     year: "2026",
   },
   {
-    n: "02",
+    category: "Systems",
+    coverIcon: Cpu,
+    image: "",
     type: "SYSTEMS ENGINEERING",
     name: "Dynamic Memory Toolkit",
     desc: "A custom dynamic memory allocator, memory leak detector, and paging / virtual-memory simulator built for an Operating Systems course.",
@@ -48,7 +56,9 @@ const projects = [
     year: "2024",
   },
   {
-    n: "03",
+    category: "Full-Stack",
+    coverIcon: PanelsTopLeft,
+    image: "",
     type: "FULL-STACK DEVELOPMENT",
     name: "BuildMaster",
     desc: "A role-based workforce management system with authenticated dashboards for administrators, HR, employees, teams, volunteers, and shareholders.",
@@ -57,9 +67,11 @@ const projects = [
     year: "2024",
   },
 ];
+
 export default function Home() {
   const [dark, setDark] = useState(false);
   const [active, setActive] = useState("");
+
   useEffect(() => {
     const sections = [
       "about",
@@ -72,28 +84,51 @@ export default function Home() {
     ]
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
+
     const update = () => {
       let current = "";
+
       for (const section of sections) {
-        if (section.getBoundingClientRect().top <= 180) current = section.id;
+        if (section.getBoundingClientRect().top <= 180) {
+          current = section.id;
+        }
       }
+
       setActive(current);
     };
+
     update();
     window.addEventListener("scroll", update, { passive: true });
+
     return () => window.removeEventListener("scroll", update);
   }, []);
+
   useEffect(() => {
-    const saved = localStorage.getItem("portfolio-theme");
-    const d = saved === "dark";
-    setDark(d);
-    document.documentElement.dataset.theme = d ? "dark" : "light";
+    let saved: string | null = null;
+
+    try {
+      saved = localStorage.getItem("portfolio-theme");
+    } catch {
+      // Use the default theme when browser storage is unavailable.
+    }
+
+    const isDark = saved === "dark";
+
+    setDark(isDark);
+    document.documentElement.dataset.theme = isDark ? "dark" : "light";
   }, []);
+
   const toggle = (v: boolean) => {
     setDark(v);
     document.documentElement.dataset.theme = v ? "dark" : "light";
-    localStorage.setItem("portfolio-theme", v ? "dark" : "light");
+
+    try {
+      localStorage.setItem("portfolio-theme", v ? "dark" : "light");
+    } catch {
+      // Switching themes still works if the preference cannot be saved.
+    }
   };
+
   return (
     <>
       <header className="portfolio-header">
@@ -111,8 +146,11 @@ export default function Home() {
               className="brand-logo"
             />
 
-            <span className="brand-text">ssk<span>.</span></span>
+            <span className="brand-text">
+              ssk<span>.</span>
+            </span>
           </a>
+
           <nav className="desktop-nav" aria-label="Main navigation">
             {[
               ["about", "About"],
@@ -132,26 +170,34 @@ export default function Home() {
               </a>
             ))}
           </nav>
+
           <div className="theme">
-            <Sun size={16} />
+            <Sun size={16} aria-hidden="true" />
+
             <Switch
               checked={dark}
               onCheckedChange={toggle}
               aria-label="Dark mode"
             />
-            <Moon size={16} />
+
+            <Moon size={16} aria-hidden="true" />
           </div>
+
           <MobileNav active={active} />
         </div>
       </header>
+
       <main id="home">
         <ScrollReveal />
+
         <section className="hero wrap">
           <div className="eyebrow">HELLO, I AM</div>
+
           <h1 className="hero-name">
             <span>Md.</span> <span>Sadman</span> <span>Sami</span>{" "}
             <span>Khan</span>
           </h1>
+
           <div className="hero-bottom">
             <div>
               <p className="intro">
@@ -163,29 +209,38 @@ export default function Home() {
                 CSE graduate and former Data Annotator at BDAI-HEAT Sub-project
                 (HEAT-13211-CU), with a particular interest in FinTech
               </p>
+
               <div className="actions">
                 <a className="button solid" href="#projects">
-                  Explore my work <ArrowUpRight size={18} />
+                  Explore my work
+                  <ArrowUpRight size={18} aria-hidden="true" />
                 </a>
+
                 <a
                   className="button outline"
                   href="/Sadman_Sami_Khan_CV.pdf"
                   download
                 >
-                  Download CV <Download size={17} />
+                  Download CV
+                  <Download size={17} aria-hidden="true" />
                 </a>
               </div>
             </div>
+
             <aside className="hero-aside">
               <div>
-                <MapPin size={16} /> Chandpur, Chattogram, Bangladesh
+                <MapPin size={16} aria-hidden="true" />
+                Chandpur, Chattogram, Bangladesh
               </div>
+
               <p>Seeking opportunities in</p>
+
               <strong>
-                Data & Business Analysis
+                Data &amp; Business Analysis
                 <br />
                 AI / ML Engineering
               </strong>
+
               <div className="socials">
                 <a
                   href="https://github.com/sadmantihan"
@@ -194,8 +249,9 @@ export default function Home() {
                   aria-label="GitHub"
                   title="GitHub"
                 >
-                  <FaGithub size={22} />
+                  <FaGithub size={22} aria-hidden="true" />
                 </a>
+
                 <a
                   href="https://www.linkedin.com/in/md-sadman-sami-khan"
                   target="_blank"
@@ -203,19 +259,21 @@ export default function Home() {
                   aria-label="LinkedIn"
                   title="LinkedIn"
                 >
-                  <FaLinkedin size={22} />
+                  <FaLinkedin size={22} aria-hidden="true" />
                 </a>
+
                 <a
                   href="mailto:samisadman6@gmail.com"
                   aria-label="Email"
                   title="Email me"
                 >
-                  <SiGmail size={22} />
+                  <SiGmail size={22} aria-hidden="true" />
                 </a>
               </div>
             </aside>
           </div>
         </section>
+
         <section id="about" className="section wrap">
           <div className="section-label">ABOUT</div>
 
@@ -256,125 +314,164 @@ export default function Home() {
             </p>
           </div>
         </section>
+
         <section id="projects" className="section wrap">
           <div className="section-label">PROJECTS AND THESIS</div>
+
           <div className="section-body">
             <div className="projects">
               {projects.map((p) => (
-                <article className="project" key={p.n}>
-                  <div className="project-top">
-                    <span className="eyebrow">{p.type}</span>
-                    <span>{p.year}</span>
+                <article className="project" key={p.url}>
+                  <div className="project-cover">
+                    {p.image ? (
+                      <Image
+                        src={p.image}
+                        alt={`${p.name} project preview`}
+                        fill
+                        sizes="(max-width: 699px) 92vw, (max-width: 1199px) 46vw, 31vw"
+                        className="project-cover-image"
+                      />
+                    ) : (
+                      <p.coverIcon
+                        size={64}
+                        strokeWidth={1.25}
+                        aria-hidden="true"
+                      />
+                    )}
+
+                    <span className="project-cover-label" title={p.type}>
+                      {p.category}
+                    </span>
                   </div>
-                  <div className="project-title">
-                    <h3>{p.name}</h3>
+
+                  <div className="project-content">
+                    <div className="project-title">
+                      <h3>{p.name}</h3>
+                    </div>
+
+                    {p.supervisor && p.supervisorUrl && (
+                      <p className="project-supervisor">
+                        Supervisor:{" "}
+                        <a
+                          href={p.supervisorUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {p.supervisor}
+                          <ArrowUpRight size={16} aria-hidden="true" />
+                        </a>
+                      </p>
+                    )}
+
+                    <p>{p.desc}</p>
+
+                    {p.detail && <p className="project-note">{p.detail}</p>}
+
+                    <div className="project-bottom">
+                      <ProjectTags tags={p.tags} />
+                    </div>
 
                     <div className="project-actions">
                       <a
-                        className="source-code-button"
+                        className="project-link"
                         href={p.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`View source code for ${p.name} on GitHub (opens in a new tab)`}
                       >
-                        Source Code
+                        <FaGithub size={18} aria-hidden="true" />
+                        Code
                       </a>
 
                       {p.thesisPdf && (
-                        <a
-                          className="button outline"
-                          href={p.thesisPdf}
-                          download
-                        >
+                        <a className="project-link" href={p.thesisPdf} download>
+                          <Download size={18} aria-hidden="true" />
                           Download Thesis
-                          <Download size={17} aria-hidden="true" />
                         </a>
                       )}
                     </div>
-                  </div>
-
-                  {p.supervisor && p.supervisorUrl && (
-                    <p className="project-supervisor">
-                      Supervisor:{" "}
-                      <a
-                        href={p.supervisorUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {p.supervisor}
-                        <ArrowUpRight size={16} aria-hidden="true" />
-                      </a>
-                    </p>
-                  )}
-                  <p>{p.desc}</p>
-                  {p.detail && <p className="project-note">{p.detail}</p>}
-                  <div className="project-bottom">
-                    <ProjectTags tags={p.tags} />
-                    <span className="project-number">{p.n}</span>
                   </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
+
         <Experience />
+
         <section id="articles" className="section wrap">
           <div className="section-label">LATEST ARTICLES</div>
           <ArticleCards />
         </section>
-        <section className="section wrap" id="skills">
+
+        <section id="skills" className="section wrap">
           <div className="section-label">MY TOOLKIT</div>
+
           <div className="section-body">
             <h2>Tools and Technologies</h2>
             <Toolkit />
           </div>
         </section>
+
         <section id="education" className="section wrap">
           <div className="section-label">EDUCATION</div>
+
           <div className="section-body">
             <h2>A foundation to build on</h2>
+
             <div className="education">
               <div>
                 <span className="eyebrow">FEB 2022 – OCT 2026</span>
+
                 <h3>
                   B.Sc. in Computer Science
                   <br />
                   and Engineering
                 </h3>
+
                 <p>University of Chittagong</p>
                 <span className="pill">CGPA 3.61 / 4.00</span>
               </div>
+
               <div className="school">
                 <h3>Higher Secondary Certificate</h3>
                 <p>Chandpur Government College, Chandpur · 2020</p>
                 <p>GPA 5.00 / 5.00</p>
                 <p>Board-merit scholarship awardee</p>
+
                 <h3>Secondary School Certificate</h3>
                 <p>Hasan Ali Government High School, Chandpur · 2018</p>
                 <p>GPA 5.00 / 5.00</p>
                 <p>Board-merit scholarship awardee</p>
               </div>
             </div>
+
             <Certifications />
           </div>
         </section>
+
         <section id="contact" className="contact">
           <div className="wrap contact-inner">
             <span className="eyebrow">LET’S CONNECT</span>
             <h2>Get in Touch</h2>
+
             <p>
               Have a project, an opportunity, or a question? I’d love to hear
               from you.
             </p>
+
             <div className="contact-grid">
               <div>
                 <h3>Let’s start a conversation.</h3>
+
                 <p>
                   I’m interested in data analysis, business analysis, and AI /
                   ML engineering opportunities.
                 </p>
+
                 <div className="contact-detail">
-                  <Mail size={20} />
+                  <Mail size={20} aria-hidden="true" />
+
                   <div>
                     <span>Email</span>
                     <a href="mailto:samisadman6@gmail.com">
@@ -382,26 +479,32 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
+
                 <div className="contact-detail">
-                  <ArrowUpRight size={20} />
+                  <ArrowUpRight size={20} aria-hidden="true" />
+
                   <div>
                     <span>Phone</span>
                     <a href="tel:+8801704776493">+880 1704 776493</a>
                   </div>
                 </div>
+
                 <div className="contact-detail">
-                  <MapPin size={20} />
+                  <MapPin size={20} aria-hidden="true" />
+
                   <div>
                     <span>Location</span>
                     <p>Chandpur, Bangladesh</p>
                   </div>
                 </div>
               </div>
+
               <ContactForm />
             </div>
           </div>
         </section>
       </main>
+
       <footer className="wrap">
         <span>© {new Date().getFullYear()} Md. Sadman Sami Khan</span>
         <a href="#home">Back to top ↑</a>
