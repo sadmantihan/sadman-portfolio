@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#713bd1"/><text x="32" y="43" font-family="Arial,sans-serif" font-size="38" font-weight="bold" text-anchor="middle" fill="white">s</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="badge">
+      <circle cx="32" cy="32" r="30" />
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#713bd1" />
+  <g clip-path="url(#badge)" fill="#ffffff">
+    <path d="M21 23c-2-6 1-12 7-13 4-3 11-1 14 3 3 4 2 8 0 11v4c0 6-4 11-10 11s-10-5-10-11v-5z" />
+    <path d="M27 34h10v8l7 3c7 3 10 9 11 19H9c1-10 4-16 11-19l7-3z" />
+  </g>
+</svg>

@@ -20,6 +20,7 @@ import {
 import { ContactForm } from "@/components/contact-form";
 import { Switch } from "@/components/ui/switch";
 import { MobileNav } from "@/components/mobile-nav";
+import Image from "next/image";
 
 const projects = [
   {
@@ -97,8 +98,20 @@ export default function Home() {
     <>
       <header className="portfolio-header">
         <div className="nav wrap">
-          <a className="brand" href="#home" aria-label="Sadman Sami Khan home">
-            ssk
+          <a
+            className="brand navbar-brand"
+            href="#home"
+            aria-label="Sadman Sami Khan home"
+          >
+            <Image
+              src="/favicon.svg"
+              alt=""
+              width={36}
+              height={36}
+              className="brand-logo"
+            />
+
+            <span className="brand-text">ssk<span>.</span></span>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
             {[
@@ -142,7 +155,7 @@ export default function Home() {
           <div className="hero-bottom">
             <div>
               <p className="intro">
-                Aspiring Junior Data &amp; Business Analyst
+                Aspiring Data &amp; Business Analyst
                 <br className="desktop" /> and AI/ML Engineer
               </p>
 

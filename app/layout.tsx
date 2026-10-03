@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Md. Sadman Sami Khan | Aspiring Junior Data & Business Analyst and AI/ML Engineer",
+  title: "Md. Sadman Sami Khan | Aspiring Data & Business Analyst and AI/ML Engineer",
   description: "Portfolio of Md. Sadman Sami Khan: data analytics, knowledge graph AI research, and full-stack development.",
   other: {
     "codex-preview": "development",
