@@ -12,4 +12,5 @@ export const news: NewsItem[] = [
     date: "2026-04-01",
     text: "Joined BDAI-HEAT Sub-Project (HEAT-13211-CU), funded by World Bank as a Data Annotator in the Department of Computer Science and Engineering, University of Chittagong.",
   },
+  
 ];

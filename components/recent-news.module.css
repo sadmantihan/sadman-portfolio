@@ -29,6 +29,7 @@
   color: var(--sub);
   font-size: var(--text-small, 0.9375rem);
   font-variant-numeric: tabular-nums;
+  font-weight: 700;
   white-space: nowrap;
 }
 

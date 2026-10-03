@@ -11,6 +11,8 @@ export function ScrollReveal() {
     const elements = Array.from(
       document.querySelectorAll<HTMLElement>(
         [
+          "#news h2",
+          "#news li",
           "#home .section-label",
           "#home .section-body > :not(.projects)",
           "#home .project",
@@ -59,10 +61,7 @@ export function ScrollReveal() {
       observer.disconnect();
 
       elements.forEach((element) => {
-        element.classList.remove(
-          "scroll-reveal-pending",
-          "scroll-reveal",
-        );
+        element.classList.remove("scroll-reveal-pending", "scroll-reveal");
       });
     };
   }, []);
