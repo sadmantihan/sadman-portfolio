@@ -5,6 +5,7 @@ import { Dialog } from "radix-ui";
 import { Menu, X } from "lucide-react";
 
 const links = [
+  ["news", "Recent News"],
   ["home", "Home"],
   ["about", "About"],
   ["projects & thesis", "Projects & Thesis"],

@@ -16,6 +16,7 @@ import {
   PanelsTopLeft,
 } from "lucide-react";
 
+import { RecentNews } from "@/components/recent-news";
 import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
 import { Toolkit } from "@/components/toolkit";
@@ -74,6 +75,7 @@ export default function Home() {
 
   useEffect(() => {
     const sections = [
+      "news",
       "about",
       "projects and thesis",
       "experience",
@@ -153,6 +155,7 @@ export default function Home() {
 
           <nav className="desktop-nav" aria-label="Main navigation">
             {[
+              ["news", "Recent News"],
               ["about", "About"],
               ["projects and thesis", "Projects & Thesis"],
               ["experience", "Experience"],
@@ -273,6 +276,7 @@ export default function Home() {
             </aside>
           </div>
         </section>
+        <RecentNews />
 
         <section id="about" className="section wrap">
           <div className="section-label">ABOUT</div>
