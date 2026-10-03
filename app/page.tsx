@@ -75,7 +75,7 @@ export default function Home() {
   useEffect(() => {
     const sections = [
       "about",
-      "projects",
+      "projects and thesis",
       "experience",
       "articles",
       "skills",
@@ -154,7 +154,7 @@ export default function Home() {
           <nav className="desktop-nav" aria-label="Main navigation">
             {[
               ["about", "About"],
-              ["projects", "Projects"],
+              ["projects and thesis", "Projects & Thesis"],
               ["experience", "Experience"],
               ["articles", "Articles"],
               ["skills", "Skills"],
@@ -294,8 +294,8 @@ export default function Home() {
                 University of Chittagong
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              , aspiring to junior roles in data analysis, business analysis,
-              and AI/ML engineering, with a particular interest in FinTech.
+              , aspiring to roles in data analysis, business analysis, and AI/ML
+              engineering, with a particular interest in FinTech.
             </p>
 
             <p>
@@ -316,9 +316,9 @@ export default function Home() {
         </section>
 
         <section id="projects" className="section wrap">
-          <div className="section-label">PROJECTS AND THESIS</div>
-
+          <div className="section-label">SELECTED WORKS</div>
           <div className="section-body">
+            <h2>A collection of recent works</h2>
             <div className="projects">
               {projects.map((p) => (
                 <article className="project" key={p.url}>
@@ -400,8 +400,11 @@ export default function Home() {
         <Experience />
 
         <section id="articles" className="section wrap">
-          <div className="section-label">LATEST ARTICLES</div>
-          <ArticleCards />
+          <div className="section-label">ARTICLES</div>
+          <div className="section-body">
+            <h2>Latest Articles</h2>
+            <ArticleCards />
+          </div>
         </section>
 
         <section id="skills" className="section wrap">
