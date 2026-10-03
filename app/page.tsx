@@ -51,7 +51,7 @@ const projects = [
     image: "",
     type: "SYSTEMS ENGINEERING",
     name: "Dynamic Memory Toolkit",
-    desc: "A custom dynamic memory allocator, memory leak detector, and paging / virtual-memory simulator built for an Operating Systems course.",
+    desc: "A custom terminal-based dynamic memory allocator, memory leak detector, and paging / virtual-memory simulator built for an Operating Systems course.",
     tags: ["C", "x86 Assembly", "Operating systems"],
     url: "https://github.com/sadmantihan/dynamic-memory-tool-gr",
     year: "2024",
