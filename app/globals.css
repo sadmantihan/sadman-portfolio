@@ -1187,3 +1187,236 @@ nav.mobile-menu-links a[aria-current="location"] {
     width: 100%;
   }
 }
+
+/* Subtle background gradients */
+#home {
+--glow-violet: rgb(113 59 209 / 18%);
+--glow-blue: rgb(67 125 224 / 10%);
+--card-tint: rgb(113 59 209 / 6%);
+
+  background-image:
+    radial-gradient(
+      ellipse at 85% 35%,
+      var(--glow-violet),
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse at 5% 25%,
+      var(--glow-blue),
+      transparent 65%
+    );
+
+  background-size: 100% 760px, 100% 1100px;
+  background-repeat: no-repeat;
+}
+
+/* Dark theme */
+:root[data-theme="dark"] #home {
+  --glow-violet: rgb(153 99 240 / 22%);
+  --glow-blue: rgb(67 125 224 / 12%);
+  --card-tint: rgb(183 138 255 / 8%);
+}
+
+/* Gentle tint on project and article cards */
+#home .project,
+#home .article-preview {
+  background-image: linear-gradient(
+    135deg,
+    var(--card-tint),
+    transparent 65%
+  );
+}
+
+/* Soft glow in the contact section */
+#home .contact {
+  background-image: radial-gradient(
+    ellipse at 100% 100%,
+    var(--glow-violet),
+    transparent 65%
+  );
+}
+
+/* Short scroll entrance */
+@keyframes portfolio-reveal {
+  from {
+    opacity: 0.2;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate only when the visitor allows motion */
+@media (prefers-reduced-motion: no-preference) {
+  #home .scroll-reveal {
+    animation: portfolio-reveal 550ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Keep focused links and form controls steady */
+  #home .scroll-reveal:focus-within {
+    animation: none;
+  }
+}
+
+/* Smaller gradient areas on mobile */
+@media (max-width: 600px) {
+  #home {
+    background-size: 100% 650px, 100% 900px;
+  }
+}
+
+/* Plain output when printing */
+@media print {
+  #home,
+  #home .project,
+  #home .article-preview,
+  #home .contact {
+    background-image: none;
+  }
+
+  #home .scroll-reveal {
+    animation: none;
+  }
+}
+
+/* Cards appear as they enter the viewport */
+@keyframes portfolio-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Name entrance when the page opens */
+@keyframes portfolio-name-enter {
+  from {
+    opacity: 0.35;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #home .scroll-reveal-pending {
+    opacity: 0;
+  }
+
+  #home .scroll-reveal {
+    animation: portfolio-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #home .hero-name {
+    animation: portfolio-name-enter 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Immediately show content reached using the keyboard */
+  #home .scroll-reveal-pending:focus-within,
+  #home .scroll-reveal:focus-within {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media print {
+  #home .scroll-reveal-pending,
+  #home .scroll-reveal,
+  #home .hero-name {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Disable the earlier whole-name animation */
+#home .hero-name {
+  animation: none;
+}
+
+#home .hero-name > span {
+  display: inline-block;
+}
+
+/* Visible fade, rise, and slight zoom */
+@keyframes portfolio-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(56px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Individual words entering */
+@keyframes portfolio-word-enter {
+  from {
+    opacity: 0.25;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #home .scroll-reveal {
+    transform-origin: center top;
+    animation: portfolio-card-enter 900ms
+      cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+  }
+
+  /* Small delays between cards */
+  #home .project.scroll-reveal:nth-child(2),
+  #home .article-preview.scroll-reveal:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  #home .project.scroll-reveal:nth-child(3) {
+    animation-delay: 180ms;
+  }
+
+  /* Name enters word by word */
+  #home .hero-name > span {
+    animation: portfolio-word-enter 800ms
+      cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+  }
+
+  #home .hero-name > span:nth-child(2) {
+    animation-delay: 130ms;
+  }
+
+  #home .hero-name > span:nth-child(3) {
+    animation-delay: 260ms;
+  }
+
+  #home .hero-name > span:nth-child(4) {
+    animation-delay: 390ms;
+  }
+
+  /* Keep keyboard-focused content steady */
+  #home .scroll-reveal:focus-within {
+    animation: none;
+  }
+}
+
+@media print {
+  #home .scroll-reveal,
+  #home .hero-name > span {
+    animation: none;
+  }
+}

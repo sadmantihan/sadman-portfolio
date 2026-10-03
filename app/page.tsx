@@ -4,6 +4,7 @@ import { ArticleCards } from "@/components/article-cards";
 import { Toolkit } from "@/components/toolkit";
 import { Certifications } from "@/components/certifications";
 import { Experience } from "@/components/experience";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { useEffect, useState } from "react";
@@ -131,9 +132,13 @@ export default function Home() {
         </div>
       </header>
       <main id="home">
+        <ScrollReveal />
         <section className="hero wrap">
-          <div className="eyebrow">DATA · INTELLIGENCE · DEVELOPMENT</div>
-          <h2>Md. Sadman Sami Khan</h2>
+          <div className="eyebrow">HELLO, I AM</div>
+          <h2 className="hero-name">
+            <span>Md.</span> <span>Sadman</span> <span>Sami</span>{" "}
+            <span>Khan</span>
+          </h2>
           <div className="hero-bottom">
             <div>
               <p className="intro">
