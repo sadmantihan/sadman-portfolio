@@ -148,10 +148,10 @@ export default function Home() {
         <ScrollReveal />
         <section className="hero wrap">
           <div className="eyebrow">HELLO, I AM</div>
-          <h2 className="hero-name">
+          <h1 className="hero-name">
             <span>Md.</span> <span>Sadman</span> <span>Sami</span>{" "}
             <span>Khan</span>
-          </h2>
+          </h1>
           <div className="hero-bottom">
             <div>
               <p className="intro">
@@ -215,9 +215,6 @@ export default function Home() {
               </div>
             </aside>
           </div>
-          <a href="#about" className="scroll">
-            A little more about me <ArrowDown size={15} />
-          </a>
         </section>
         <section id="about" className="section wrap">
           <div className="section-label">ABOUT</div>

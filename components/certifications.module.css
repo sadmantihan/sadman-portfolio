@@ -105,3 +105,21 @@
     white-space: normal;
   }
 }
+
+.heading {
+  font-size: var(--text-section);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.title {
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+
+.organization,
+.date,
+.button {
+  font-size: var(--text-small);
+}

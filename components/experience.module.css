@@ -182,3 +182,29 @@
   min-width: 0;
   overflow-wrap: anywhere;
 }
+
+.role {
+  font-size: var(--text-card);
+  font-weight: 600;
+}
+
+.organization,
+.points {
+  font-size: var(--text-body);
+}
+
+.points {
+  max-width: 70ch;
+}
+
+.date,
+.meta,
+.certificateToggle,
+.certificateList a {
+  font-size: var(--text-small);
+}
+
+.subheading {
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  font-weight: 600;
+}

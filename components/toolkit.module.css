@@ -101,3 +101,17 @@
     font-size: 13px;
   }
 }
+
+.label {
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+
+.badge {
+  font-size: var(--text-small);
+  height: auto;
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

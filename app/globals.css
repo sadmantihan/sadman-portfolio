@@ -1473,3 +1473,216 @@ nav.mobile-menu-links a[aria-current="location"] {
     height: 32px;
   }
 }
+
+/* Shared spacing and readable typography */
+:root {
+  --text-body: clamp(1rem, 0.94rem + 0.25vw, 1.125rem);
+  --text-small: 0.9375rem;
+  --text-section: clamp(1.875rem, 1.4rem + 1.8vw, 2.75rem);
+  --text-card: clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  --page-gutter: clamp(20px, 4vw, 80px);
+}
+
+body {
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+/* Reduce the large empty spaces beside the page */
+.wrap {
+  width: 100%;
+  max-width: 1920px;
+  padding-inline: var(--page-gutter);
+}
+
+.portfolio-header .desktop-nav {
+  font-size: var(--text-small);
+}
+
+/* Introduction */
+#home .hero {
+  padding-top: clamp(48px, 5vw, 80px);
+}
+
+#home .hero-name {
+  margin: 20px 0 28px;
+  font-size: clamp(2.5rem, 5.8vw, 6rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+#home .hero-bottom {
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: clamp(24px, 4vw, 64px);
+}
+
+#home .intro {
+  max-width: 38ch;
+  font-size: clamp(1.375rem, 1rem + 1.3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+#home .summary {
+  max-width: 65ch;
+  font-size: var(--text-body);
+}
+
+#home .hero-aside,
+#home .hero-aside p {
+  font-size: var(--text-small);
+}
+
+#home .hero-aside strong {
+  font-size: 1rem;
+}
+
+#home .actions {
+  flex-wrap: wrap;
+}
+
+/* Section alignment and headings */
+#home .section {
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  padding-block: clamp(40px, 5vw, 72px);
+}
+
+#home .section-body {
+  min-width: 0;
+}
+
+#home h2 {
+  font-size: var(--text-section);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+#home .section-body > p {
+  max-width: 70ch;
+}
+
+#home .section-body > p.lead {
+  font-size: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+  line-height: 1.65;
+}
+
+#home .section-label,
+#home .eyebrow {
+  font-size: 0.8125rem;
+}
+
+/* Projects, articles, education, and contact */
+#home .project-title {
+  flex-wrap: wrap;
+}
+
+#home .project-title h3,
+#home .article-preview h3,
+#home .education h3,
+#home .contact-grid h3 {
+  font-size: var(--text-card);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+#home .project p,
+#home .article-preview p,
+#home .education p {
+  font-size: var(--text-body);
+}
+
+#home .project p,
+#home .article-preview p {
+  max-width: 70ch;
+}
+
+#home .project .project-note,
+#home .project .project-supervisor,
+#home .article-read,
+#home .form-note,
+#home .form-status,
+#home .form-field label {
+  font-size: var(--text-small);
+}
+
+#home .button,
+#home .source-code-button {
+  min-height: 44px;
+  max-width: 100%;
+  font-size: var(--text-small);
+}
+
+#home .button svg,
+#home .source-code-button svg {
+  flex-shrink: 0;
+}
+
+#home .contact-form input,
+#home .contact-form textarea {
+  width: 100%;
+  min-width: 0;
+  font-size: 1rem;
+}
+
+footer.wrap {
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Compact desktop navigation */
+@media (max-width: 1000px) and (min-width: 769px) {
+  .portfolio-header .nav {
+    gap: 16px;
+  }
+
+  .portfolio-header .desktop-nav {
+    gap: 12px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Tablet and mobile layout */
+@media (max-width: 900px) {
+  #home .section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  #home .section-label {
+    margin-bottom: 0;
+    padding-top: 0;
+  }
+
+  #home .hero-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #home .hero-aside {
+    margin-top: 0;
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  #home .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  #home .project,
+  #home .article-preview {
+    padding: 20px;
+  }
+
+  #home .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
