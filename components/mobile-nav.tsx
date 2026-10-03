@@ -8,7 +8,7 @@ const links = [
   ["news", "Recent News"],
   ["home", "Home"],
   ["about", "About"],
-  ["projects & thesis", "Projects & Thesis"],
+  ["projects", "Projects & Thesis"],
   ["experience", "Experience"],
   ["articles", "Articles"],
   ["skills", "Skills"],

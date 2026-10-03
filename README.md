@@ -1,34 +1,52 @@
 # Md. Sadman Sami Khan — Personal Portfolio
 
-My personal portfolio showcasing projects, research, technical skills, education, certifications, and articles, with a focus on data analysis, AI/ML, and software development.
+My personal portfolio as an aspiring Data & Business Analyst and AI/ML Engineer, with a particular interest in FinTech. It brings together my research, software projects, work experience, voluntary activities, articles, and qualifications.
+
+I am a Computer Science and Engineering graduate from the University of Chittagong and a former Data Annotator at the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
 
 **Website:** [sadman-sami-khan.vercel.app](https://sadman-sami-khan.vercel.app/)
 
-**Repository:** [sadmantihan/sadman-portfolio](https://github.com/sadmantihan/sadman-portfolio)
-
 ## Features
 
-- Responsive layout with desktop navigation and a mobile sidebar.
-- Light and dark themes with a saved theme preference.
-- Project cards with technology logos and GitHub Source Code buttons.
-- Toolkit section with technology icons, including MASM.
-- Education details and HSC/SSC Board-merit scholarship recognition.
-- Certifications with PDF links and a separate Other Training group for the Flutter EDGE course.
-- Downloadable CV and individual article pages.
-- Contact form that submits through Formspree without opening an email application.
+- Responsive desktop navigation and a mobile sidebar.
+- Violet-accented light and dark themes with a saved theme preference.
+- Custom SVG favicon and matching navigation logo.
+- Background gradients, an animated name introduction, and one-time scroll reveals that respect reduced-motion preferences.
+- Recent News displayed as a dated list before About, with newest entries first.
+- Responsive project cards with fixed-aspect-ratio covers, category labels, technology icons, and GitHub Code links.
+- Thesis supervisor link, research results, and a downloadable thesis PDF.
+- Work experience, leadership, and voluntary activities with organization logos.
+- Expandable voluntary certificate list and separate course certificate links.
+- Toolkit with brand-colored technology icons, including TypeScript, and an assembly-language entry for MASM.
+- Education and HSC/SSC Board-merit scholarship recognition.
+- Certifications and an Other Training group for the Flutter EDGE course.
+- Individual article pages and a downloadable CV.
+- Contact form with validation, sending feedback, and Formspree submission.
+
+## Sections
+
+Hero → Recent News → About → Projects & Thesis → Experience → Articles → Skills → Education and Certifications → Contact.
+
+## Selected Projects
+
+| Project | Focus |
+| --- | --- |
+| [AdaPruner-KGQA](https://github.com/sadmantihan/AdaPruner-KGQA) | Undergraduate thesis on adaptive, uncertainty-aware pruning for multi-hop knowledge graph reasoning |
+| [Dynamic Memory Toolkit](https://github.com/sadmantihan/dynamic-memory-tool-gr) | Memory allocator, leak detector, and paging / virtual-memory simulator |
+| [BuildMaster](https://github.com/sadmantihan/buildmaster) | Role-based workforce management system |
 
 ## Technology Stack
 
-- Next.js 16 with the App Router
-- React 19 and TypeScript
+- Next.js 16 App Router, React 19, and TypeScript
 - Tailwind CSS 4, global CSS, and CSS Modules
 - Radix UI, Lucide React, and React Icons
-- Formspree for contact submissions and email notifications
-- Vercel for hosting
+- CSS animations and IntersectionObserver for scroll reveals
+- Formspree for contact submissions
+- Vercel hosting
 
 ## Run Locally
 
-Install Git and Node.js 22.13.0 or newer, with npm. Run these commands in your terminal or Windows PowerShell:
+Install Git and Node.js **22.13.0 or newer**, with npm. From your terminal or Windows PowerShell:
 
 ```bash
 git clone https://github.com/sadmantihan/sadman-portfolio.git
@@ -39,97 +57,147 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-If you already have the project locally, open the folder containing `package.json` and run the npm commands above.
-
-## Available Commands
+If the project is already on your computer, open the folder containing `package.json` and run the npm commands above.
 
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Start the development server |
 | `npm run typecheck` | Check TypeScript types |
 | `npm run build` | Create the production build |
-| `npm start` | Serve the production build locally |
+| `npm start` | Serve an existing production build locally |
 
-To check the production version:
+To verify a code change before deployment:
 
 ```bash
+npm run typecheck
 npm run build
 npm start
 ```
 
 ## Where to Make Changes
 
+All paths below are relative to the repository root.
+
 | File or directory | What to edit |
 | --- | --- |
-| `app/page.tsx` | Homepage content, projects, education, and section layout |
-| `app/globals.css` | Global colors, typography, layout, and Source Code button styles |
-| `app/layout.tsx` | Site metadata and root layout |
-| `components/mobile-nav.tsx` | Mobile sidebar navigation |
-| `components/toolkit.tsx` | Skill categories, technology names, and logos |
-| `components/toolkit.module.css` | Toolkit and project technology badge styles |
+| `app/page.tsx` | Hero, About, project data and cards, education, desktop navigation, and section order |
+| `app/layout.tsx` | Page title, description, favicon reference, and root layout |
+| `app/globals.css` | Theme colors, typography, layout, project cards, gradients, and animations |
+| `app/news/news-list.ts` | News text, exact dates, and optional links |
+| `components/recent-news.tsx` | News list rendering and date formatting |
+| `components/recent-news.module.css` | News heading, spacing, dates, and list styles |
+| `components/mobile-nav.tsx` | Mobile sidebar links and behavior |
+| `components/experience.tsx` | Work experience and voluntary roles |
+| `components/experience.module.css` | Experience layout, logos, and voluntary certificate styles |
+| `components/voluntary-certificates.tsx` | Dropdown certificate titles and PDF links |
+| `components/toolkit.tsx` | Skill groups, technologies, icons, and icon colors |
+| `components/toolkit.module.css` | Toolkit and shared technology badge styles |
 | `components/project-tags.tsx` | Project technology icons |
-| `components/certifications.tsx` | Course details, training groups, and certificate links |
-| `components/certifications.module.css` | Certification layout and responsive styles |
-| `components/contact-form.tsx` | Contact form fields, submission handling, and Formspree endpoint |
+| `components/certifications.tsx` | Course details, training groups, and PDF links |
+| `components/certifications.module.css` | Course certificate layout and styles |
+| `components/scroll-reveal.tsx` | Scroll-reveal targets and observer behavior |
+| `components/contact-form.tsx` | Form fields, validation, feedback, and Formspree endpoint |
 | `app/articles/article-list.ts` | Article titles, summaries, categories, and slugs |
 | `app/articles/<slug>/page.tsx` | Individual article content |
+| `components/article-cards.tsx` and `components/article-cards.css` | Homepage article previews |
+| `app/articles/articles.css` | Article page styling |
+| `public/favicon.svg` | Favicon and navigation logo |
+| `public/logos/` | BDAI, World Bank, and CUSS PNG logos |
 | `public/Sadman_Sami_Khan_CV.pdf` | Downloadable CV |
-| `public/certificates/` | Certificate PDFs |
+| `public/thesis/AdaPrunerKGQA-thesis.pdf` | Downloadable thesis |
+| `public/certificates/` | Course and voluntary certificate PDFs |
 
-## Certificates
+## Add Recent News
 
-Keep the certificate files in `public/certificates/`:
+Add an object to the `news` array in `app/news/news-list.ts`. Replace the example text and date with your actual update:
+
+```ts
+{
+  id: "portfolio-update",
+  date: "2026-10-03",
+  text: "Updated my portfolio with recent projects and experience.",
+  href: "#projects",
+  linkLabel: "View projects",
+},
+```
+
+Use a unique `id` and a valid date in `YYYY-MM-DD` format. `href` and `linkLabel` are optional. Entries are automatically sorted newest first and shown with the day, month, and year. An empty news array hides the section.
+
+## Update Projects and Cover Images
+
+Edit the `projects` array in `app/page.tsx`. Each entry contains its category, placeholder icon, image path, title, description, tags, and repository URL. The thesis also has supervisor, PDF, and research-result fields.
+
+To add a cover, create `public/projects/`, place an image there, and change the project's empty `image` value:
+
+```ts
+image: "/projects/adapruner-kgqa.webp",
+```
+
+Covers use a **37:16 aspect ratio** and crop to fill the frame. An image such as 1110 × 480 pixels matches this ratio. When `image` is empty, the placeholder icon remains visible. Project footers use a GitHub Code link and, where provided, a Download Thesis link.
+
+## Add an Article
+
+1. Create `app/articles/<your-slug>/page.tsx` with the article content and a default page export. Use an existing article as a starting point.
+2. Add its `title`, matching `slug`, `category`, and `summary` to `app/articles/article-list.ts`.
+3. Open `/articles/<your-slug>` locally and check its homepage preview.
+
+## CV, Thesis, and Certificates
+
+Files inside `public/` are referenced without `public` in their URLs. For example:
+
+```ts
+pdf: "/certificates/python-basics.pdf"
+```
+
+Course certificates are configured in `components/certifications.tsx`:
 
 - `data-science-machine-learning.pdf`
 - `python-basics.pdf`
 - `data-science-math-skills.pdf`
 - `edge-flutter.pdf`
 
-Reference them without `public` in the URL. For example:
+Voluntary certificates are configured in `components/voluntary-certificates.tsx`:
 
-```tsx
-pdf: "/certificates/python-basics.pdf"
-```
+- `cuss-website-secretary-cert.pdf`
+- `Chitagong-science-carnival-4.0.pdf`
+- `itfest-org-2024.pdf`
 
-When adding or renaming a certificate, update its entry in `components/certifications.tsx` and commit the PDF alongside the code change.
+Keep filenames and capitalization identical to their code references. The spelling `Chitagong` above matches the existing PDF filename. If renaming a file, update its link too. Replace the CV or thesis at its existing path to keep download links working.
+
+## Navigation and Motion
+
+Navigation targets must match section IDs. Recent News uses `news`; Projects & Thesis uses `projects`. Keep the desktop links and section tracking in `app/page.tsx` consistent with the links in `components/mobile-nav.tsx`.
+
+Scroll reveals use IntersectionObserver and stop observing an element after it appears. Animation styles are in `app/globals.css`. Reduced-motion preferences disable the entry animations; no animation library is required.
 
 ## Contact Form
 
-The form collects the visitor's name, email, subject, and message, then submits them to Formspree. It displays a sending state and a success or error message. A direct email link remains available as a fallback.
+The form submits name, email, subject, and message directly to Formspree. It shows a sending state and success or error feedback, with a direct email link as a fallback.
 
-Formspree manages submission storage and email notifications. The notification recipient should be configured as **samisadman6@gmail.com** in the Formspree dashboard.
+Names are validated for letters and spaces, including Unicode letters. Email validation uses the browser's `type="email"` support and is not restricted to Gmail or any other provider. This checks input format, not whether an inbox exists.
 
-To configure your own copy:
+The endpoint is configured through `FORM_ENDPOINT` in `components/contact-form.tsx`. Email notification recipients are managed in the Formspree dashboard; the displayed email link does not configure delivery. For this portfolio, the intended recipient is **samisadman6@gmail.com**.
 
-1. Create a [Formspree account](https://formspree.io/) and verify your email.
-2. Create a form and configure its notification recipient.
-3. Copy the form endpoint from the Integration section.
-4. Replace `FORM_ENDPOINT` in `components/contact-form.tsx` with your endpoint.
-5. Submit a test message and check both the Formspree dashboard and the recipient's inbox or Spam folder.
+If you reuse this repository, create your own [Formspree](https://formspree.io/) form and replace the endpoint. Verify its notification recipient and test delivery. A success message means Formspree accepted the submission, not that inbox delivery has been confirmed.
 
-A website success message confirms that Formspree accepted the submission; inbox delivery should be checked separately. Formspree account limits and notification settings apply.
+The current implementation requires no application environment variables or Gmail password.
 
-The current implementation does not require environment variables or a Gmail password. If you fork this repository, replace the endpoint so submissions go to your own Formspree form.
+## Deployment and Version Control
 
-## Deploy to Vercel
+The portfolio is hosted on Vercel. Import the GitHub repository into Vercel, use the directory containing `package.json` as the project root, and retain the Next.js framework defaults. See [Vercel's Git deployment documentation](https://vercel.com/docs/git) for repository and production-branch settings.
 
-1. Sign in to [Vercel](https://vercel.com/) and import the GitHub repository as a new project.
-2. Select **Next.js** as the framework and the folder containing `package.json` as the root directory.
-3. Use `npm run build` as the build command and keep the default Next.js output settings.
-4. Deploy the project.
+For updates, work on a branch, inspect the diff, run the relevant checks, and commit only the intended files. For a README-only update:
 
-For a connected Git repository, pushes to the configured production branch trigger production deployments. Other branches can generate preview deployments.
+```bash
+git diff -- README.md
+git add README.md
+git commit -m "docs: update portfolio features and maintenance guide"
+```
 
-For future changes, create a Git branch, review the diff, run the relevant checks, and commit your changes. Push the branch and merge it into the production branch when ready.
+Do not commit `node_modules/`, `.next/`, `.vercel/`, or private credentials.
 
 ## Contact
 
 - Email: [samisadman6@gmail.com](mailto:samisadman6@gmail.com)
 - GitHub: [sadmantihan](https://github.com/sadmantihan)
-- LinkedIn: [Md. Sadman Sami Khan](https://linkedin.com/in/md-sadman-sami-khan)
-
-## Documentation
-
-- [Next.js documentation](https://nextjs.org/docs)
-- [Vercel Git deployment](https://vercel.com/docs/git)
-- [Formspree form setup](https://help.formspree.io/articles/building-your-form/building-an-html-form)
+- LinkedIn: [Md. Sadman Sami Khan](https://www.linkedin.com/in/md-sadman-sami-khan)
