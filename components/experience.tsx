@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 const voluntaryRoles = [
   {
     title: "Assistant Website Management Secretary",
-    date: "Jun 2025 – Aug 2026",
+    date: "Jun 2025 – Apr 2026",
     points: [
       "Rebuilt and relaunched the society’s previously non-functional website, restoring its primary digital presence.",
       "Named Best Performer for the 2025/2026 committee session and separately recognized for outstanding performance and dedication as Assistant Website Management Secretary in 2025.",
