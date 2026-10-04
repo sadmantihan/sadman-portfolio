@@ -207,7 +207,7 @@ export default function Home() {
           <div className="hero-bottom">
             <div>
               <p className="intro">
-                Aspiring Data &amp; Business Analyst
+                Aspiring Data/Business Analyst
                 <br className="desktop" /> and AI/ML Engineer
               </p>
 
