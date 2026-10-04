@@ -17,7 +17,7 @@ const voluntaryRoles = [
     date: "Feb 2024 – Jun 2025",
     points: [
       "Certified Organizer, IT Fiesta 2024: managed the programming contest’s technical setup across 3 labs for 50 teams of 3, resolving technical issues during an event with 500 school, college, and university participants.",
-      "Volunteered at Chittagong University Science Carnival 4.0 in March 2025, an event with approximately 1,000 participants, and was recognized as one of its best volunteers.",
+      "Volunteered at Chittagong University Science Carnival 4.0 in February 2025, an event with approximately 1,000 participants, and was recognized as one of its best volunteers.",
     ],
   },
 ];
