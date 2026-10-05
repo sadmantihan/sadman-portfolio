@@ -63,7 +63,7 @@ export default function GettingStartedWithPython() {
         Create a file named <code>hello.py</code> and add:
       </p>
 
-      <CodeBlock language="python" code={`print("Hello, Python!")`} />
+      <CodeBlock language="python" code={`print("Hello, World!")`} />
 
       <p>Save the file. Open a terminal in the same folder and run:</p>
 
@@ -71,7 +71,7 @@ export default function GettingStartedWithPython() {
 
       <p>The output will be:</p>
 
-      <CodeBlock language="output" code="Hello, Python!" />
+      <CodeBlock language="output" code="Hello, World!" />
 
       <h2>3. Variables and data types</h2>
 
@@ -84,7 +84,7 @@ export default function GettingStartedWithPython() {
         language="python"
         code={`name = "Sadman"       # String: text
 age = 23              # Integer: a whole number
-height = 1.75         # Float: a decimal number
+height = 1.76         # Float: a decimal number
 is_learning = True    # Boolean: True or False
 
 print(name)
