@@ -503,7 +503,7 @@ export default function Home() {
       </main>
 
       <footer className="wrap">
-        <span>© {new Date().getFullYear()} Md. Sadman Sami Khan</span>
+        <span>© {new Date().getFullYear()} Md Sadman Sami Khan</span>
         <a href="#home">Back to top</a>
       </footer>
     </>
