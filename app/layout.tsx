@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Md. Sadman Sami Khan | Data & Business Analysis, AI/ML",
+      "Md. Sadman Sami Khan | Data Science and AI/ML",
     template: "%s | Md. Sadman Sami Khan",
   },
 
   description:
-    "Portfolio of Md. Sadman Sami Khan, a CSE graduate interested in data and business analysis, AI/ML, and FinTech. Explore his research and experience.",
+    "Portfolio of Md. Sadman Sami Khan, a CSE graduate interested in data science and AI/ML with a particular FinTech focus. Explore his research and experience.",
 
   authors: [{ name: "Md. Sadman Sami Khan" }],
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Md. Sadman Sami Khan",
     title: "Md. Sadman Sami Khan — Portfolio",
     description:
-      "Data and business analysis, AI/ML research, software development, and professional experience.",
+      "Data science, AI/ML Research, and professional experience.",
   },
 
   twitter: {

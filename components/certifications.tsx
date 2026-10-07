@@ -25,18 +25,6 @@ const groups = [
       },
     ],
   },
-  {
-    title: "Other Training",
-    courses: [
-      {
-        title: "Mobile App Development (Android/Flutter/iOS)",
-        organization:
-          "Dept. of CSE, University of Chittagong · EDGE Project, Bangladesh Computer Council · 80 hours",
-        date: "Dec 2024 – Apr 2025",
-        pdf: "/certificates/edge-flutter.pdf",
-      },
-    ],
-  },
 ];
 
 export function Certifications() {

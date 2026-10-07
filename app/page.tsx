@@ -29,6 +29,16 @@ import { MobileNav } from "@/components/mobile-nav";
 
 const projects = [
   {
+    category: "Full-Stack",
+    coverIcon: PanelsTopLeft,
+    image: "",
+    type: "FULL-STACK DEVELOPMENT",
+    name: "BuildMaster",
+    desc: "A role-based workforce management system with authenticated dashboards for administrators, HR, employees, teams, volunteers, and shareholders.",
+    tags: ["PHP", "MySQL"],
+    url: "https://github.com/sadmantihan/buildmaster",
+  },
+    {
     category: "Research",
     coverIcon: Network,
     image: "",
@@ -43,29 +53,6 @@ const projects = [
     thesisPdf: "/thesis/AdaPrunerKGQA-thesis.pdf",
     detail:
       "2.24% / 5.05% fewer graph edges examined on WebQSP / CWQ; 99.20% / 98.72% of RoG-reachable answers retained.",
-    year: "2026",
-  },
-  {
-    category: "Systems",
-    coverIcon: Cpu,
-    image: "",
-    type: "SYSTEMS ENGINEERING",
-    name: "Dynamic Memory Toolkit",
-    desc: "A custom terminal-based dynamic memory allocator, memory leak detector, and paging / virtual-memory simulator built for an Operating Systems course.",
-    tags: ["C", "x86 Assembly", "Operating systems"],
-    url: "https://github.com/sadmantihan/dynamic-memory-tool-gr",
-    year: "2024",
-  },
-  {
-    category: "Full-Stack",
-    coverIcon: PanelsTopLeft,
-    image: "",
-    type: "FULL-STACK DEVELOPMENT",
-    name: "BuildMaster",
-    desc: "A role-based workforce management system with authenticated dashboards for administrators, HR, employees, teams, volunteers, and shareholders.",
-    tags: ["PHP", "MySQL", "Authentication"],
-    url: "https://github.com/sadmantihan/buildmaster",
-    year: "2024",
   },
 ];
 
@@ -200,19 +187,19 @@ export default function Home() {
           <div className="eyebrow">HELLO, I AM</div>
 
           <h1 className="hero-name">
-            <span>Md.</span> <span>Sadman</span> <span>Sami</span>{" "}
+            <span>Md</span> <span>Sadman</span> <span>Sami</span>{" "}
             <span>Khan</span>
           </h1>
 
           <div className="hero-bottom">
             <div>
               <p className="intro">
-                Aspiring Data/Business Analyst
+                Aspiring Data Scientist
                 <br className="desktop" /> and AI/ML Engineer
               </p>
 
               <p className="summary">
-                CSE graduate and former Data Annotator at BDAI-HEAT Sub-project
+                CSE graduate and Ex-Data Annotator at BDAI-HEAT Sub-project
                 (HEAT-13211-CU), with a particular interest in FinTech
               </p>
 
@@ -242,7 +229,7 @@ export default function Home() {
               <p>Seeking opportunities in</p>
 
               <strong>
-                Data &amp; Business Analysis
+                Data Science
                 <br />
                 AI / ML Engineering
               </strong>
@@ -301,7 +288,7 @@ export default function Home() {
                 University of Chittagong
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              , aspiring to roles in data analysis, business analysis, and AI/ML
+              , aspiring to roles in data science and AI/ML
               engineering, with a particular interest in FinTech.
             </p>
 
@@ -475,7 +462,7 @@ export default function Home() {
                 <h3>Let’s start a conversation.</h3>
 
                 <p>
-                  I’m interested in data analysis, business analysis, and AI /
+                  I’m interested in data science and AI /
                   ML engineering opportunities.
                 </p>
 
