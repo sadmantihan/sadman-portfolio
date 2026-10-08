@@ -17,9 +17,9 @@ I am a Computer Science and Engineering graduate from the University of Chittago
 - Thesis supervisor link, research results, and a downloadable thesis PDF.
 - Work experience, leadership, and voluntary activities with organization logos.
 - Expandable voluntary certificate list and separate course certificate links.
-- Toolkit with brand-colored technology icons, including TypeScript, and an assembly-language entry for MASM.
+- Toolkit with brand-colored technology icons, including TypeScript.
 - Education and HSC/SSC Board-merit scholarship recognition.
-- Certifications and an Other Training group for the Flutter EDGE course.
+- Certifications and Training on relevant fields.
 - Individual article pages and a downloadable CV.
 - Contact form with validation, sending feedback, and Formspree submission.
 
