@@ -1,6 +1,6 @@
-# Md. Sadman Sami Khan — Personal Portfolio
+# Md Sadman Sami Khan — Personal Portfolio
 
-My personal portfolio as an aspiring Data & Business Analyst and AI/ML Engineer, with a particular interest in FinTech. It brings together my research, software projects, work experience, voluntary activities, articles, and qualifications.
+My personal portfolio as an aspiring Data Scientist and AI/ML Engineer, with a particular interest in FinTech. It brings together my research, software projects, work experience, voluntary activities, articles, and qualifications.
 
 I am a Computer Science and Engineering graduate from the University of Chittagong and a former Data Annotator at the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
 
@@ -31,9 +31,8 @@ Hero → Recent News → About → Projects & Thesis → Experience → Articles
 
 | Project | Focus |
 | --- | --- |
-| [AdaPruner-KGQA](https://github.com/sadmantihan/AdaPruner-KGQA) | Undergraduate thesis on adaptive, uncertainty-aware pruning for multi-hop knowledge graph reasoning |
-| [Dynamic Memory Toolkit](https://github.com/sadmantihan/dynamic-memory-tool-gr) | Memory allocator, leak detector, and paging / virtual-memory simulator |
 | [BuildMaster](https://github.com/sadmantihan/buildmaster) | Role-based workforce management system |
+| [AdaPruner-KGQA](https://github.com/sadmantihan/AdaPruner-KGQA) | Undergraduate thesis on adaptive, uncertainty-aware pruning for multi-hop knowledge graph reasoning |
 
 ## Technology Stack
 
@@ -154,7 +153,6 @@ Course certificates are configured in `components/certifications.tsx`:
 - `data-science-machine-learning.pdf`
 - `python-basics.pdf`
 - `data-science-math-skills.pdf`
-- `edge-flutter.pdf`
 
 Voluntary certificates are configured in `components/voluntary-certificates.tsx`:
 
@@ -200,4 +198,4 @@ Do not commit `node_modules/`, `.next/`, `.vercel/`, or private credentials.
 
 - Email: [samisadman6@gmail.com](mailto:samisadman6@gmail.com)
 - GitHub: [sadmantihan](https://github.com/sadmantihan)
-- LinkedIn: [Md. Sadman Sami Khan](https://www.linkedin.com/in/md-sadman-sami-khan)
+- LinkedIn: [Md Sadman Sami Khan](https://www.linkedin.com/in/md-sadman-sami-khan)
