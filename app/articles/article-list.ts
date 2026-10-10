@@ -5,11 +5,11 @@ export const articles = [
   //   category: "General",
   //   summary: "Write a short summary of your article here.",
   // },
-  {
-    title: "Getting Started with Python",
-    slug: "getting-started-with-python",
-    category: "Python",
-    summary:
-      "Learn Python basics with practical examples covering variables, input, conditions, loops, lists, and functions.",
-  },
+  // {
+  //   title: "Getting Started with Python",
+  //   slug: "getting-started-with-python",
+  //   category: "Python",
+  //   summary:
+  //     "Learn Python basics with practical examples covering variables, input, conditions, loops, lists, and functions.",
+  // },
 ];
