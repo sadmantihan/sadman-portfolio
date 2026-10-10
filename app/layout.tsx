@@ -8,27 +8,27 @@ export const metadata: Metadata = {
 
   title: {
     default:
-      "Md. Sadman Sami Khan | Data Science and AI/ML",
-    template: "%s | Md. Sadman Sami Khan",
+      "Md Sadman Sami Khan | Data Science and AI/ML",
+    template: "%s | Md Sadman Sami Khan",
   },
 
   description:
-    "Portfolio of Md. Sadman Sami Khan, a CSE graduate interested in data science and AI/ML with a particular FinTech focus. Explore his research and experience.",
+    "Portfolio of Md Sadman Sami Khan, a CSE graduate interested in data science and AI/ML with a particular FinTech focus. Explore his research and experience.",
 
-  authors: [{ name: "Md. Sadman Sami Khan" }],
+  authors: [{ name: "Md Sadman Sami Khan" }],
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Md. Sadman Sami Khan",
-    title: "Md. Sadman Sami Khan — Portfolio",
+    siteName: "Md Sadman Sami Khan",
+    title: "Md Sadman Sami Khan — Portfolio",
     description:
       "Data science, AI/ML Research, and professional experience.",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Md. Sadman Sami Khan — Portfolio",
+    title: "Md Sadman Sami Khan — Portfolio",
     description:
       "Explore my research, technical skills, experience, and articles.",
   },
