@@ -396,7 +396,7 @@ export default function Home() {
         <section id="articles" className="section wrap">
           <div className="section-label">ARTICLES</div>
           <div className="section-body">
-            <h2>Latest Articles</h2>
+            <h2>Latest Articles</h2>   
             <ArticleCards />
           </div>
         </section>

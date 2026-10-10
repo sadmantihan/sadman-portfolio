@@ -1,4 +1,11 @@
-export const articles = [
+export type Article = {
+  title: string;
+  slug: string;
+  category: string;
+  summary: string;
+};
+
+export const articles: Article[] = [
   // {
   //   title: "My First Article",
   //   slug: "my-first-article",
