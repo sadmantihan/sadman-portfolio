@@ -1157,3 +1157,93 @@ nav.mobile-menu-links a[aria-current="location"] {
   padding: 0;
   line-height: 1.15;
 }
+
+/* Compact mobile navigation panel */
+@media (max-width: 1150px) {
+  .mobile-menu-overlay {
+    inset: 0;
+    background: color-mix(in srgb, var(--ink) 28%, transparent);
+    backdrop-filter: none;
+  }
+
+  .mobile-menu-panel {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 16px 16px auto auto;
+
+    width: min(260px, calc(100vw - 64px));
+    height: auto;
+    min-height: 0;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+
+    display: flex;
+    flex-direction: column;
+    padding: 64px 12px 16px;
+    overflow: hidden;
+
+    border: 2px solid var(--clay-outline);
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow:
+      4px 4px 0 var(--clay-outline),
+      var(--clay-inset);
+  }
+
+  .mobile-menu-panel .mobile-menu-close {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    box-shadow: 2px 2px 0 var(--clay-outline);
+  }
+
+  .mobile-menu-panel .mobile-menu-close svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mobile-menu-panel .mobile-menu-scroll {
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .mobile-menu-panel nav.mobile-menu-links {
+    align-items: stretch;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-menu-panel nav.mobile-menu-links a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 14px;
+
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-align: left;
+    text-transform: none;
+    text-decoration: none;
+    border-radius: 14px;
+  }
+
+  .mobile-menu-panel nav.mobile-menu-links a[aria-current="location"] {
+    color: var(--violet);
+    background: var(--background);
+  }
+
+  .mobile-menu-panel a:focus-visible,
+  .mobile-menu-panel button:focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: -3px;
+  }
+}
