@@ -1,6 +1,6 @@
 # Md Sadman Sami Khan — Personal Portfolio
 
-My personal portfolio as an aspiring Data Scientist and AI/ML Engineer with an interest in FinTech. It brings together my research, software projects, professional experience, voluntary activities, and qualifications.
+My personal portfolio as an aspiring Data Scientist and ML Engineer with an interest in FinTech. It brings together my research, software projects, professional experience, voluntary activities, and qualifications.
 
 I am a Computer Science and Engineering graduate from the University of Chittagong and a former Data Annotator at the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
 
