@@ -195,7 +195,7 @@ export default function Home() {
             <div>
               <p className="intro">
                 Aspiring Data Scientist
-                <br className="desktop" /> and AI/ML Engineer
+                <br className="desktop" /> and ML Engineer
               </p>
 
               <p className="summary">
@@ -231,7 +231,7 @@ export default function Home() {
               <strong>
                 Data Science
                 <br />
-                AI / ML Engineering
+                ML Engineering
               </strong>
 
               <div className="socials">
@@ -288,7 +288,7 @@ export default function Home() {
                 University of Chittagong
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              , aspiring to roles in data science and AI/ML
+              , aspiring to roles in data science and ML
               engineering, with a particular interest in FinTech.
             </p>
 
@@ -462,8 +462,7 @@ export default function Home() {
                 <h3>Let’s start a conversation.</h3>
 
                 <p>
-                  I’m interested in data science and AI /
-                  ML engineering opportunities.
+                  I’m interested in data science and ML engineering opportunities.
                 </p>
 
                 <div className="contact-detail">
@@ -483,15 +482,6 @@ export default function Home() {
                   <div>
                     <span>Phone</span>
                     <a href="tel:+8801704776493">+880 1704 776493</a>
-                  </div>
-                </div>
-
-                <div className="contact-detail">
-                  <MapPin size={20} aria-hidden="true" />
-
-                  <div>
-                    <span>Location</span>
-                    <p>Chandpur, Bangladesh</p>
                   </div>
                 </div>
               </div>
