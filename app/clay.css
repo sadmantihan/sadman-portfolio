@@ -1394,3 +1394,26 @@ nav.mobile-menu-links a[aria-current="location"] {
     height: 22px;
   }
 }
+
+/* Highlight linked names without underlines. */
+#home a.name-link,
+#home a.name-link:visited {
+  color: var(--violet);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+#home a.name-link:hover,
+#home a.name-link:active {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+#home a.name-link:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+  text-decoration: none;
+}

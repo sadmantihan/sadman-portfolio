@@ -342,10 +342,9 @@ export default function Home() {
                   href="https://cu.ac.bd/cse/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="profile-link"
+                  className="profile-link name-link"
                 >
                   University of Chittagong
-                  <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
                 , aspiring to roles in data science and ML engineering, with a
                 particular interest in FinTech.
@@ -419,9 +418,9 @@ export default function Home() {
                             href={project.supervisorUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            className="profile-link name-link"
                           >
                             {project.supervisor}
-                            <ArrowUpRight size={16} aria-hidden="true" />
                           </a>
                         </p>
                       )}
