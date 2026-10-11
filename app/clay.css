@@ -1337,3 +1337,60 @@ nav.mobile-menu-links a[aria-current="location"] {
     padding: 0;
   }
 }
+
+@media (max-width: 699px) {
+  #home .hero-aside.hero-photo-card {
+    position: relative;
+    overflow: visible;
+
+    /* Extra bottom space separates badges from social links. */
+    padding: 32px 16px 64px;
+  }
+
+  /* Restore floating decorations instead of a separate row. */
+  #home .hero-photo-card .hero-decoration {
+    display: contents;
+  }
+
+  #home .hero-photo-card .hero-decoration > span {
+    position: absolute;
+    inset: auto;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    border-radius: 16px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Brain: upper-right corner. */
+  #home .hero-photo-card .hero-decoration > span:nth-child(1) {
+    top: -22px;
+    right: 16px;
+    transform: rotate(8deg);
+  }
+
+  /* Database: lower-left corner, below the social links. */
+  #home .hero-photo-card .hero-decoration > span:nth-child(2) {
+    bottom: -18px;
+    left: 16px;
+    transform: rotate(-8deg);
+  }
+
+  /* Chart: lower-right edge, clear of the social links. */
+  #home .hero-photo-card .hero-decoration > span:nth-child(3) {
+    right: -10px;
+    bottom: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transform: none;
+  }
+
+  #home .hero-photo-card .hero-decoration > span > svg {
+    width: 22px;
+    height: 22px;
+  }
+}
