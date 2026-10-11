@@ -1,5 +1,21 @@
 import type { Metadata } from "next";
+import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
+import "./clay.css"
+
+const displayFont = Fredoka({
+  subsets: ["latin"],
+  weight: "700",
+  display: "swap",
+  variable: "--font-display",
+});
+
+const bodyFont = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -45,8 +61,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang="en" data-theme="light">
+      <body
+        className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

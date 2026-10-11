@@ -69,19 +69,10 @@ export function Experience() {
 
           <ul className={styles.points}>
             <li>
-              Served as a Scrum Level 2 mentor, guiding a team of Scrum Level 3
-              students in collecting raw data for the project’s socio-economics
-              sector, one of its core focus areas.
+              Mentored a team of Scrum Level 3 students in collecting raw socio-economic data for a research project, overseeing annotation quality and running consistency checks under research guidelines.
             </li>
             <li>
-              Directed the team in designing the sector’s ER diagram and
-              building its ETL pipeline to structure, clean, and validate the
-              collected data.
-            </li>
-            <li>
-              Oversaw a collection effort that produced a 130-file dataset with
-              223K+ rows and 3.64 million values, including annotation oversight
-              and consistency checks under research guidelines.
+              Helped design the sector's ER diagram and used Python (pandas) and Google Sheets to organize, count, and clean dataset files into structured tables, producing a 130-file dataset with over 223K rows and 3.64M values.
             </li>
           </ul>
         </article>

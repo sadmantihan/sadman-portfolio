@@ -21,7 +21,7 @@ export function MobileNav({ active }: { active: string }) {
 
   // Close the mobile menu if the window becomes desktop-sized.
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 769px)");
+    const desktop = window.matchMedia("(min-width: 1151px)");
     const closeOnDesktop = () => {
       if (desktop.matches) setOpen(false);
     };

@@ -2,32 +2,69 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 import {
   ArrowUpRight,
+  BrainCircuit,
+  ChartColumn,
+  Database,
   Download,
   Mail,
-  Moon,
-  Sun,
   MapPin,
   Network,
-  Cpu,
   PanelsTopLeft,
+  Phone,
+  type LucideIcon,
 } from "lucide-react";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 
-import { RecentNews } from "@/components/recent-news";
-import { ProjectTags } from "@/components/project-tags";
 import { ArticleCards } from "@/components/article-cards";
-import { Toolkit } from "@/components/toolkit";
 import { Certifications } from "@/components/certifications";
-import { Experience } from "@/components/experience";
-import { ScrollReveal } from "@/components/scroll-reveal";
 import { ContactForm } from "@/components/contact-form";
-import { Switch } from "@/components/ui/switch";
+import { Experience } from "@/components/experience";
 import { MobileNav } from "@/components/mobile-nav";
+import { ProjectTags } from "@/components/project-tags";
+import { RecentNews } from "@/components/recent-news";
+import { Toolkit } from "@/components/toolkit";
+import { Switch } from "@/components/ui/switch";
 
-const projects = [
+const contact = {
+  email: "samisadman6@gmail.com",
+  phone: "+880 1704 776493",
+  phoneHref: "tel:+8801704776493",
+  whatsapp: "https://wa.me/8801704776493",
+  github: "https://github.com/sadmantihan",
+  linkedin: "https://www.linkedin.com/in/md-sadman-sami-khan",
+  location: "Chandpur, Chattogram, Bangladesh",
+};
+
+const navigation = [
+  { id: "news", label: "Recent News" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects & Thesis" },
+  { id: "experience", label: "Experience" },
+  { id: "articles", label: "Articles" },
+  { id: "skills", label: "Skills" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
+
+type Project = {
+  category: string;
+  coverIcon: LucideIcon;
+  image: string;
+  type: string;
+  name: string;
+  desc: string;
+  tags: string[];
+  url: string;
+  supervisor?: string;
+  supervisorUrl?: string;
+  thesisPdf?: string;
+  detail?: string;
+};
+
+const projects: Project[] = [
   {
     category: "Full-Stack",
     coverIcon: PanelsTopLeft,
@@ -38,7 +75,7 @@ const projects = [
     tags: ["PHP", "MySQL"],
     url: "https://github.com/sadmantihan/buildmaster",
   },
-    {
+  {
     category: "Research",
     coverIcon: Network,
     image: "",
@@ -57,24 +94,15 @@ const projects = [
 ];
 
 export default function Home() {
-  const [dark, setDark] = useState(false);
   const [active, setActive] = useState("");
 
+  // Highlight the navigation item for the current section.
   useEffect(() => {
-    const sections = [
-      "news",
-      "about",
-      "projects and thesis",
-      "experience",
-      "articles",
-      "skills",
-      "education",
-      "contact",
-    ]
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
+    const sections = navigation
+      .map(({ id }) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null);
 
-    const update = () => {
+    const updateActiveSection = () => {
       let current = "";
 
       for (const section of sections) {
@@ -86,43 +114,22 @@ export default function Home() {
       setActive(current);
     };
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
+    updateActiveSection();
 
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
-
-  useEffect(() => {
-    let saved: string | null = null;
-
-    try {
-      saved = localStorage.getItem("portfolio-theme");
-    } catch {
-      // Use the default theme when browser storage is unavailable.
-    }
-
-    const isDark = saved === "dark";
-
-    setDark(isDark);
-    document.documentElement.dataset.theme = isDark ? "dark" : "light";
-  }, []);
-
-  const toggle = (v: boolean) => {
-    setDark(v);
-    document.documentElement.dataset.theme = v ? "dark" : "light";
-
-    try {
-      localStorage.setItem("portfolio-theme", v ? "dark" : "light");
-    } catch {
-      // Switching themes still works if the preference cannot be saved.
-    }
-  };
 
   return (
     <>
-      {/* <a href="#home" className="skip-link">
-        Skip to main content
-      </a> */}
+      {/* Navigation */}
       <header className="portfolio-header">
         <div className="nav wrap">
           <a
@@ -144,16 +151,7 @@ export default function Home() {
           </a>
 
           <nav className="desktop-nav" aria-label="Main navigation">
-            {[
-              ["news", "Recent News"],
-              ["about", "About"],
-              ["projects", "Projects & Thesis"],
-              ["experience", "Experience"],
-              ["articles", "Articles"],
-              ["skills", "Skills"],
-              ["education", "Education"],
-              ["contact", "Contact"],
-            ].map(([id, label]) => (
+            {navigation.map(({ id, label }) => (
               <a
                 key={id}
                 href={`#${id}`}
@@ -164,243 +162,284 @@ export default function Home() {
             ))}
           </nav>
 
-          <div className="theme">
-            <Sun size={16} aria-hidden="true" />
-
-            <Switch
-              checked={dark}
-              onCheckedChange={toggle}
-              aria-label="Dark mode"
-            />
-
-            <Moon size={16} aria-hidden="true" />
-          </div>
-
           <MobileNav active={active} />
         </div>
       </header>
-
       <main id="home" tabIndex={-1}>
-        <ScrollReveal />
-
+        {/* Hero */}
         <section className="hero wrap">
-          <div className="eyebrow">HELLO, I AM</div>
+          <div className="hero-shell">
+            <p className="hero-role">Data Scientist &amp; ML Engineer</p>
 
-          <h1 className="hero-name">
-            <span>Md</span> <span>Sadman</span> <span>Sami</span>{" "}
-            <span>Khan</span>
-          </h1>
+            <p className="hero-availability">
+              <span aria-hidden="true" />
+              Open to Data Science and ML roles
+            </p>
 
-          <div className="hero-bottom">
-            <div>
-              <p className="intro">
-                Aspiring Data Scientist
-                <br className="desktop" /> and ML Engineer
-              </p>
+            <div className="eyebrow">HELLO, I AM</div>
 
-              <p className="summary">
-                CSE graduate and Ex-Data Annotator at BDAI-HEAT Sub-project
-                (HEAT-13211-CU), with a particular interest in FinTech
-              </p>
+            <h1 className="hero-name">
+              <span>Md</span> <span>Sadman</span> <span>Sami</span>{" "}
+              <span>Khan</span>
+            </h1>
 
-              <div className="actions">
-                <a className="button solid" href="#projects">
-                  Explore my work
-                  <ArrowUpRight size={18} aria-hidden="true" />
-                </a>
-
-                <a
-                  className="button outline"
-                  href="/Sadman_Sami_Khan_CV.pdf"
-                  download
-                >
-                  Download CV
-                  <Download size={17} aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-
-            <aside className="hero-aside">
+            <div className="hero-bottom">
               <div>
-                <MapPin size={16} aria-hidden="true" />
-                Chandpur, Chattogram, Bangladesh
+                <p className="intro">
+                  CSE Graduate
+                  <br className="desktop" /> and Ex-Data Annotator at BDAI-HEAT
+                  Sub-project (HEAT-13211-CU) | FinTech
+                </p>
+
+                <div className="actions">
+                  <a className="button solid" href="#projects">
+                    Explore my work
+                    <ArrowUpRight size={18} aria-hidden="true" />
+                  </a>
+
+                  <a
+                    className="button outline"
+                    href="/Sadman_Sami_Khan_CV.pdf"
+                    download
+                  >
+                    Download CV
+                    <Download size={17} aria-hidden="true" />
+                  </a>
+                </div>
               </div>
 
-              <p>Seeking opportunities in</p>
+              <aside className="hero-aside hero-photo-card">
+                <div className="hero-decoration" aria-hidden="true">
+                  <span>
+                    <BrainCircuit size={28} strokeWidth={1.8} />
+                  </span>
 
-              <strong>
-                Data Science
-                <br />
-                ML Engineering
-              </strong>
+                  <span>
+                    <Database size={24} strokeWidth={1.8} />
+                  </span>
 
-              <div className="socials">
-                <a
-                  href="https://github.com/sadmantihan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  title="GitHub"
-                >
-                  <FaGithub size={22} aria-hidden="true" />
-                </a>
+                  <span>
+                    <ChartColumn size={24} strokeWidth={1.8} />
+                  </span>
+                </div>
+                <div className="hero-portrait">
+                  <Image
+                    src="/images/sadman-profile.jpeg"
+                    alt="Portrait of Md Sadman Sami Khan"
+                    fill
+                    priority
+                    sizes="(max-width: 359px) 65vw, 280px"
+                    className="hero-portrait-image"
+                  />
+                </div>
 
-                <a
-                  href="https://www.linkedin.com/in/md-sadman-sami-khan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  title="LinkedIn"
-                >
-                  <FaLinkedin size={22} aria-hidden="true" />
-                </a>
+                <div className="hero-location">
+                  <MapPin size={17} aria-hidden="true" />
+                  <span>{contact.location}</span>
+                </div>
 
-                <a
-                  href="mailto:samisadman6@gmail.com"
-                  aria-label="Email"
-                  title="Email me"
-                >
-                  <SiGmail size={22} aria-hidden="true" />
-                </a>
-              </div>
-            </aside>
+                <div className="socials hero-socials">
+                  <a
+                    href={contact.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    title="GitHub"
+                  >
+                    <FaGithub size={22} aria-hidden="true" />
+                  </a>
+
+                  <a
+                    href={contact.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    title="LinkedIn"
+                  >
+                    <FaLinkedin size={22} aria-hidden="true" />
+                  </a>
+
+                  <a
+                    href={`mailto:${contact.email}`}
+                    aria-label="Email"
+                    title="Email me"
+                  >
+                    <SiGmail size={22} aria-hidden="true" />
+                  </a>
+
+                  <a
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Contact me on WhatsApp"
+                    title="WhatsApp"
+                  >
+                    <FaWhatsapp size={23} aria-hidden="true" />
+                  </a>
+                </div>
+              </aside>
+            </div>
           </div>
         </section>
+
+        {/* Recent news */}
         <RecentNews />
 
+        {/* About */}
         <section id="about" className="section wrap">
           <div className="section-label">ABOUT</div>
 
           <div className="section-body">
             <h2>
-              A curious mind.
-              <br />A practical approach.
+              My Background and Interests
             </h2>
 
-            <p className="lead">
-              I’m a Computer Science and Engineering graduate from the{" "}
-              <a
-                href="https://cu.ac.bd/cse/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="profile-link"
-              >
-                University of Chittagong
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-              , aspiring to roles in data science and ML
-              engineering, with a particular interest in FinTech.
-            </p>
+            <div className="about-copy">
+              <p className="lead">
+                I’m a Computer Science and Engineering graduate from the{" "}
+                <a
+                  href="https://cu.ac.bd/cse/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="profile-link"
+                >
+                  University of Chittagong
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
+                , aspiring to roles in data science and ML engineering, with
+                a particular interest in FinTech.
+              </p>
 
-            <p>
-              As a former Data Annotator at the World Bank-funded BDAI-HEAT
-              Sub-project (HEAT-13211-CU), I guided students in collecting
-              socio-economics data, designing an ER diagram, and building an ETL
-              pipeline to structure, clean, and validate the data.
-            </p>
+              <p className="lead">
+                As a former Data Annotator at the World Bank-funded BDAI-HEAT
+                Sub-project (HEAT-13211-CU), I guided students in collecting
+                socio-economics data, designing an ER diagram, and building an
+                ETL pipeline to structure, clean, and validate the data.
+              </p>
 
-            <p>
-              My research in multi-hop knowledge graph reasoning and my
-              full-stack development skills complement this hands-on experience.
-              I enjoy working from raw data through analysis and evaluation to
-              clear findings that support decisions, and I’m keen to apply these
-              skills to financial technology.
-            </p>
-          </div>
-        </section>
-
-        <section id="projects" className="section wrap">
-          <div className="section-label">SELECTED WORKS</div>
-          <div className="section-body">
-            <h2>A collection of recent works</h2>
-            <div className="projects">
-              {projects.map((p) => (
-                <article className="project" key={p.url}>
-                  <div className="project-cover">
-                    {p.image ? (
-                      <Image
-                        src={p.image}
-                        alt={`${p.name} project preview`}
-                        fill
-                        sizes="(max-width: 699px) 92vw, (max-width: 1199px) 46vw, 31vw"
-                        className="project-cover-image"
-                      />
-                    ) : (
-                      <p.coverIcon
-                        size={64}
-                        strokeWidth={1.25}
-                        aria-hidden="true"
-                      />
-                    )}
-
-                    <span className="project-cover-label" title={p.type}>
-                      {p.category}
-                    </span>
-                  </div>
-
-                  <div className="project-content">
-                    <div className="project-title">
-                      <h3>{p.name}</h3>
-                    </div>
-
-                    {p.supervisor && p.supervisorUrl && (
-                      <p className="project-supervisor">
-                        Supervisor:{" "}
-                        <a
-                          href={p.supervisorUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {p.supervisor}
-                          <ArrowUpRight size={16} aria-hidden="true" />
-                        </a>
-                      </p>
-                    )}
-
-                    <p>{p.desc}</p>
-
-                    {p.detail && <p className="project-note">{p.detail}</p>}
-
-                    <div className="project-bottom">
-                      <ProjectTags tags={p.tags} />
-                    </div>
-
-                    <div className="project-actions">
-                      <a
-                        className="project-link"
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`View source code for ${p.name} on GitHub (opens in a new tab)`}
-                      >
-                        <FaGithub size={18} aria-hidden="true" />
-                        Code
-                      </a>
-
-                      {p.thesisPdf && (
-                        <a className="project-link" href={p.thesisPdf} download>
-                          <Download size={18} aria-hidden="true" />
-                          Download Thesis
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
+              <p className="lead">
+                My research in multi-hop knowledge graph reasoning and my
+                full-stack development skills complement this hands-on
+                experience. I enjoy working from raw data through analysis and
+                evaluation to clear findings that support decisions, and I’m
+                keen to apply these skills to financial technology.
+              </p>
             </div>
           </div>
         </section>
 
+        {/* Projects and thesis */}
+        <section id="projects" className="section wrap">
+          <div className="section-label">SELECTED WORKS</div>
+
+          <div className="section-body">
+            <h2>Projects and Research</h2>
+
+            <div className="projects">
+              {projects.map((project) => {
+                const CoverIcon = project.coverIcon;
+
+                return (
+                  <article className="project" key={project.url}>
+                    <div className="project-cover">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.name} project preview`}
+                          fill
+                          sizes="(max-width: 699px) 92vw, (max-width: 1328px) 46vw, 624px"
+                          className="project-cover-image"
+                        />
+                      ) : (
+                        <CoverIcon
+                          size={64}
+                          strokeWidth={1.25}
+                          aria-hidden="true"
+                        />
+                      )}
+
+                      <span
+                        className="project-cover-label"
+                        title={project.type}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+
+                    <div className="project-content">
+                      <div className="project-title">
+                        <h3>{project.name}</h3>
+                      </div>
+
+                      {project.supervisor && project.supervisorUrl && (
+                        <p className="project-supervisor">
+                          Supervisor:{" "}
+                          <a
+                            href={project.supervisorUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {project.supervisor}
+                            <ArrowUpRight size={16} aria-hidden="true" />
+                          </a>
+                        </p>
+                      )}
+
+                      <p>{project.desc}</p>
+
+                      {project.detail && (
+                        <p className="project-note">{project.detail}</p>
+                      )}
+
+                      <div className="project-bottom">
+                        <ProjectTags tags={project.tags} />
+                      </div>
+
+                      <div className="project-actions">
+                        <a
+                          className="project-link"
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View source code for ${project.name} on GitHub (opens in a new tab)`}
+                        >
+                          <FaGithub size={18} aria-hidden="true" />
+                          Code
+                        </a>
+
+                        {project.thesisPdf && (
+                          <a
+                            className="project-link"
+                            href={project.thesisPdf}
+                            download
+                          >
+                            <Download size={18} aria-hidden="true" />
+                            Download Thesis
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Experience */}
         <Experience />
 
+        {/* Articles */}
         <section id="articles" className="section wrap">
           <div className="section-label">ARTICLES</div>
+
           <div className="section-body">
-            <h2>Latest Articles</h2>   
+            <h2>Latest Articles</h2>
             <ArticleCards />
           </div>
         </section>
 
+        {/* Skills */}
         <section id="skills" className="section wrap">
           <div className="section-label">MY TOOLKIT</div>
 
@@ -410,11 +449,12 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Education and certifications */}
         <section id="education" className="section wrap">
-          <div className="section-label">EDUCATION</div>
+          <div className="section-label">EDUCATION & CERTIFICATIONS</div>
 
           <div className="section-body">
-            <h2>A foundation to build on</h2>
+            <h2>Academic Journey</h2>
 
             <div className="education">
               <div>
@@ -442,11 +482,11 @@ export default function Home() {
                 <p>Board-merit scholarship awardee</p>
               </div>
             </div>
-
             <Certifications />
           </div>
         </section>
 
+        {/* Contact */}
         <section id="contact" className="contact">
           <div className="wrap contact-inner">
             <span className="eyebrow">LET’S CONNECT</span>
@@ -462,7 +502,8 @@ export default function Home() {
                 <h3>Let’s start a conversation.</h3>
 
                 <p>
-                  I’m interested in data science and ML engineering opportunities.
+                  I’m interested in data science and ML engineering
+                  opportunities.
                 </p>
 
                 <div className="contact-detail">
@@ -470,18 +511,16 @@ export default function Home() {
 
                   <div>
                     <span>Email</span>
-                    <a href="mailto:samisadman6@gmail.com">
-                      samisadman6@gmail.com
-                    </a>
+                    <a href={`mailto:${contact.email}`}>{contact.email}</a>
                   </div>
                 </div>
 
                 <div className="contact-detail">
-                  <ArrowUpRight size={20} aria-hidden="true" />
+                  <Phone size={20} aria-hidden="true" />
 
                   <div>
                     <span>Phone</span>
-                    <a href="tel:+8801704776493">+880 1704 776493</a>
+                    <a href={contact.phoneHref}>{contact.phone}</a>
                   </div>
                 </div>
               </div>
@@ -494,6 +533,7 @@ export default function Home() {
 
       <footer className="wrap">
         <span>© {new Date().getFullYear()} Md Sadman Sami Khan</span>
+
         <a href="#home">Back to top</a>
       </footer>
     </>
