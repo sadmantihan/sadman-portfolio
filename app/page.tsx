@@ -231,7 +231,7 @@ export default function Home() {
                 <p className="intro">
                   CSE Graduate
                   <br className="desktop" /> and Ex-Data Annotator at BDAI-HEAT
-                  Sub-project (HEAT-13211-CU) | FinTech
+                  Sub-project (HEAT-13211-CU)
                 </p>
 
                 <div className="actions">
