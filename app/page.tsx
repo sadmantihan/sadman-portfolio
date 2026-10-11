@@ -15,6 +15,7 @@ import {
   Phone,
   type LucideIcon,
 } from "lucide-react";
+import { PortfolioMotion } from "@/components/portfolio-motion";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
@@ -166,7 +167,8 @@ export default function Home() {
         </div>
       </header>
       <main id="home" tabIndex={-1}>
-        {/* Hero */}
+        <PortfolioMotion />
+
         <section className="hero wrap">
           <div className="hero-shell">
             <p className="hero-role">Data Scientist &amp; ML Engineer</p>

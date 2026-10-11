@@ -1092,3 +1092,22 @@ nav.mobile-menu-links a[aria-current="location"] {
   background: transparent;
   box-shadow: none;
 }
+
+@media (prefers-reduced-motion: reduce), print {
+  #home .hero-portrait,
+  #home .hero-decoration > span,
+  #home .about-copy,
+  #home .project,
+  #home #experience article,
+  #home #news ul > li,
+  #home .article-preview,
+  #home .articles-empty,
+  #home #skills .section-body > div > div,
+  #home .education > div,
+  #home #education .section-body ul > li,
+  #home .contact-grid > div,
+  #home .contact-form {
+    opacity: 1 !important;
+    translate: none !important;
+  }
+}
