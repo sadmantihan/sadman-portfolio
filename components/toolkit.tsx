@@ -47,7 +47,6 @@ const groups: ToolGroup[] = [
     tools: [
       { name: "Python", icon: SiPython, color: "#3776AB" },
       { name: "R", icon: SiR, color: "#276DC3" },
-      { name: "MASM", icon: FaMicrochip, color: "#6B7280" },
       { name: "C", icon: SiC, color: "#A8B9CC" },
       { name: "C++", icon: SiCplusplus, color: "#00599C" },
       { name: "Java", icon: FaJava, color: "#E76F00" },
