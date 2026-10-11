@@ -20,6 +20,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 import { ArticleCards } from "@/components/article-cards";
+import { AnimatedName } from "@/components/animated-name";
 import { Certifications } from "@/components/certifications";
 import { ContactForm } from "@/components/contact-form";
 import { Experience } from "@/components/experience";
@@ -27,7 +28,6 @@ import { MobileNav } from "@/components/mobile-nav";
 import { ProjectTags } from "@/components/project-tags";
 import { RecentNews } from "@/components/recent-news";
 import { Toolkit } from "@/components/toolkit";
-import { Switch } from "@/components/ui/switch";
 
 const contact = {
   email: "samisadman6@gmail.com",
@@ -178,12 +178,13 @@ export default function Home() {
               Open to Data Science and ML roles
             </p>
 
-            <div className="eyebrow">HELLO, I AM</div>
+            <div className="hero-introduction">
+              <div className="eyebrow">HELLO, THIS IS</div>
 
-            <h1 className="hero-name">
-              <span>Md</span> <span>Sadman</span> <span>Sami</span>{" "}
-              <span>Khan</span>
-            </h1>
+              <h1 className="hero-name">
+                <AnimatedName />
+              </h1>
+            </div>
 
             <div className="hero-bottom">
               <div>
@@ -292,9 +293,7 @@ export default function Home() {
           <div className="section-label">ABOUT</div>
 
           <div className="section-body">
-            <h2>
-              My Background and Interests
-            </h2>
+            <h2>My Background and Interests</h2>
 
             <div className="about-copy">
               <p className="lead">
@@ -308,8 +307,8 @@ export default function Home() {
                   University of Chittagong
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
-                , aspiring to roles in data science and ML engineering, with
-                a particular interest in FinTech.
+                , aspiring to roles in data science and ML engineering, with a
+                particular interest in FinTech.
               </p>
 
               <p className="lead">
