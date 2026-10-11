@@ -128,6 +128,46 @@ export default function Home() {
     };
   }, []);
 
+  // Start at the top when the page is refreshed.
+  useEffect(() => {
+    const navigationEntry = performance.getEntriesByType(
+      "navigation",
+    )[0] as PerformanceNavigationTiming | undefined;
+
+    if (navigationEntry?.type !== "reload") return;
+
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    if (window.location.hash) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        window.location.pathname + window.location.search,
+      );
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+    }
+
+    scrollToTop();
+
+    const frame = window.requestAnimationFrame(scrollToTop);
+
+    window.addEventListener("load", scrollToTop, { once: true });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("load", scrollToTop);
+      window.history.scrollRestoration = previousRestoration;
+    };
+  }, []);
+
   return (
     <>
       {/* Navigation */}
