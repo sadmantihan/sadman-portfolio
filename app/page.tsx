@@ -352,8 +352,9 @@ export default function Home() {
               <p className="lead">
                 As a former Data Annotator at the World Bank-funded BDAI-HEAT
                 Sub-project (HEAT-13211-CU), I guided students in collecting
-                socio-economics data, designing an ER diagram, and building an
-                ETL pipeline to structure, clean, and validate the data.
+                socio-economics data, helping in designing the ER diagram, and
+                building clean dataset files into structured tables with the
+                data validation.
               </p>
 
               <p className="lead">
