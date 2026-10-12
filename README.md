@@ -4,7 +4,7 @@ My personal portfolio as an aspiring Data Scientist and ML Engineer with an inte
 
 I am a Computer Science and Engineering graduate from the University of Chittagong and a former Data Annotator at the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
 
-**Live website:** [sadman-sami-khan.vercel.app](https://sadman-sami-khan.vercel.app/)  
+**Live website:** [sadman-sami-khan.vercel.app](https://sadman-sami-khan.vercel.app/)
 
 ## Design
 
@@ -12,21 +12,21 @@ The portfolio uses a light-only, violet-accented claymorphism design:
 
 - Rounded cards, defined outlines, offset shadows, and soft inner highlights.
 - Fredoka display typography and Nunito body typography, loaded through `next/font`.
+- A persistent, pill-shaped navigation bar and compact mobile sidebar.
 - Responsive project grids and grouped technology chips.
-- A pill-shaped desktop navigation bar that scrolls with the page.
-- A mobile navigation sidebar.
 - A professional portrait and custom SVG branding.
 - Brand-colored technology logos.
+- An availability badge with a continuously pulsing green dot.
 - Responsive layouts for mobile, tablet, and desktop.
 
 ## Features
 
 - Letter-by-letter name introduction using Motion.
 - One-time entrance animations for selected content as it enters the viewport.
-- Reduced-motion support and keyboard focus styles.
+- Reduced-motion support and visible keyboard focus styles.
 - Recent News with exact dates, including the weekday.
 - Project cards with cover images or placeholder icons, technology tags, and GitHub links.
-- Thesis supervisor attribution, research results, and a downloadable thesis.
+- Linked thesis supervisor attribution, research results, and a downloadable thesis.
 - Work experience and leadership and voluntary activities with organization logos.
 - Expandable voluntary certificate links.
 - Education, Board-merit scholarship recognition, certifications, and training.
@@ -56,10 +56,11 @@ Hero → Recent News → About → Projects & Thesis → Experience → Articles
 | `next/font` | Optimized font loading |
 | `next/image` | Image rendering and optimization |
 | Formspree | Contact form submission handling |
+| pnpm | Dependency management |
 | Vercel | Hosting and deployment |
 | Git and GitHub | Version control and source hosting |
 
-Exact dependency versions are recorded in `package.json` and `package-lock.json`.
+Dependency requirements are recorded in `package.json`; resolved dependency versions are recorded in `pnpm-lock.yaml`. The `packageManager` field in `package.json` identifies the project's pnpm version.
 
 ## Selected Projects
 
@@ -70,40 +71,58 @@ Exact dependency versions are recorded in `package.json` and `package-lock.json`
 
 ## Run Locally
 
-Use Node.js 22.13.0 or newer within the Node.js 22 release line, npm, and Git.
+### Prerequisites
 
-```bash
+- Node.js 22.13.0 or newer within the Node.js 22 release line.
+- Git.
+- pnpm 10, using the exact version specified in `package.json` where possible.
+
+If pnpm is not installed:
+
+```powershell
+npm install --global pnpm@10
+pnpm --version
+```
+
+Using npm to install pnpm globally does not change this project's package manager.
+
+### Installation
+
+```powershell
 git clone https://github.com/sadmantihan/sadman-portfolio.git
 cd sadman-portfolio
-npm ci
-npm run dev
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-`npm ci` installs the dependencies recorded in the lockfile. Use `npm install` when intentionally adding or updating packages.
+`--frozen-lockfile` installs from the committed lockfile without updating it. If the lockfile and `package.json` disagree, the command fails so the inconsistency can be resolved.
 
 ### Available Commands
 
 | Command | Purpose |
 | --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run typecheck` | Check TypeScript types |
-| `npm run build` | Create a production build |
-| `npm start` | Serve the existing production build |
-| `npm audit` | Check dependencies for known vulnerabilities |
+| `pnpm dev` | Start the development server |
+| `pnpm run typecheck` | Check TypeScript types |
+| `pnpm build` | Create a production build |
+| `pnpm start` | Serve the existing production build |
+| `pnpm audit` | Check dependencies for known vulnerabilities |
+| `pnpm add package-name` | Add a production dependency |
+| `pnpm add -D package-name` | Add a development dependency |
+| `pnpm remove package-name` | Remove a dependency |
 
-To verify and preview a production build, run:
+To verify and preview a production build:
 
-```bash
-npm run typecheck
-npm run build
-npm start
+```powershell
+pnpm run typecheck
+pnpm build
+pnpm start
 ```
 
-Run these commands one at a time and resolve any errors before continuing.
+Run commands one at a time and resolve any errors before continuing.
 
-Use `npm run dev` while editing. `npm start` serves the last production build and requires another build to reflect subsequent changes.
+Use `pnpm dev` while editing. `pnpm start` serves the last production build and requires another build to reflect subsequent changes.
 
 ## Files and Maintenance
 
@@ -114,7 +133,7 @@ Paths below are relative to the repository root.
 | `app/page.tsx` | Homepage content, hero, project data, desktop navigation, education, and section composition |
 | `app/layout.tsx` | Root layout, metadata, font loading, and stylesheet imports |
 | `app/globals.css` | Base styles and shared layout rules |
-| `app/clay.css` | Clay design, typography, component appearance, and responsive overrides |
+| `app/clay.css` | Clay design, typography, responsive overrides, and availability-dot animation |
 | `components/portfolio-motion.tsx` | Component entrance animations and scroll observation |
 | `components/animated-name.tsx` | Letter-by-letter hero name animation |
 | `components/mobile-nav.tsx` | Mobile sidebar navigation |
@@ -140,6 +159,8 @@ Paths below are relative to the repository root.
 | `public/Sadman_Sami_Khan_CV.pdf` | Downloadable CV |
 | `public/thesis/AdaPrunerKGQA-thesis.pdf` | Downloadable thesis |
 | `public/certificates/` | Certificate PDFs |
+| `package.json` | Dependencies, scripts, and package-manager version |
+| `pnpm-lock.yaml` | Resolved dependency versions |
 
 ## Update Content
 
@@ -173,7 +194,7 @@ Place cover images inside `public/projects/` and reference them as:
 image: "/projects/adapruner-kgqa.webp",
 ```
 
-The existing cover frame uses a 37:16 aspect ratio. An image measuring 1110 × 480 pixels matches that ratio. Images crop to fill the frame; an empty image value uses the project's placeholder icon.
+The cover frame uses a 37:16 aspect ratio. An image measuring 1110 × 480 pixels matches that ratio. Images crop to fill the frame; an empty image value uses the project's placeholder icon.
 
 ### Articles
 
@@ -201,18 +222,21 @@ Match filenames and capitalization exactly. If a file is renamed, update every c
 
 ## Animation and Accessibility
 
-Animation is implemented with Motion, using the lightweight `motion/mini` API for the current entrance and name effects.
+The entrance and name animations use the lightweight `motion/mini` API.
 
 - `PortfolioMotion` observes selected content and animates it once.
 - `AnimatedName` reveals the hero name letter by letter.
 - The full name remains available to screen readers.
-- Name animation reserves the text's layout space.
-- Reduced-motion preferences disable the entrance and typing effects.
-- Existing hover and pressed states complement the entrance animations.
+- The name animation reserves the text's layout space.
+- The availability dot uses a repeating CSS pulse animation.
+- Reduced-motion preferences disable the entrance, name, and dot animations.
+- Hover and pressed states complement the entrance animations.
 
 Mount `PortfolioMotion` once in the homepage. Avoid mounting the older `ScrollReveal` component alongside it for the same elements.
 
 Keep navigation links synchronized with section IDs. For example, Recent News targets `#news`, and Projects targets `#projects`.
+
+When adjusting the persistent navbar, retain enough scroll offset so section headings remain visible after navigating to them.
 
 ## Contact Form
 
@@ -238,28 +262,68 @@ To reuse this project, create your own Formspree form and replace the endpoint. 
 
 The portfolio is hosted on Vercel.
 
+### GitHub Deployment
+
 1. Import the GitHub repository into Vercel.
 2. Select the directory containing `package.json` as the project root.
-3. Keep the detected Next.js framework settings.
-4. Deploy and check the production website.
+3. Keep the framework preset set to Next.js.
+4. Leave the build, install, output-directory, and development-command overrides disabled.
+5. Keep `pnpm-lock.yaml` committed so Vercel can detect pnpm.
+6. Enable Corepack as described below to use the version recorded in `package.json`.
 
-With Git integration configured, pushes to the configured production branch trigger production deployments.
+Add this environment variable to both Production and Preview:
 
-Local changes and dependency updates only reach the live website after deployment.
+```text
+ENABLE_EXPERIMENTAL_COREPACK=1
+```
+
+Environment-variable changes apply to new deployments.
+
+With Git integration configured and `main` selected as the production branch, pushing a commit triggers a production deployment:
+
+```powershell
+git push origin main
+```
+
+Check the deployment's build logs and wait for Ready before reviewing the live website.
+
+### Optional Manual Deployment
+
+From the repository root:
+
+```powershell
+pnpm dlx vercel@latest --prod --scope sadmantihan
+```
+
+If authentication is required:
+
+```powershell
+pnpm dlx vercel@latest login
+```
+
+When prompted, link to the existing `sadman-sami-khan` project.
+
+Manual CLI deployment uploads local project files, including applicable uncommitted changes. Commit intended changes first to keep the deployed version aligned with Git history.
+
+A separate manual deployment is unnecessary when a GitHub push has already deployed the same update.
 
 ## Version Control and Dependency Maintenance
 
 Before committing:
 
-```bash
+```powershell
 git status
 git diff
-npm run typecheck
-npm run build
-npm audit
+pnpm run typecheck
+pnpm build
+pnpm audit
 ```
 
-Review and stage only the intended files. Commit both `package.json` and `package-lock.json` when dependencies change.
+Run checks separately and review any failures.
+
+Stage only intended files. When dependencies change, commit both `package.json` and `pnpm-lock.yaml`. If pnpm creates or updates project configuration in `pnpm-workspace.yaml`, review and commit that file too.
+
+Use pnpm consistently for this repository. Do not recreate `package-lock.json` by running `npm install` in the project.
 
 Do not commit:
 
@@ -268,13 +332,14 @@ Do not commit:
 - `.vercel/`
 - Private environment files or credentials
 
-Review audit recommendations before applying updates. Avoid using `npm audit fix --force` without checking the proposed dependency changes.
+Review dependency updates and audit findings before applying fixes. If pnpm reports blocked dependency build scripts, review the named packages before granting permission to run them.
 
 For a README-only update:
 
-```bash
+```powershell
 git add README.md
-git commit -m "docs: update portfolio design, motion, and maintenance guide"
+git commit -m "docs: update pnpm setup and deployment guide"
+git push origin main
 ```
 
 ## Contact
