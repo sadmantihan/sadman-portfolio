@@ -130,9 +130,9 @@ export default function Home() {
 
   // Start at the top when the page is refreshed.
   useEffect(() => {
-    const navigationEntry = performance.getEntriesByType(
-      "navigation",
-    )[0] as PerformanceNavigationTiming | undefined;
+    const navigationEntry = performance.getEntriesByType("navigation")[0] as
+      | PerformanceNavigationTiming
+      | undefined;
 
     if (navigationEntry?.type !== "reload") return;
 
@@ -229,9 +229,8 @@ export default function Home() {
             <div className="hero-bottom">
               <div>
                 <p className="intro">
-                  CSE Graduate
-                  <br className="desktop" /> and Ex-Data Annotator at BDAI-HEAT
-                  Sub-project (HEAT-13211-CU)
+                  CSE Graduate and Ex-Data Annotator at BDAI-HEAT Sub-project
+                  (HEAT-13211-CU)
                 </p>
 
                 <div className="actions">

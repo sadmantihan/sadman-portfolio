@@ -64,7 +64,7 @@ export function Experience() {
               className={styles.organizationLogo}
             />
 
-            <span>World Bank-funded · Chattogram, Bangladesh</span>
+            <span>World Bank-funded, Chattogram, Bangladesh</span>
           </p>
 
           <ul className={styles.points}>

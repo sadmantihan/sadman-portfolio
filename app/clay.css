@@ -1417,3 +1417,98 @@ nav.mobile-menu-links a[aria-current="location"] {
   border-radius: 4px;
   text-decoration: none;
 }
+
+/* Green availability dot */
+#home .hero-availability > span {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+/* Keep navigation visible while scrolling */
+.portfolio-header {
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+}
+
+/* Softer introduction text, matching the reference's treatment */
+#home .hero .intro {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: #64748b;
+}
+
+/* Leave room for the sticky navbar when navigating to sections */
+#home section[id] {
+  scroll-margin-top: 120px;
+}
+
+@media (max-width: 699px) {
+  .portfolio-header {
+    top: 8px;
+  }
+
+  #home section[id] {
+    scroll-margin-top: 104px;
+  }
+}
+
+@media print {
+  .portfolio-header {
+    position: static;
+  }
+}
+
+/* Smaller, regular-weight introduction */
+#home .hero .intro {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: 0;
+  color: #64748b;
+}
+
+/* Gentle availability pulse */
+@keyframes availability-dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #home .hero-availability > span {
+    animation: availability-dot-pulse 2s ease-in-out 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  #home .hero-availability > span {
+    animation: none;
+  }
+}
+
+/* Slightly darker introduction text */
+#home .hero .intro {
+  color: #526174;
+}
+
+/* Repeat the green-dot pulse continuously */
+@media (prefers-reduced-motion: no-preference) {
+  #home .hero-availability > span {
+    animation: availability-dot-pulse 2s ease-in-out infinite;
+  }
+}
