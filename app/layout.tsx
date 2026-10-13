@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { Fredoka } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./clay.css";
 import "./forest.css";
@@ -12,9 +13,10 @@ const displayFont = Fredoka({
   variable: "--font-display",
 });
 
-const bodyFont = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+const bodyFont = localFont({
+  src: "./fonts/Nunito-Variable.ttf",
+  weight: "400 700",
+  style: "normal",
   display: "swap",
   variable: "--font-body",
 });
