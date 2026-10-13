@@ -1,0 +1,188 @@
+/* Colors only: retain existing typography and layout. */
+:root,
+:root[data-theme="light"] {
+  --forest: #162623;
+  --paper: #f0f5f7;
+
+  --ink: var(--forest);
+  --violet: var(--forest);
+  --sub: #52635f;
+
+  --background: var(--paper);
+  --surface: color-mix(
+    in srgb,
+    var(--paper) 97%,
+    var(--forest)
+  );
+  --line: color-mix(
+    in srgb,
+    var(--paper) 80%,
+    var(--forest)
+  );
+
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+
+  --primary: var(--forest);
+  --primary-foreground: var(--paper);
+
+  --secondary: var(--surface);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface);
+  --muted-foreground: var(--sub);
+  --accent: var(--surface);
+  --accent-foreground: var(--ink);
+
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--forest);
+
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--forest);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--forest);
+
+  --clay-outline: var(--forest);
+  --clay-highlight: color-mix(
+    in srgb,
+    var(--paper) 85%,
+    var(--forest)
+  );
+}
+
+/* Replace the existing violet and blue background tints. */
+#home {
+  --glow-violet: rgb(22 38 35 / 9%);
+  --glow-blue: rgb(22 38 35 / 5%);
+  --card-tint: rgb(22 38 35 / 4%);
+}
+
+/* Preserve the intro's current size and weight. */
+#home .hero .intro {
+  color: var(--sub);
+}
+
+/* Override any remaining hard-coded source-button colors. */
+.source-code-button,
+.source-code-button:hover,
+.source-code-button:active {
+  background: var(--forest);
+  color: var(--paper);
+}
+
+.skip-link {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.skip-link:focus {
+  outline-color: var(--forest);
+}
+
+/*
+ * Motion controls movement on these elements.
+ * Disable their old CSS transform transitions to avoid conflicts.
+ */
+:is(
+  #home,
+  #home #projects,
+  .portfolio-header,
+  footer
+) [data-motion-ui] {
+  transform: none;
+  transition-property: color, background-color, border-color;
+  transition-duration: 180ms;
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  [data-motion-ui],
+  [data-motion-reveal] {
+    transform: none !important;
+    translate: none !important;
+    opacity: 1 !important;
+  }
+
+  #home .hero-availability > span {
+    animation: none !important;
+  }
+}
+
+/* More visible green for the hero headline and name. */
+#home .hero-role,
+#home .hero-name {
+  color: #295255;
+}
+
+/* Teal text and buttons with warm cream surfaces. */
+:root,
+:root[data-theme="light"] {
+  --forest: #295255;
+  --paper: #f7f3e8;
+
+  --ink: var(--forest);
+  --violet: var(--forest);
+  --sub: var(--forest);
+
+  --background: var(--paper);
+  --surface: var(--paper);
+  --foreground: var(--forest);
+
+  --card: var(--paper);
+  --card-foreground: var(--forest);
+  --popover: var(--paper);
+  --popover-foreground: var(--forest);
+
+  --primary: var(--forest);
+  --primary-foreground: var(--paper);
+
+  --secondary: var(--paper);
+  --secondary-foreground: var(--forest);
+  --muted: var(--paper);
+  --muted-foreground: var(--forest);
+  --accent: var(--paper);
+  --accent-foreground: var(--forest);
+
+  --clay-outline: var(--forest);
+}
+
+/* Match the background accents to the new teal. */
+#home {
+  --glow-violet: rgb(41 82 85 / 6%);
+  --glow-blue: rgb(41 82 85 / 3%);
+  --card-tint: rgb(41 82 85 / 3%);
+}
+
+/* Hero typography: color only. */
+#home .hero-role,
+#home .hero-name,
+#home .hero .intro {
+  color: var(--forest);
+}
+
+/* Filled buttons: teal background, cream lettering. */
+#home .button.solid,
+.source-code-button,
+.source-code-button:hover,
+.source-code-button:active {
+  background: var(--forest);
+  color: var(--paper);
+  border-color: var(--forest);
+}
+
+/* Outline buttons: cream background, teal lettering. */
+#home .button.outline {
+  background: var(--paper);
+  color: var(--forest);
+  border-color: var(--forest);
+}
+
+#home .hero-photo-card .hero-portrait {
+  background-color: #f7f3e8;
+}

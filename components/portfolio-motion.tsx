@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import { hover, press } from "motion";
 import { animate } from "motion/mini";
 
-/*
- * Existing portfolio elements to animate.
- * No extra wrappers are added, so your grids stay unchanged.
- */
-const REVEAL_SELECTORS = [
+const CARD_SELECTOR = [
   "#about .about-copy",
   "#projects .project",
   "#experience article",
@@ -17,209 +14,338 @@ const REVEAL_SELECTORS = [
   "#skills .section-body > div > div",
   "#education .education > div",
   "#education .section-body ul > li",
-  "#contact .contact-grid > div",
   "#contact .contact-form",
+].join(", ");
+
+const BUTTON_SELECTOR = [
+  "#home .button",
+  "#home .socials a",
+  "#home .project-link",
+  "#education a[aria-label]",
+  "#experience summary",
+  ".portfolio-header .mobile-menu-button",
 ].join(", ");
 
 export function PortfolioMotion() {
   useEffect(() => {
     const root = document.getElementById("home");
 
-    if (
-      !root ||
-      !("IntersectionObserver" in window) ||
-      !("animate" in HTMLElement.prototype)
-    ) {
-      return;
-    }
+    if (!root || !("animate" in HTMLElement.prototype)) return;
 
-    const preference = window.matchMedia(
+    const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
-
-    const animations = new Map<
-      HTMLElement,
-      ReturnType<typeof animate>
-    >();
-
-    const originalStyles = new Map<
-      HTMLElement,
-      { opacity: string; translate: string }
-    >();
-
-    const revealed = new Set<HTMLElement>();
-
-    function restoreStyles(element: HTMLElement) {
-      const original = originalStyles.get(element);
-
-      if (!original) return;
-
-      element.style.opacity = original.opacity;
-      element.style.translate = original.translate;
-    }
-
-    function stopAnimation(element: HTMLElement) {
-      animations.get(element)?.cancel();
-      animations.delete(element);
-      restoreStyles(element);
-    }
-
-    function reveal(
-      element: HTMLElement,
-      delay = 0,
-      distance = 32,
-      duration = 0.55,
-    ) {
-      if (preference.matches || revealed.has(element)) return;
-
-      revealed.add(element);
-
-      originalStyles.set(element, {
-        opacity: element.style.opacity,
-        translate: element.style.translate,
-      });
-
-      const animation = animate(
-        element,
-        {
-          opacity: [0, 1],
-          translate: [`0px ${distance}px`, "0px 0px"],
-        },
-        {
-          duration,
-          delay,
-          ease: [0.22, 1, 0.36, 1],
-        },
-      );
-
-      animations.set(element, animation);
-
-      // Release animation styles once the entrance has finished.
-      void animation.then(() => {
-        if (animations.get(element) === animation) {
-          stopAnimation(element);
-        }
-      });
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let staggerIndex = 0;
-
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-
-          const element = entry.target as HTMLElement;
-
-          observer.unobserve(element);
-
-          // Avoid animating an element while someone is using it.
-          if (element.contains(document.activeElement)) {
-            revealed.add(element);
-            continue;
-          }
-
-          reveal(element, Math.min(staggerIndex, 2) * 0.08);
-          staggerIndex += 1;
-        }
-      },
-      {
-        threshold: 0,
-        rootMargin: "0px",
-      },
+    const printing = window.matchMedia("print");
+    const finePointer = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
     );
 
+    const seen = new WeakSet<HTMLElement>();
+
     const cards = Array.from(
-      root.querySelectorAll<HTMLElement>(REVEAL_SELECTORS),
+      root.querySelectorAll<HTMLElement>(CARD_SELECTOR),
+    );
+
+    const buttons = Array.from(
+      document.querySelectorAll<HTMLElement>(BUTTON_SELECTOR),
     );
 
     const portrait =
       root.querySelector<HTMLElement>(".hero-portrait");
 
-    const badges = Array.from(
-      root.querySelectorAll<HTMLElement>(
-        ".hero-decoration > span",
-      ),
-    );
+    const contact =
+      root.querySelector<HTMLElement>(".contact-grid > div");
 
     const targets = [
       ...cards,
+      ...(contact ? [contact] : []),
       ...(portrait ? [portrait] : []),
-      ...badges,
     ];
 
-    function startAnimations() {
-      if (preference.matches) return;
+    const interactive = [
+      ...cards,
+      ...buttons,
+      ...(portrait ? [portrait] : []),
+    ];
 
-      for (const element of cards) {
-        const bounds = element.getBoundingClientRect();
+    const buttonSet = new Set(buttons);
 
-        /*
-         * Preserve content already visible when the page loads,
-         * including visits that open directly at a section link.
-         */
-        if (bounds.top < window.innerHeight) {
-          revealed.add(element);
-        } else {
-          observer.observe(element);
-        }
+    const originals = new Map(
+      [...new Set([...targets, ...interactive])].map((element) => [
+        element,
+        {
+          transform: element.style.transform,
+          translate: element.style.translate,
+          opacity: element.style.opacity,
+        },
+      ]),
+    );
+
+    function setup() {
+      if (reduced.matches || printing.matches) {
+        return () => {};
       }
 
-      // Animate hero visuals only when visiting the top of the page.
-      if (window.scrollY < 40) {
-        if (portrait) {
-          reveal(portrait, 0, 20, 0.6);
-        }
+      const entrances = new Map<
+        HTMLElement,
+        ReturnType<typeof animate>
+      >();
 
-        badges.forEach((badge, index) => {
-          reveal(badge, 0.08 + index * 0.08, 14, 0.45);
+      const gestures = new Map<
+        HTMLElement,
+        ReturnType<typeof animate>
+      >();
+
+      const hovering = new Set<HTMLElement>();
+      const pressing = new Set<HTMLElement>();
+      const cleanups: Array<() => void> = [];
+
+      let observer: IntersectionObserver | undefined;
+
+      function finishEntrance(element: HTMLElement) {
+        entrances.get(element)?.cancel();
+        entrances.delete(element);
+
+        const original = originals.get(element)!;
+
+        element.style.opacity = original.opacity;
+        element.style.translate = original.translate;
+      }
+
+      function reveal(element: HTMLElement, delay = 0) {
+        if (seen.has(element)) return;
+
+        seen.add(element);
+
+        // Keep focused content still and immediately readable.
+        if (element.contains(document.activeElement)) return;
+
+        const distance =
+          element === portrait
+            ? 32
+            : window.innerWidth < 700
+              ? 56
+              : 80;
+
+        const animation = animate(
+          element,
+          {
+            opacity: [0.15, 1],
+            translate: [
+              `0px ${distance}px`,
+              "0px 0px",
+            ],
+          },
+          {
+            duration: 0.85,
+            delay,
+            ease: [0.22, 0.75, 0.25, 1],
+          },
+        );
+
+        entrances.set(element, animation);
+
+        void animation.then(() => {
+          if (entrances.get(element) === animation) {
+            finishEntrance(element);
+          }
         });
       }
-    }
 
-    function stopAllAnimations() {
-      observer.disconnect();
+      function updateGesture(element: HTMLElement) {
+        const disabled = element.matches(
+          ":disabled, [aria-disabled='true']",
+        );
 
-      for (const element of animations.keys()) {
-        stopAnimation(element);
-      }
-    }
+        const isPressed =
+          !disabled && pressing.has(element);
 
-    function handlePreferenceChange() {
-      stopAllAnimations();
+        const isHovered =
+          !disabled && hovering.has(element);
 
-      if (!preference.matches) {
-        startAnimations();
-      }
-    }
+        const isButton = buttonSet.has(element);
 
-    function handleFocus(event: FocusEvent) {
-      if (!(event.target instanceof Node)) return;
+        let transform =
+          "translateY(0px) scale(1) rotate(0deg)";
 
-      const focusedNode = event.target;
-
-      for (const element of targets) {
-        if (element.contains(focusedNode)) {
-          observer.unobserve(element);
-          revealed.add(element);
-          stopAnimation(element);
+        if (isPressed) {
+          transform =
+            "translateY(2px) scale(0.96) rotate(0deg)";
+        } else if (isHovered) {
+          transform =
+            element === portrait
+              ? "translateY(-6px) scale(1.025) rotate(-1deg)"
+              : isButton
+                ? "translateY(-4px) scale(1.04) rotate(0deg)"
+                : "translateY(-8px) scale(1.008) rotate(0deg)";
         }
+
+        // Start from the current position if a gesture is interrupted.
+        const current = getComputedStyle(element).transform;
+
+        gestures.get(element)?.cancel();
+
+        const animation = animate(
+          element,
+          {
+            transform: [current, transform],
+          },
+          {
+            duration: isPressed ? 0.12 : 0.3,
+            ease: [0.22, 1, 0.36, 1],
+          },
+        );
+
+        gestures.set(element, animation);
+
+        void animation.then(() => {
+          if (gestures.get(element) !== animation) return;
+
+          element.style.transform =
+            isPressed || isHovered
+              ? transform
+              : originals.get(element)!.transform;
+
+          animation.cancel();
+          gestures.delete(element);
+        });
       }
-    }
 
-    startAnimations();
+      targets.forEach((element) => {
+        element.dataset.motionReveal = "";
+      });
 
-    preference.addEventListener("change", handlePreferenceChange);
-    root.addEventListener("focusin", handleFocus);
+      interactive.forEach((element) => {
+        element.dataset.motionUi = "";
+      });
 
-    return () => {
-      preference.removeEventListener(
-        "change",
-        handlePreferenceChange,
+      // Hover movement for mouse/trackpad users.
+      cleanups.push(
+        hover(interactive, (target) => {
+          if (!finePointer.matches) return;
+
+          const element = target as HTMLElement;
+
+          hovering.add(element);
+          updateGesture(element);
+
+          return () => {
+            hovering.delete(element);
+            updateGesture(element);
+          };
+        }),
       );
 
-      root.removeEventListener("focusin", handleFocus);
-      stopAllAnimations();
+      // Press feedback also works for touch and keyboard interaction.
+      cleanups.push(
+        press(buttons, (target) => {
+          const element = target as HTMLElement;
+
+          if (
+            element.matches(
+              ":disabled, [aria-disabled='true']",
+            )
+          ) {
+            return;
+          }
+
+          pressing.add(element);
+          updateGesture(element);
+
+          return () => {
+            pressing.delete(element);
+            updateGesture(element);
+          };
+        }),
+      );
+
+      if ("IntersectionObserver" in window) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            let order = 0;
+
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+
+              observer?.unobserve(entry.target);
+
+              reveal(
+                entry.target as HTMLElement,
+                Math.min(order++, 3) * 0.1,
+              );
+            }
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px",
+          },
+        );
+
+        targets.forEach((element) => {
+          const bounds = element.getBoundingClientRect();
+
+          // The portrait receives its own entrance.
+          if (element === portrait && window.scrollY < 40) {
+            observer?.observe(element);
+          } else if (bounds.top < window.innerHeight) {
+            // Do not hide content already visible on initial load.
+            seen.add(element);
+          } else {
+            observer?.observe(element);
+          }
+        });
+      }
+
+      const onFocus = (event: FocusEvent) => {
+        if (!(event.target instanceof Node)) return;
+
+        const focused = event.target;
+
+        targets.forEach((element) => {
+          if (!element.contains(focused)) return;
+
+          seen.add(element);
+          observer?.unobserve(element);
+          finishEntrance(element);
+        });
+      };
+
+      root!.addEventListener("focusin", onFocus);
+
+      return () => {
+        cleanups.forEach((cleanup) => cleanup());
+        observer?.disconnect();
+        root!.removeEventListener("focusin", onFocus);
+
+        entrances.forEach((animation) => animation.cancel());
+        gestures.forEach((animation) => animation.cancel());
+
+        entrances.clear();
+        gestures.clear();
+
+        originals.forEach((original, element) => {
+          Object.assign(element.style, original);
+
+          delete element.dataset.motionUi;
+          delete element.dataset.motionReveal;
+        });
+      };
+    }
+
+    let cleanup = setup();
+
+    const restart = () => {
+      cleanup();
+      cleanup = setup();
+    };
+
+    reduced.addEventListener("change", restart);
+    printing.addEventListener("change", restart);
+
+    return () => {
+      reduced.removeEventListener("change", restart);
+      printing.removeEventListener("change", restart);
+      cleanup();
     };
   }, []);
 

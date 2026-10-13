@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
-import "./clay.css"
+import "./clay.css";
+import "./forest.css";
 
 const displayFont = Fredoka({
   subsets: ["latin"],
@@ -18,13 +19,10 @@ const bodyFont = Nunito({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://sadman-sami-khan.vercel.app",
-  ),
+  metadataBase: new URL("https://sadman-sami-khan.vercel.app"),
 
   title: {
-    default:
-      "Md Sadman Sami Khan | Data Science and ML",
+    default: "Md Sadman Sami Khan | Data Science and ML",
     template: "%s | Md Sadman Sami Khan",
   },
 
@@ -38,8 +36,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "Md Sadman Sami Khan",
     title: "Md Sadman Sami Khan — Portfolio",
-    description:
-      "Data science, ML Research, and professional experience.",
+    description: "Data science, ML Research, and professional experience.",
   },
 
   twitter: {
@@ -50,8 +47,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/favicon.svg?v=3",
+    shortcut: "/favicon.svg?v=3",
   },
 };
 
