@@ -3,6 +3,7 @@ import { Fredoka, Nunito } from "next/font/google";
 import "./globals.css";
 import "./clay.css";
 import "./forest.css";
+import "./spacing.css";
 
 const displayFont = Fredoka({
   subsets: ["latin"],

@@ -1,0 +1,311 @@
+/* Layout only: preserve the existing theme, type and motion. */
+:root {
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+
+  --page-gutter: var(--space-3);
+  --card-padding: var(--space-4);
+  --section-padding: var(--space-6);
+}
+
+/* Shared outer alignment */
+.wrap {
+  width: 100%;
+  max-width: 1328px;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.portfolio-header {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: 1280px;
+}
+
+.portfolio-header .nav {
+  height: auto;
+  min-height: 80px;
+  padding: var(--space-2) var(--space-3);
+  gap: var(--space-3);
+}
+
+.portfolio-header .brand.navbar-brand {
+  gap: var(--space-1);
+}
+
+/* Avoid adding two anchor offsets together */
+html {
+  scroll-padding-top: 0;
+}
+
+#home,
+#home section[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Section rhythm:
+   24px from label to section body;
+   32px from heading to content. */
+#home .section,
+#home #projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--section-padding);
+}
+
+#home #news,
+#home .contact-inner {
+  padding-block: var(--section-padding);
+}
+
+#home .section > .section-label,
+#home #projects > .section-label {
+  margin: 0;
+  padding: 0;
+}
+
+#home .section-body > h2,
+#home #news > h2,
+#home .contact-inner > h2 {
+  margin: 0 0 var(--space-4);
+}
+
+/* Hero: remove the unused fifth grid row */
+#home .hero-shell {
+  row-gap: 0;
+}
+
+#home .hero-aside.hero-photo-card {
+  grid-row: 1 / span 4;
+  margin: 0;
+  gap: var(--space-3);
+}
+
+#home .hero .intro {
+  margin: 0;
+}
+
+#home .actions {
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* Consistent card padding */
+#home #about .about-copy,
+#home .education > div,
+#home .contact-form,
+#home .article-preview,
+#home .articles-empty,
+#home #experience article,
+#home #projects .project-content {
+  padding: var(--card-padding);
+}
+
+#home .projects,
+#home .education,
+#home .article-card-grid {
+  gap: var(--space-4);
+}
+
+/* Projects retain their existing equal-height layout */
+#home #projects .project-bottom li {
+  gap: var(--space-1);
+}
+
+#home #projects .project-note {
+  padding-left: var(--space-2);
+}
+
+#home #projects .project-actions {
+  gap: var(--space-1) var(--space-3);
+}
+
+/* The section itself supplies the trailing whitespace */
+#home #experience article:last-child {
+  margin-bottom: 0;
+}
+
+/* Education */
+#home .education h3 {
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+#home .education .school > h3:first-child {
+  margin-top: 0;
+}
+
+#home .education .school > h3:not(:first-child) {
+  margin-top: var(--space-4);
+}
+
+#home .education p {
+  margin: var(--space-1) 0 0;
+}
+
+/* Article previews, including future articles */
+#home .article-preview h3 {
+  margin: var(--space-2) 0;
+}
+
+#home .article-preview p {
+  margin: 0 0 var(--space-3);
+}
+
+/* Contact introduction stays outside a card */
+#home .contact-inner > .eyebrow {
+  margin: 0 0 var(--space-3);
+}
+
+#home .contact-inner > p {
+  margin: 0;
+}
+
+#home .contact-grid {
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  align-items: start;
+}
+
+#home .contact-grid > div {
+  padding: 0;
+}
+
+#home .contact-grid h3 {
+  margin: 0 0 var(--space-2);
+}
+
+#home .contact-grid > div > p {
+  margin: 0 0 var(--space-3);
+}
+
+#home .contact-detail {
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+}
+
+#home .form-row {
+  gap: var(--space-2);
+}
+
+#home .form-field {
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+#home .form-note,
+#home .form-status {
+  margin: var(--space-2) 0 0;
+}
+
+footer.wrap {
+  gap: var(--space-2);
+  padding-block: var(--space-3);
+}
+
+/* Compact mobile navigation */
+@media (max-width: 1150px) {
+  .mobile-menu-panel {
+    width: min(272px, calc(100vw - 64px));
+    padding: 80px var(--space-2) var(--space-2);
+  }
+
+  .mobile-menu-panel .mobile-menu-close {
+    top: var(--space-2);
+    right: var(--space-2);
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .mobile-menu-panel nav.mobile-menu-links {
+    gap: var(--space-1);
+  }
+
+  .mobile-menu-panel nav.mobile-menu-links a {
+    min-height: 48px;
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
+/* Give text-heavy cards enough width on tablets */
+@media (max-width: 900px) {
+  #home .hero-aside.hero-photo-card {
+    grid-column: 1;
+    grid-row: auto;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  #home #projects .projects,
+  #home .education,
+  #home .article-card-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile spacing */
+@media (max-width: 699px) {
+  :root {
+    --page-gutter: var(--space-2);
+    --card-padding: var(--space-3);
+    --section-padding: var(--space-4);
+  }
+
+  .portfolio-header .nav {
+    min-height: 72px;
+    padding: var(--space-1) var(--space-2);
+    gap: var(--space-2);
+  }
+
+  #home,
+  #home section[id] {
+    scroll-margin-top: 104px;
+  }
+}
+
+/* Navbar hover feedback without changing link spacing */
+.portfolio-header .desktop-nav a {
+  position: relative;
+  isolation: isolate;
+  text-decoration: none;
+}
+
+.portfolio-header .desktop-nav a::before {
+  content: "";
+  position: absolute;
+  inset: 4px -8px;
+  z-index: -1;
+  border-radius: 999px;
+  background: color-mix(
+    in srgb,
+    var(--forest) 12%,
+    var(--paper)
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+@media (hover: hover) {
+  .portfolio-header .desktop-nav a:hover::before {
+    opacity: 1;
+  }
+}
+
+.portfolio-header .desktop-nav a:focus-visible::before {
+  opacity: 1;
+}
+
+.portfolio-header .desktop-nav a:hover,
+.portfolio-header .desktop-nav a:focus-visible {
+  color: var(--forest);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-header .desktop-nav a::before {
+    transition: none;
+  }
+}
