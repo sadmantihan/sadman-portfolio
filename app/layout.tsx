@@ -22,6 +22,10 @@ const bodyFont = Nunito({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sadman-sami-khan.vercel.app"),
 
+    alternates: {
+    canonical: "/",
+  },
+
   title: {
     default: "Md Sadman Sami Khan | Data Science and ML",
     template: "%s | Md Sadman Sami Khan",
@@ -33,20 +37,34 @@ export const metadata: Metadata = {
   authors: [{ name: "Md Sadman Sami Khan" }],
 
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Md Sadman Sami Khan",
-    title: "Md Sadman Sami Khan — Portfolio",
-    description: "Data science, ML Research, and professional experience.",
-  },
+  type: "website",
+  locale: "en_US",
+  siteName: "Md Sadman Sami Khan",
+  title: "Md Sadman Sami Khan — Portfolio",
+  description: "Data science, ML Research, and professional experience.",
+  url: "/",
+  images: [
+    {
+      url: "/opengraph-image.png",
+      width: 1200,
+      height: 630,
+      alt: "Md Sadman Sami Khan — Data Science and ML Portfolio",
+    },
+  ],
+},
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Md Sadman Sami Khan — Portfolio",
-    description:
-      "Explore my research, technical skills, experience, and articles.",
-  },
-
+twitter: {
+  card: "summary_large_image",
+  title: "Md Sadman Sami Khan — Portfolio",
+  description:
+    "Explore my research, technical skills, experience, and articles.",
+  images: [
+    {
+      url: "/twitter-image.png",
+      alt: "Md Sadman Sami Khan — Data Science and ML Portfolio",
+    },
+  ],
+},
   icons: {
     icon: "/favicon.svg?v=3",
     shortcut: "/favicon.svg?v=3",
