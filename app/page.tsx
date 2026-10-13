@@ -179,7 +179,7 @@ export default function Home() {
             aria-label="Sadman Sami Khan home"
           >
             <Image
-              src="/favicon.svg"
+              src="/favicon.svg?v=3"
               alt=""
               width={36}
               height={36}
