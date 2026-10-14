@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   },
 
   title: {
-    default: "Md Sadman Sami Khan | Data Science and ML",
+    default: "Md Sadman Sami Khan | Data Science and ML Enthusiast",
     template: "%s | Md Sadman Sami Khan",
   },
 
   description:
-    "Portfolio of Md Sadman Sami Khan, a CSE graduate interested in data science and ML with a particular FinTech focus. Explore his research and experience.",
+    "Portfolio of Md Sadman Sami Khan, a CSE graduate interested in data science and ML. Explore his research and experience.",
 
   authors: [{ name: "Md Sadman Sami Khan" }],
 
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
       url: "/opengraph-image.png",
       width: 1200,
       height: 630,
-      alt: "Md Sadman Sami Khan — Data Science and ML Portfolio",
+      alt: "Md Sadman Sami Khan — Portfolio",
     },
   ],
 },
@@ -63,7 +63,7 @@ twitter: {
   images: [
     {
       url: "/twitter-image.png",
-      alt: "Md Sadman Sami Khan — Data Science and ML Portfolio",
+      alt: "Md Sadman Sami Khan — Portfolio",
     },
   ],
 },

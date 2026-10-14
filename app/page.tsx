@@ -19,6 +19,7 @@ import { PortfolioMotion } from "@/components/portfolio-motion";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
+import { CvPreview } from "@/components/cv-preview";
 import { ArticleCards } from "@/components/article-cards";
 import { AnimatedName } from "@/components/animated-name";
 import { Certifications } from "@/components/certifications";
@@ -241,14 +242,7 @@ export default function Home() {
                     <ArrowUpRight size={18} aria-hidden="true" />
                   </a>
 
-                  <a
-                    className="button outline"
-                    href="/Sadman_Sami_Khan_CV.pdf"
-                    download
-                  >
-                    Download CV
-                    <Download size={17} aria-hidden="true" />
-                  </a>
+                  <CvPreview />
                 </div>
               </div>
 
@@ -523,18 +517,44 @@ export default function Home() {
 
                 <p>University of Chittagong</p>
                 <span className="pill">CGPA 3.61 / 4.00</span>
+                <div className="education-coursework">
+                  <h4 id="coursework-heading">Relevant Coursework</h4>
+
+                  <ul
+                    className="coursework-tags"
+                    aria-labelledby="coursework-heading"
+                  >
+                    {[
+                      "Data Structures",
+                      "Probability and Statistical Analysis",
+                      "Numerical Methods",
+                      "Database Systems",
+                      "Design and Analysis of Algorithms",
+                      "Software Engineering and Design Pattern",
+                      "Data Integration and Analytics",
+                      "Artificial Intelligence",
+                      "Data Engineering",
+                    ].map((course) => (
+                      <li key={course}>{course}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              <div className="school">
-                <h3>Higher Secondary Certificate</h3>
-                <p>Chandpur Government College, Chandpur (2020)</p>
-                <p>GPA 5.00 / 5.00</p>
-                <p>Board-merit scholarship awardee</p>
+              <div className="school-stack">
+                <article className="school-card">
+                  <h3>Higher Secondary Certificate</h3>
+                  <p>Chandpur Government College, Chandpur (2020)</p>
+                  <span className="pill">GPA 5.00 / 5.00</span>
+                  <p>Board-merit scholarship awardee</p>
+                </article>
 
-                <h3>Secondary School Certificate</h3>
-                <p>Hasan Ali Government High School, Chandpur (2018)</p>
-                <p>GPA 5.00 / 5.00</p>
-                <p>Board-merit scholarship awardee</p>
+                <article className="school-card">
+                  <h3>Secondary School Certificate</h3>
+                  <p>Hasan Ali Government High School, Chandpur (2018)</p>
+                  <span className="pill">GPA 5.00 / 5.00</span>
+                  <p>Board-merit scholarship awardee</p>
+                </article>
               </div>
             </div>
             <Certifications />

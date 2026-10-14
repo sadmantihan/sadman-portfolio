@@ -469,3 +469,122 @@ footer.wrap {
 #home #about .about-copy > p:last-child {
   margin-bottom: 0;
 }
+
+/* Coursework beneath the university CGPA */
+#home #education .education-coursework {
+  min-width: 0;
+  margin-top: 24px;
+}
+
+#home #education .education-coursework > h4 {
+  margin: 0 0 16px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+#home #education .coursework-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#home #education .coursework-tags > li {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 16px;
+
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink);
+
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Let the SSC/HSC card fit its content */
+#home #education .education > .school {
+  align-self: start;
+  height: auto;
+  min-height: 0;
+}
+
+/* Consistent spacing within each qualification */
+#home #education .school > h3 {
+  margin: 0 0 16px;
+}
+
+#home #education .school > p {
+  margin: 0 0 8px;
+}
+
+/* Align the undergraduate card and school-card stack */
+#home #education .education {
+  align-items: stretch;
+}
+
+/* Layout wrapper only — remove inherited outer card styling */
+#home #education .education > .school-stack {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px;
+  align-self: stretch;
+
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Separate HSC and SSC cards */
+#home #education .school-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  min-width: 0;
+  padding: var(--card-padding, 32px);
+
+  background: var(--surface);
+  border: 2px solid var(--clay-outline);
+  border-radius: var(--clay-radius);
+  box-shadow: var(--clay-shadow), var(--clay-inset);
+}
+
+#home #education .school-card > h3,
+#home #education .school-card > p,
+#home #education .school-card > .pill {
+  margin: 0;
+}
+
+#home #education .school-card > .pill {
+  flex-shrink: 0;
+}
+
+/* Let each school card fit its content on mobile */
+@media (max-width: 900px) {
+  #home #education .education > .school-stack {
+    grid-template-rows: auto auto;
+  }
+}
