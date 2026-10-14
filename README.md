@@ -1,39 +1,56 @@
 # Md Sadman Sami Khan — Personal Portfolio
 
-My personal portfolio as an aspiring Data Scientist and ML Engineer with an interest in FinTech. It brings together my research, software projects, professional experience, voluntary activities, and qualifications.
+My personal portfolio showcasing research, software projects, professional experience, voluntary activities, and qualifications.
 
-I am a Computer Science and Engineering graduate from the University of Chittagong and a former Data Annotator at the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
+I’m a Computer Science and Engineering graduate from the University of Chittagong, interested in data science, machine learning, and their applications in FinTech. Previously, I worked as a Data Annotator on the World Bank-funded BDAI-HEAT Sub-project (HEAT-13211-CU).
 
 **Live website:** [sadman-sami-khan.vercel.app](https://sadman-sami-khan.vercel.app/)
 
 ## Design
 
-The portfolio uses a light-only, violet-accented claymorphism design:
+The portfolio uses a light-only claymorphism design with forest accents and a cream background.
 
-- Rounded cards, defined outlines, offset shadows, and soft inner highlights.
+- Rounded cards with defined outlines, offset shadows, and inner highlights.
 - Fredoka display typography and Nunito body typography, loaded through `next/font`.
-- A persistent, pill-shaped navigation bar and compact mobile sidebar.
-- Responsive project grids and grouped technology chips.
-- A professional portrait and custom SVG branding.
-- Brand-colored technology logos.
-- An availability badge with a continuously pulsing green dot.
-- Responsive layouts for mobile, tablet, and desktop.
+- Consistent spacing based primarily on an 8px scale.
+- Persistent navigation with a compact mobile sidebar.
+- Responsive project grids, education cards, and technology chips.
+- Professional portrait, custom SVG branding, and organization logos.
+- Original brand colors for technology logos.
+- Visible keyboard focus states and reduced-motion support.
+
+### Responsive Hero
+
+The hero introduces me with:
+
+- “HELLO, THIS IS”
+- My animated name.
+- An availability badge with a pulsing green dot.
+- “CSE Graduate | Data Science & ML Enthusiast”
+- A short professional introduction.
+- Explore My Work and Download CV actions.
+
+On mobile, the portrait block appears directly below the availability badge, followed by the designation, introduction, and action buttons. The desktop retains its side-by-side layout.
 
 ## Features
 
-- Letter-by-letter name introduction using Motion.
-- One-time entrance animations for selected content as it enters the viewport.
-- Reduced-motion support and visible keyboard focus styles.
+- Animated name introduction and scroll entrance effects.
+- Hover and pressed interactions for selected interactive elements.
 - Recent News with exact dates, including the weekday.
-- Project cards with cover images or placeholder icons, technology tags, and GitHub links.
-- Linked thesis supervisor attribution, research results, and a downloadable thesis.
-- Work experience and leadership and voluntary activities with organization logos.
-- Expandable voluntary certificate links.
-- Education, Board-merit scholarship recognition, certifications, and training.
-- Article previews and individual article pages, with an empty state when no articles are published.
-- Downloadable CV.
-- Contact form with validation, submission feedback, and Formspree integration.
-- Social links, including LinkedIn, GitHub, WhatsApp, and Facebook in their respective sections.
+- Project cards with cover images or fallback icons, technology tags, and GitHub links.
+- Thesis supervisor attribution, research results, and a thesis PDF link.
+- Work experience and leadership and voluntary activities.
+- Organization logos and expandable voluntary certificate links.
+- Grouped toolkit with technology logos.
+- Separate undergraduate, HSC, and SSC education cards.
+- Education year badges, GPA/CGPA badges, and relevant coursework tags.
+- Board-merit scholarship recognition for HSC and SSC.
+- Certifications and training with certificate PDF links.
+- Article previews with an empty state when no articles are published.
+- An in-page CV preview dialog with download and close controls.
+- Contact form with validation, sending feedback, and Formspree integration.
+- Social and contact links.
+- A centered copyright footer.
 
 ## Sections
 
@@ -43,48 +60,39 @@ Hero → Recent News → About → Projects & Thesis → Experience → Articles
 
 | Technology | Purpose |
 | --- | --- |
-| Next.js 16 App Router | Application framework, routing, and production builds |
-| React 19 | User interface components |
+| Next.js App Router | Routing, page rendering, metadata, and production builds |
+| React | User interface components |
 | TypeScript | Type checking |
-| Tailwind CSS 4 | Utility styling |
-| Global CSS and CSS Modules | Shared design styles and component-specific styling |
-| Motion | Name animation and component entrance animations |
-| IntersectionObserver | Detecting when content enters the viewport |
+| Tailwind CSS | Utility styling |
+| Global CSS and CSS Modules | Theme, layout, and component styles |
+| Motion | Name and component animations |
+| IntersectionObserver | Viewport-based animation triggers |
 | Lucide React | Interface and decorative icons |
 | React Icons | Technology and social brand icons |
 | Radix UI | UI primitives |
-| `next/font` | Optimized font loading |
+| `next/font` | Font loading and optimization |
 | `next/image` | Image rendering and optimization |
 | Formspree | Contact form submission handling |
 | pnpm | Dependency management |
 | Vercel | Hosting and deployment |
 | Git and GitHub | Version control and source hosting |
 
-Dependency requirements are recorded in `package.json`; resolved dependency versions are recorded in `pnpm-lock.yaml`. The `packageManager` field in `package.json` identifies the project's pnpm version.
+See `package.json` for dependencies and scripts, and `pnpm-lock.yaml` for resolved dependency versions. The `packageManager` field specifies the project's pnpm version.
 
 ## Selected Projects
 
 | Project | Description |
 | --- | --- |
-| [BuildMaster](https://github.com/sadmantihan/buildmaster) | A PHP and MySQL application with role-based dashboards for workforce and project management. |
 | [AdaPruner-KGQA](https://github.com/sadmantihan/AdaPruner-KGQA) | Undergraduate research on adaptive, uncertainty-aware search-space pruning for multi-hop knowledge graph reasoning. |
+| [BuildMaster](https://github.com/sadmantihan/buildmaster) | A PHP and MySQL application with role-based dashboards for workforce and project management. |
 
 ## Run Locally
 
 ### Prerequisites
 
-- Node.js 22.13.0 or newer within the Node.js 22 release line.
+- Node.js compatible with the `engines` requirement in `package.json`.
 - Git.
-- pnpm 10, using the exact version specified in `package.json` where possible.
-
-If pnpm is not installed:
-
-```powershell
-npm install --global pnpm@10
-pnpm --version
-```
-
-Using npm to install pnpm globally does not change this project's package manager.
+- The pnpm version specified in `package.json`.
 
 ### Installation
 
@@ -97,22 +105,22 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-`--frozen-lockfile` installs from the committed lockfile without updating it. If the lockfile and `package.json` disagree, the command fails so the inconsistency can be resolved.
+`--frozen-lockfile` installs dependencies without modifying the lockfile. If `package.json` and the lockfile disagree, resolve the mismatch before continuing.
 
-### Available Commands
+### Commands
 
 | Command | Purpose |
 | --- | --- |
 | `pnpm dev` | Start the development server |
 | `pnpm run typecheck` | Check TypeScript types |
 | `pnpm build` | Create a production build |
-| `pnpm start` | Serve the existing production build |
+| `pnpm start` | Serve the production build |
 | `pnpm audit` | Check dependencies for known vulnerabilities |
-| `pnpm add package-name` | Add a production dependency |
+| `pnpm add package-name` | Add a dependency |
 | `pnpm add -D package-name` | Add a development dependency |
 | `pnpm remove package-name` | Remove a dependency |
 
-To verify and preview a production build:
+To check and preview a production build:
 
 ```powershell
 pnpm run typecheck
@@ -120,143 +128,182 @@ pnpm build
 pnpm start
 ```
 
-Run commands one at a time and resolve any errors before continuing.
+Run commands one at a time and resolve errors before continuing.
 
-Use `pnpm dev` while editing. `pnpm start` serves the last production build and requires another build to reflect subsequent changes.
+Use `pnpm dev` while editing. `pnpm start` serves the most recent production build; changes require rebuilding.
 
 ## Files and Maintenance
 
-Paths below are relative to the repository root.
+Paths are relative to the repository root.
 
 | File or directory | Purpose |
 | --- | --- |
-| `app/page.tsx` | Homepage content, hero, project data, desktop navigation, education, and section composition |
-| `app/layout.tsx` | Root layout, metadata, font loading, and stylesheet imports |
-| `app/globals.css` | Base styles and shared layout rules |
-| `app/clay.css` | Clay design, typography, responsive overrides, and availability-dot animation |
-| `components/portfolio-motion.tsx` | Component entrance animations and scroll observation |
-| `components/animated-name.tsx` | Letter-by-letter hero name animation |
-| `components/mobile-nav.tsx` | Mobile sidebar navigation |
+| `app/page.tsx` | Homepage content, hero, project data, education, and section composition |
+| `app/layout.tsx` | Root layout, fonts, metadata, and stylesheet imports |
+| `app/globals.css` | Base styles and shared rules |
+| `app/clay.css` | Clay styling and component treatments |
+| `app/forest.css` | Forest-and-cream theme overrides |
+| `app/spacing.css` | Spacing, alignment, and responsive layout adjustments |
+| `app/robots.ts` | Crawler instructions |
+| `app/sitemap.ts` | Sitemap generation |
+| `components/portfolio-motion.tsx` | Portfolio animation behavior |
+| `components/animated-name.tsx` | Hero name animation |
+| `components/mobile-nav.tsx` | Mobile navigation |
+| `components/cv-preview.tsx` | CV preview dialog and download control |
+| `components/cv-preview.module.css` | CV dialog styling |
 | `app/news/news-list.ts` | News entries and dates |
 | `components/recent-news.tsx` | News rendering and date formatting |
 | `components/recent-news.module.css` | News styles |
 | `components/experience.tsx` | Work experience and voluntary roles |
 | `components/experience.module.css` | Experience layout and organization logos |
 | `components/voluntary-certificates.tsx` | Expandable voluntary certificate links |
-| `components/toolkit.tsx` | Technology groups and brand icons |
-| `components/toolkit.module.css` | Toolkit styles |
-| `components/project-tags.tsx` | Project technology tags and icons |
-| `components/certifications.tsx` | Certifications, training, and certificate links |
-| `components/certifications.module.css` | Certification styles |
-| `components/contact-form.tsx` | Contact fields, validation, submission, and feedback |
+| `components/toolkit.tsx` | Technology groups and icons |
+| `components/toolkit.module.css` | Toolkit styling |
+| `components/project-tags.tsx` | Project technology tags |
+| `components/certifications.tsx` | Certifications, training, and PDF links |
+| `components/certifications.module.css` | Certification layout |
+| `components/contact-form.tsx` | Contact validation, submission, and feedback |
 | `app/articles/article-list.ts` | Published article metadata |
 | `components/article-cards.tsx` | Article previews and empty state |
-| `app/articles/<slug>/page.tsx` | Individual article content |
-| `public/images/sadman-profile.jpg` | Hero portrait |
-| `public/favicon.svg` | Custom favicon and shared logo asset |
+| `app/articles/` | Article pages and shared article styling |
+| `public/images/` | Portrait and other image assets |
+| `public/favicon.svg` | Custom favicon |
 | `public/logos/` | Organization logos |
 | `public/projects/` | Project cover images |
-| `public/Sadman_Sami_Khan_CV.pdf` | Downloadable CV |
-| `public/thesis/AdaPrunerKGQA-thesis.pdf` | Downloadable thesis |
+| `public/Sadman_Sami_Khan_CV.pdf` | CV document |
+| `public/thesis/AdaPrunerKGQA-thesis.pdf` | Thesis document |
 | `public/certificates/` | Certificate PDFs |
 | `package.json` | Dependencies, scripts, and package-manager version |
 | `pnpm-lock.yaml` | Resolved dependency versions |
 
-## Update Content
+Stylesheets are imported in this order:
+
+```tsx
+import "./globals.css";
+import "./clay.css";
+import "./forest.css";
+import "./spacing.css";
+```
+
+Later styles can override earlier rules. When changing an existing layout, update its relevant rules and remove obsolete overrides to avoid conflicting styles.
+
+## Updating Content
+
+### Hero and About
+
+Edit `app/page.tsx`.
+
+Keep the name, designation, availability badge, introduction, and action controls in their existing elements so their responsive styles continue to apply.
 
 ### Recent News
 
-Edit `app/news/news-list.ts` and add an entry using the existing structure:
+Edit `app/news/news-list.ts` using the existing entry structure.
 
-```ts
-{
-  id: "portfolio-design-update",
-  date: "2026-10-11",
-  text: "Updated my portfolio design and added motion effects.",
-  href: "#projects",
-  linkLabel: "View projects",
-},
-```
-
-Use a unique ID and a date in `YYYY-MM-DD` format. Only publish entries describing actual updates.
-
-The news component handles date display and newest-first ordering.
+Use unique IDs and dates in `YYYY-MM-DD` format. The news component handles the displayed date format.
 
 ### Projects
 
 Edit the `projects` array in `app/page.tsx`.
 
-Project entries contain the title, category, description, technologies, repository URL, and optional cover image. The thesis entry also includes supervisor details, research results, and a PDF link.
+Keep repository links, technology tags, supervisor details, and downloadable document paths accurate.
 
-Place cover images inside `public/projects/` and reference them as:
+Place project cover images in `public/projects/` and reference them without the `public` prefix:
 
 ```ts
 image: "/projects/adapruner-kgqa.webp",
 ```
 
-The cover frame uses a 37:16 aspect ratio. An image measuring 1110 × 480 pixels matches that ratio. Images crop to fill the frame; an empty image value uses the project's placeholder icon.
+Keep cover images consistent with the aspect ratio defined by the project-cover styles.
+
+### Education
+
+Edit the education section in `app/page.tsx`.
+
+The section includes:
+
+- Undergraduate degree with the year `2026`, CGPA, and relevant coursework.
+- HSC with the year `2020`, GPA, and scholarship recognition.
+- SSC with the year `2018`, GPA, and scholarship recognition.
+
+Coursework is displayed as wrapping tags. Keep course names readable on small screens.
 
 ### Articles
 
-1. Create `app/articles/<your-slug>/page.tsx`.
-2. Add the article content and export its page component.
+1. Create the article page under `app/articles/<your-slug>/page.tsx`.
+2. Add its content and export the page component.
 3. Add matching metadata to `app/articles/article-list.ts`.
-4. Check the article route and homepage preview locally.
+4. Add page-specific SEO metadata and a canonical URL.
+5. Check the article page, homepage preview, and sitemap.
 
-Keep the article array explicitly typed when it is empty. The homepage displays “No articles for now.” when there are no published entries.
+Keep the article array explicitly typed when empty. The homepage displays “No articles for now.” when no entries are published.
 
 ### CV, Thesis, and Certificates
 
-Store downloadable files inside `public/`.
-
-Public URLs omit the `public` directory:
+Store documents inside `public/`. Public URLs omit the directory name:
 
 ```text
 File: public/certificates/python-basics.pdf
 URL:  /certificates/python-basics.pdf
 ```
 
-Update course certificate links in `components/certifications.tsx` and voluntary certificate links in `components/voluntary-certificates.tsx`.
+The hero's Download CV action opens an in-page preview. Visitors can download the PDF using the control inside the dialog.
 
-Match filenames and capitalization exactly. If a file is renamed, update every corresponding link.
+PDF preview support depends on the browser. The download link remains available if the embedded preview cannot be displayed.
+
+Update certificate links in:
+
+- `components/certifications.tsx`
+- `components/voluntary-certificates.tsx`
+
+Match filenames and capitalization exactly. When renaming an asset, update all references to it.
 
 ## Animation and Accessibility
 
-The entrance and name animations use the lightweight `motion/mini` API.
+- Motion powers the animated name and selected component effects.
+- Viewport observation triggers entrance animations.
+- The availability dot uses a repeating CSS pulse.
+- Reduced-motion preferences should be respected by animated components.
+- Interactive controls include visible keyboard focus states.
+- The CV preview uses a native dialog with a labeled close control.
+- Navigation links must match their destination section IDs.
 
-- `PortfolioMotion` observes selected content and animates it once.
-- `AnimatedName` reveals the hero name letter by letter.
-- The full name remains available to screen readers.
-- The name animation reserves the text's layout space.
-- The availability dot uses a repeating CSS pulse animation.
-- Reduced-motion preferences disable the entrance, name, and dot animations.
-- Hover and pressed states complement the entrance animations.
+Mount `PortfolioMotion` once on the homepage. Avoid applying multiple entrance-animation systems to the same elements.
 
-Mount `PortfolioMotion` once in the homepage. Avoid mounting the older `ScrollReveal` component alongside it for the same elements.
-
-Keep navigation links synchronized with section IDs. For example, Recent News targets `#news`, and Projects targets `#projects`.
-
-When adjusting the persistent navbar, retain enough scroll offset so section headings remain visible after navigating to them.
+When adjusting the persistent navbar, preserve enough anchor offset to keep section headings visible.
 
 ## Contact Form
 
-The contact form submits the visitor's name, email, subject, and message to Formspree without opening an email application.
+The form submits the visitor's name, email, subject, and message to Formspree without opening an email application.
 
 It includes:
 
-- Name and email validation.
-- Required fields and length limits.
-- A sending state to prevent repeated submissions.
-- Success and error feedback.
+- Required fields and input validation.
+- Length limits.
+- A sending state that prevents repeated submissions.
+- Success and error messages.
 - A direct email link as a fallback.
 
-Email validation checks formatting; it does not verify that an inbox exists.
+Email validation checks formatting, not whether an inbox exists.
 
-The Formspree endpoint is configured through `FORM_ENDPOINT` in `components/contact-form.tsx`. Notification recipients are configured in the Formspree dashboard.
+The Formspree endpoint is configured in `components/contact-form.tsx`. Notification recipients are managed through the Formspree dashboard.
 
-A successful submission means Formspree accepted the request. It does not independently confirm delivery to the recipient's inbox.
+A successful request confirms that Formspree accepted the submission; it does not independently confirm inbox delivery.
 
-To reuse this project, create your own Formspree form and replace the endpoint. No Gmail password or SMTP credentials are required by the current implementation.
+To reuse the project, replace the endpoint with your own Formspree form. Do not add Gmail passwords or private SMTP credentials to frontend code.
+
+## SEO and Sharing
+
+SEO configuration includes page metadata, crawler instructions, and sitemap generation.
+
+When changing the production domain or adding pages, review:
+
+- `metadataBase` and page metadata.
+- Canonical URLs.
+- Open Graph and Twitter preview metadata and images.
+- The sitemap URL in `app/robots.ts`.
+- URLs generated by `app/sitemap.ts`.
+
+Only include published article pages in the sitemap. Check that social preview images are publicly accessible after deployment.
 
 ## Deployment
 
@@ -264,30 +311,17 @@ The portfolio is hosted on Vercel.
 
 ### GitHub Deployment
 
-1. Import the GitHub repository into Vercel.
-2. Select the directory containing `package.json` as the project root.
-3. Keep the framework preset set to Next.js.
-4. Leave the build, install, output-directory, and development-command overrides disabled.
-5. Keep `pnpm-lock.yaml` committed so Vercel can detect pnpm.
-6. Enable Corepack as described below to use the version recorded in `package.json`.
-
-Add this environment variable to both Production and Preview:
-
-```text
-ENABLE_EXPERIMENTAL_COREPACK=1
-```
-
-Environment-variable changes apply to new deployments.
-
-With Git integration configured and `main` selected as the production branch, pushing a commit triggers a production deployment:
+With the repository connected to Vercel and `main` configured as the production branch:
 
 ```powershell
 git push origin main
 ```
 
-Check the deployment's build logs and wait for Ready before reviewing the live website.
+Keep `pnpm-lock.yaml` committed and use the pnpm version specified in `package.json`.
 
-### Optional Manual Deployment
+Review the deployment logs and wait for the deployment to become Ready before checking the live site.
+
+### Manual Deployment
 
 From the repository root:
 
@@ -301,29 +335,24 @@ If authentication is required:
 pnpm dlx vercel@latest login
 ```
 
-When prompted, link to the existing `sadman-sami-khan` project.
+Link to the existing `sadman-sami-khan` project when prompted.
 
-Manual CLI deployment uploads local project files, including applicable uncommitted changes. Commit intended changes first to keep the deployed version aligned with Git history.
+Commit intended changes before deploying so the deployed version can be traced through Git history. A separate manual deployment is unnecessary when Git integration has already deployed the same commit.
 
-A separate manual deployment is unnecessary when a GitHub push has already deployed the same update.
+## Version Control
 
-## Version Control and Dependency Maintenance
-
-Before committing:
+Before committing functional changes:
 
 ```powershell
 git status
 git diff
 pnpm run typecheck
 pnpm build
-pnpm audit
 ```
 
-Run checks separately and review any failures.
+Stage only the intended files.
 
-Stage only intended files. When dependencies change, commit both `package.json` and `pnpm-lock.yaml`. If pnpm creates or updates project configuration in `pnpm-workspace.yaml`, review and commit that file too.
-
-Use pnpm consistently for this repository. Do not recreate `package-lock.json` by running `npm install` in the project.
+When changing dependencies, commit both `package.json` and `pnpm-lock.yaml`. Use pnpm consistently rather than generating another `package-lock.json`.
 
 Do not commit:
 
@@ -332,13 +361,13 @@ Do not commit:
 - `.vercel/`
 - Private environment files or credentials
 
-Review dependency updates and audit findings before applying fixes. If pnpm reports blocked dependency build scripts, review the named packages before granting permission to run them.
+Run `pnpm audit` when reviewing dependency security. Investigate findings before applying updates.
 
 For a README-only update:
 
 ```powershell
 git add README.md
-git commit -m "docs: update pnpm setup and deployment guide"
+git commit -m "docs: update portfolio features and maintenance guide"
 git push origin main
 ```
 
