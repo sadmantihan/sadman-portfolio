@@ -7,19 +7,19 @@ const groups = [
     courses: [
       {
         title: "Data Science and Machine Learning with Python and R",
-        organization: "Data Solution 360 · 6-month program · Batch 2504",
+        organization: "Data Solution 360 (Batch 2504)",
         date: "Mar 2026",
         pdf: "/certificates/data-science-machine-learning.pdf",
       },
       {
         title: "Python Basics",
-        organization: "University of Michigan · Coursera",
+        organization: "University of Michigan (Coursera)",
         date: "Sep 2025",
         pdf: "/certificates/python-basics.pdf",
       },
       {
         title: "Data Science Math Skills",
-        organization: "Duke University · Coursera",
+        organization: "Duke University (Coursera)",
         date: "Mar 2025",
         pdf: "/certificates/data-science-math-skills.pdf",
       },

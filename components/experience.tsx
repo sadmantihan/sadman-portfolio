@@ -9,14 +9,14 @@ const voluntaryRoles = [
     date: "Jun 2025 – Apr 2026",
     points: [
       "Rebuilt and relaunched the society’s previously non-functional website, restoring its primary digital presence.",
-      "Named Best Performer for the 2025/2026 committee session and separately recognized for outstanding performance and dedication as Assistant Website Management Secretary in 2025.",
+      "Named Best Performer for the 2025/2026 committee session for outstanding performance and dedication as Assistant Website Management Secretary (2025).",
     ],
   },
   {
     title: "General Member",
     date: "Feb 2024 – Jun 2025",
     points: [
-      "Certified Organizer, IT Fiesta 2024: managed the programming contest’s technical setup across 3 labs for 50 teams of 3, resolving technical issues during an event with 500 school, college, and university participants.",
+      "Certified Organizer of IT Fiesta 2024, managed the programming contest’s technical setup across 3 labs for 50 teams of 3, resolving technical issues during an event with 500 school, college, and university participants.",
       "Volunteered at Chittagong University Science Carnival 4.0 in February 2025, an event with approximately 1,000 participants, and was recognized as one of its best volunteers.",
     ],
   },
