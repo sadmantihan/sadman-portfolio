@@ -3,15 +3,15 @@ import styles from "./experience.module.css";
 
 const certificates = [
   {
-    title: "Assistant Website Management Secretary — Appreciation",
+    title: "Assistant Website Management Secretary (Appreciation)",
     href: "/certificates/cuss-website-secretary-cert.pdf",
   },
   {
-    title: "Chittagong Science Carnival 4.0 — Organizer",
+    title: "Chittagong Science Carnival 4.0 (Organizer)",
     href: "/certificates/Chitagong-science-carnival-4.0.pdf",
   },
   {
-    title: "IT Fiesta 2024 — Organizer",
+    title: "IT Fiesta 2024 (Organizer)",
     href: "/certificates/itfest-org-2024.pdf",
   },
 ];
