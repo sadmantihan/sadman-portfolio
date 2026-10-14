@@ -107,8 +107,48 @@
 @media (max-width: 699px) {
   .row {
     grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
+    grid-template-areas:
+      "title"
+      "organization"
+      "date"
+      "button";
+    align-items: start;
+    align-content: start;
+    gap: 8px;
     padding: 24px;
     border-radius: 24px;
+  }
+
+  /* Allow the text and button to share the card's grid */
+  .details {
+    display: contents;
+  }
+
+  .title {
+    grid-area: title;
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .organization {
+    grid-area: organization;
+    min-width: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .date {
+    grid-area: date;
+    justify-self: start;
+    margin: 0;
+  }
+
+  .button {
+    grid-area: button;
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    margin: 8px 0 0;
   }
 }

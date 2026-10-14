@@ -8,7 +8,7 @@ import "./spacing.css";
 
 const displayFont = Fredoka({
   subsets: ["latin"],
-  weight: "700",
+  weight: ["600", "700"],
   display: "swap",
   variable: "--font-display",
 });

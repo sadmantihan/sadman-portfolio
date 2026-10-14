@@ -588,3 +588,173 @@ footer.wrap {
     grid-template-rows: auto auto;
   }
 }
+
+#home .hero-career-line {
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  -webkit-text-stroke: 0;
+}
+
+#home #education .education-degree-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+#home #education .education-degree-header > h3 {
+  min-width: 0;
+  margin: 0;
+}
+
+#home #education .education-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 10%, var(--surface));
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+@media (max-width: 699px) {
+  #home #education .school-card {
+    gap: 16px;
+  }
+
+  #home #education .school-card > .education-degree-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: first baseline;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #home #education .school-card .education-degree-header > h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  #home #education .school-card .education-year {
+    align-self: first baseline;
+    margin: 0;
+  }
+
+  #home #education .school-card > p,
+  #home #education .school-card > .pill {
+    margin: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  #home .hero-introduction > .hero-name {
+    font-size: clamp(1.75rem, 7.5vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 699px) {
+  /* Space between the navbar and the hero card */
+  #home .hero {
+    padding-top: 48px;
+  }
+
+  /* Compact availability badge */
+  #home .hero-availability {
+    display: inline-flex;
+    align-items: center;
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 0;
+    padding: 4px 8px;
+    gap: 8px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* Preserve the green dot and its existing animation */
+  #home .hero-availability > span {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+  }
+}
+
+@media (max-width: 699px) {
+  /* Remove the large gap below the navbar */
+  #home .hero {
+    padding-top: 24px;
+  }
+
+  #home .hero-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(5, auto);
+    row-gap: 0;
+  }
+
+  /* Remove the earlier viewport spacer, if still present */
+  #home .hero-shell::before {
+    content: none;
+  }
+
+  /* 1. Hello and name */
+  #home .hero-introduction {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 16px;
+  }
+
+  /* 2. Availability badge */
+  #home .hero-availability {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  /* Allow the portrait and intro to occupy separate grid rows */
+  #home .hero-bottom {
+    display: contents;
+  }
+
+  /* 3. Portrait, including its existing location and social links */
+  #home .hero-aside.hero-photo-card {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: start;
+    min-width: 0;
+    margin: 24px 0;
+  }
+
+  /* 4. CSE Graduate | Data Science & ML Enthusiast */
+  #home .hero-career-line {
+    grid-column: 1;
+    grid-row: 4;
+    margin: 0 0 16px;
+  }
+
+  /* 5. Introduction and action buttons */
+  #home .hero-bottom > div {
+    grid-column: 1;
+    grid-row: 5;
+    align-self: start;
+    min-width: 0;
+  }
+}

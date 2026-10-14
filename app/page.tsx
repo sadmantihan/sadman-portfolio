@@ -507,13 +507,11 @@ export default function Home() {
 
             <div className="education">
               <div>
-                <span className="eyebrow">FEB 2022 – OCT 2026</span>
+                <div className="education-degree-header">
+                  <h3>B.Sc. in Computer Science and Engineering</h3>
 
-                <h3>
-                  B.Sc. in Computer Science
-                  <br />
-                  and Engineering
-                </h3>
+                  <span className="education-year">2026</span>
+                </div>
 
                 <p>University of Chittagong</p>
                 <span className="pill">CGPA 3.61 / 4.00</span>
@@ -543,15 +541,23 @@ export default function Home() {
 
               <div className="school-stack">
                 <article className="school-card">
-                  <h3>Higher Secondary Certificate</h3>
-                  <p>Chandpur Government College, Chandpur (2020)</p>
+                  <div className="education-degree-header">
+                    <h3>Higher Secondary Certificate</h3>
+                    <span className="education-year">2020</span>
+                  </div>
+
+                  <p>Chandpur Government College, Chandpur, Bangladesh</p>
                   <span className="pill">GPA 5.00 / 5.00</span>
                   <p>Board-merit scholarship awardee</p>
                 </article>
 
                 <article className="school-card">
-                  <h3>Secondary School Certificate</h3>
-                  <p>Hasan Ali Government High School, Chandpur (2018)</p>
+                  <div className="education-degree-header">
+                    <h3>Secondary School Certificate</h3>
+                    <span className="education-year">2018</span>
+                  </div>
+
+                  <p>Hasan Ali Government High School, Chandpur, Bangladesh</p>
                   <span className="pill">GPA 5.00 / 5.00</span>
                   <p>Board-merit scholarship awardee</p>
                 </article>
