@@ -211,13 +211,6 @@ export default function Home() {
 
         <section className="hero wrap">
           <div className="hero-shell">
-            <p className="hero-role">Data Scientist &amp; ML Engineer</p>
-
-            <p className="hero-availability">
-              <span aria-hidden="true" />
-              Open to Data Science and ML roles
-            </p>
-
             <div className="hero-introduction">
               <div className="eyebrow">HELLO, THIS IS</div>
 
@@ -226,11 +219,20 @@ export default function Home() {
               </h1>
             </div>
 
+            <p className="hero-availability">
+              <span aria-hidden="true" />
+              Open to Data Science and ML roles
+            </p>
+
+            <p className="hero-career-line">
+              CSE Graduate | Data Science &amp; ML Enthusiast
+            </p>
             <div className="hero-bottom">
               <div>
                 <p className="intro">
-                  CSE Graduate and Ex-Data Annotator at BDAI-HEAT Sub-project
-                  (HEAT-13211-CU)
+                  Working at the intersection of data, machine learning, and AI
+                  research to build real-world applications that turn complex
+                  data into meaningful insights and practical solutions.
                 </p>
 
                 <div className="actions">
@@ -335,7 +337,7 @@ export default function Home() {
             <h2>My Background and Interests</h2>
 
             <div className="about-copy">
-              <p className="lead">
+              <p>
                 I’m a Computer Science and Engineering graduate from the{" "}
                 <a
                   href="https://cu.ac.bd/cse/"
@@ -345,24 +347,37 @@ export default function Home() {
                 >
                   University of Chittagong
                 </a>
-                , aspiring to roles in data science and ML engineering, with a
-                particular interest in FinTech.
+                , currently seeking my first full-time role in Data Science or
+                Machine Learning Engineering. My work focuses on turning messy,
+                real-world data into reliable and usable systems.
               </p>
 
-              <p className="lead">
-                As a former Data Annotator at the World Bank-funded BDAI-HEAT
-                Sub-project (HEAT-13211-CU), I guided students in collecting
-                socio-economics data, helping in designing the ER diagram, and
-                building clean dataset files into structured tables with the
-                data validation.
+              <p>
+                I gained practical experience as a Data Annotator on BDAI-HEAT,
+                a World Bank-funded research project, where I led the ER diagram
+                design and dataset cleanup for the socio-economics sector using
+                Python. Alongside this, I completed my undergraduate thesis,
+                AdaPruner-KGQA, which focuses on reducing the computational cost
+                of multi-hop reasoning over knowledge graphs. My research
+                interests include knowledge graphs, data science, and applied
+                machine learning.
               </p>
 
-              <p className="lead">
-                My research in multi-hop knowledge graph reasoning and my
-                full-stack development skills complement this hands-on
-                experience. I enjoy working from raw data through analysis and
-                evaluation to clear findings that support decisions, and I’m
-                keen to apply these skills to financial technology.
+              <p>
+                In terms of my technical skills, I have firsthand experience
+                with Python, SQL, Power BI, PyTorch, and scikit-learn for
+                analysis and modeling, along with Next.js and PHP for building
+                end-to-end solutions.
+              </p>
+
+              <p>
+                Beyond technical work, I have held leadership roles at the
+                Chittagong University Scientific Society, where I rebuilt the
+                club's website, led the technical side of IT Fiesta 2024, and
+                was named Best Performer for the 2025/2026 committee session.
+                Now, I am looking for entry-level opportunities in data science
+                and ML engineering, as well as research collaboration, and I
+                value work that creates meaningful and measurable impact.
               </p>
             </div>
           </div>
@@ -571,10 +586,10 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="wrap">
-        <span>© {new Date().getFullYear()} Md Sadman Sami Khan</span>
-
-        <a href="#home">Back to top</a>
+      <footer className="wrap portfolio-footer">
+        <span>
+          © {new Date().getFullYear()} Md Sadman Sami Khan. All rights reserved.
+        </span>
       </footer>
     </>
   );

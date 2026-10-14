@@ -309,3 +309,163 @@ footer.wrap {
     transition: none;
   }
 }
+
+/* Restore the previous hero typography and spacing */
+#home .hero-introduction {
+  gap: 8px;
+  margin: 0 0 24px;
+}
+
+#home .hero-introduction > .eyebrow {
+  margin: 0;
+  padding: 0;
+}
+
+#home .hero-introduction > .hero-name {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.5rem, 4.9vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+
+  color: var(--ink);
+  white-space: normal;
+  text-wrap: balance;
+}
+
+#home .hero-name .animated-name {
+  color: inherit;
+}
+
+#home .hero-availability {
+  margin: 0 0 24px;
+}
+
+#home .hero-career-line {
+  margin: 0 0 16px;
+  min-width: 0;
+
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+
+  color: var(--ink);
+}
+
+#home .hero .intro {
+  max-width: 60ch;
+  margin: 0;
+
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+@media (max-width: 699px) {
+  #home .hero-introduction > .hero-name {
+    font-size: clamp(2rem, 8.8vw, 3rem);
+  }
+}
+
+/* Let the name scale to its available width */
+#home .hero-introduction {
+  container-type: inline-size;
+}
+
+/* Name: one line, with responsive sizing */
+#home .hero-introduction > .hero-name {
+  font-size: min(3.25rem, 8cqi);
+  white-space: nowrap;
+  text-wrap: nowrap;
+}
+
+/* Designation: same font family and weight as the name */
+#home .hero-career-line {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+}
+
+/* Keep hero items at their natural height */
+#home .hero-shell {
+  align-items: start;
+  align-content: start;
+  row-gap: 0;
+}
+
+/* Greeting → name: 8px; name → badge: 16px */
+#home .hero-introduction {
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+/* Prevent the badge from stretching.
+   Keep its existing font, padding, border, and colors. */
+#home .hero-availability {
+  align-self: start;
+  justify-self: start;
+  width: fit-content;
+  height: fit-content;
+  min-height: 0;
+  margin: 0 0 16px;
+}
+
+/* Designation → introduction: 16px */
+#home .hero-career-line {
+  align-self: start;
+  margin: 0 0 16px;
+}
+
+#home .hero .intro {
+  margin: 0;
+}
+
+/* Keep extra portrait height out of the first three text rows */
+@media (min-width: 901px) {
+  #home .hero-shell {
+    grid-template-rows:
+      min-content
+      min-content
+      min-content
+      minmax(0, 1fr);
+  }
+}
+
+/* Balance the desktop portrait with the hero text */
+@media (min-width: 901px) {
+  #home .hero-aside.hero-photo-card {
+    padding: 24px;
+    gap: 16px;
+  }
+
+  #home .hero-photo-card .hero-portrait {
+    max-width: 240px;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+#home footer.portfolio-footer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Match the normal body typography used in news and experience */
+#home #about .about-copy > p {
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0 0 24px;
+}
+
+#home #about .about-copy > p:last-child {
+  margin-bottom: 0;
+}
