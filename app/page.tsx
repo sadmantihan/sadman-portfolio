@@ -224,7 +224,7 @@ export default function Home() {
 
             <p className="hero-availability">
               <span aria-hidden="true" />
-              Open to Data Science and ML roles
+              Open to new opportunities
             </p>
 
             <p className="hero-career-line">
