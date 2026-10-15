@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   ["news", "Recent News"],
-  ["home", "Home"],
   ["about", "About"],
   ["projects", "Projects & Thesis"],
   ["experience", "Experience"],
@@ -67,7 +66,7 @@ export function MobileNav({ active }: { active: string }) {
                 <Dialog.Close asChild key={id}>
                   <a
                     href={`#${id}`}
-                    aria-current={(active || "home") === id ? "location" : undefined}
+                    aria-current={active === id ? "location" : undefined}
                   >
                     {label}
                   </a>
