@@ -87,15 +87,106 @@
 }
 
 .viewer {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y pinch-zoom;
+  padding: 8px;
 }
 
-.frame {
-  display: block;
+/* Keep the controls visible while the document scrolls */
+.header,
+.note {
+  flex-shrink: 0;
+}
+
+.documentContainer {
   width: 100%;
-  height: 100%;
-  border: 0;
+  min-width: 0;
+}
+
+.pdfDocument {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.pdfPage {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.pdfPage canvas {
+  display: block;
+}
+
+.previewMessage {
+  margin: 0;
+  padding: 24px 16px;
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.viewer:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -4px;
+}
+
+/* Feedback for controls inside the dialog */
+.download,
+.close {
+  transition: transform 160ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .download:hover,
+  .close:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.download:active,
+.close:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 699px) {
+  :global(#home) .dialog {
+    width: calc(100% - 24px);
+    height: calc(100dvh - 32px);
+    max-height: calc(100dvh - 32px);
+    border-radius: 24px;
+    box-shadow: 4px 4px 0 var(--clay-outline);
+  }
+
+  :global(#home) .dialog .viewer {
+    padding: 8px;
+  }
+
+  :global(#home) .dialog .header {
+    padding: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .download,
+  .close {
+    transition: none;
+  }
+
+  .download:hover,
+  .close:hover,
+  .download:active,
+  .close:active {
+    transform: none;
+  }
 }
 
 .note {
@@ -150,5 +241,75 @@
     padding: 8px;
     font-size: 0.75rem;
     line-height: 1.4;
+  }
+}
+
+/* Keep the download label visible in every interaction state */
+:global(#home) .dialog .download,
+:global(#home) .dialog .download:visited,
+:global(#home) .dialog .download:hover,
+:global(#home) .dialog .download:focus-visible,
+:global(#home) .dialog .download:active {
+  background: var(--ink);
+  color: var(--surface);
+  text-decoration: none;
+}
+
+:global(#home) .dialog .download > svg {
+  color: inherit;
+  flex-shrink: 0;
+}
+
+/* Desktop and tablet header alignment */
+@media (min-width: 700px) {
+  :global(#home) .dialog .header {
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    margin: 0;
+    padding: 16px 24px;
+  }
+
+  :global(#home) .dialog .title {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0;
+  }
+
+  :global(#home) .dialog .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(#home) .dialog .download {
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 8px 16px;
+    gap: 8px;
+    font-size: 0.875rem;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  :global(#home) .dialog .close {
+    box-sizing: border-box;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    min-height: 48px;
+    margin: 0;
+    padding: 0;
   }
 }

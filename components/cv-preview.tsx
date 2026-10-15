@@ -1,10 +1,19 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { Download, X } from "lucide-react";
 import styles from "./cv-preview.module.css";
 
 const CV_URL = "/Sadman_Sami_Khan_CV.pdf";
+const CvDocument = dynamic(() => import("./cv-document"), {
+  ssr: false,
+  loading: () => (
+    <p className={styles.previewMessage} role="status">
+      Loading preview…
+    </p>
+  ),
+});
 
 export function CvPreview() {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -82,14 +91,13 @@ export function CvPreview() {
             </div>
           </header>
 
-          <div className={styles.viewer}>
-            {isOpen && (
-              <iframe
-                src={`${CV_URL}#view=FitH`}
-                title="Md Sadman Sami Khan — Curriculum Vitae"
-                className={styles.frame}
-              />
-            )}
+          <div
+            className={styles.viewer}
+            role="region"
+            aria-label="Scrollable CV preview"
+            tabIndex={0}
+          >
+            {isOpen && <CvDocument file={CV_URL} />}
           </div>
 
           <p className={styles.note}>

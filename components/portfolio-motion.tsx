@@ -12,7 +12,8 @@ const CARD_SELECTOR = [
   "#articles .article-preview",
   "#articles .articles-empty",
   "#skills .section-body > div > div",
-  "#education .education > div",
+  "#education .education > div:not(.school-stack)",
+  "#education .school-card",
   "#education .section-body ul > li",
   "#contact .contact-form",
 ].join(", ");
@@ -21,6 +22,8 @@ const BUTTON_SELECTOR = [
   "#home .button",
   "#home .socials a",
   "#home .project-link",
+  "#home .hero-socials a",
+  "#education a",
   "#education a[aria-label]",
   "#experience summary",
   ".portfolio-header .mobile-menu-button",
@@ -32,29 +35,21 @@ export function PortfolioMotion() {
 
     if (!root || !("animate" in HTMLElement.prototype)) return;
 
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const printing = window.matchMedia("print");
-    const finePointer = window.matchMedia(
-      "(hover: hover) and (pointer: fine)",
-    );
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
     const seen = new WeakSet<HTMLElement>();
 
-    const cards = Array.from(
-      root.querySelectorAll<HTMLElement>(CARD_SELECTOR),
-    );
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(CARD_SELECTOR));
 
     const buttons = Array.from(
       document.querySelectorAll<HTMLElement>(BUTTON_SELECTOR),
     );
 
-    const portrait =
-      root.querySelector<HTMLElement>(".hero-portrait");
+    const portrait = root.querySelector<HTMLElement>(".hero-portrait");
 
-    const contact =
-      root.querySelector<HTMLElement>(".contact-grid > div");
+    const contact = root.querySelector<HTMLElement>(".contact-grid > div");
 
     const targets = [
       ...cards,
@@ -62,11 +57,7 @@ export function PortfolioMotion() {
       ...(portrait ? [portrait] : []),
     ];
 
-    const interactive = [
-      ...cards,
-      ...buttons,
-      ...(portrait ? [portrait] : []),
-    ];
+    const interactive = [...cards, ...buttons, ...(portrait ? [portrait] : [])];
 
     const buttonSet = new Set(buttons);
 
@@ -86,15 +77,9 @@ export function PortfolioMotion() {
         return () => {};
       }
 
-      const entrances = new Map<
-        HTMLElement,
-        ReturnType<typeof animate>
-      >();
+      const entrances = new Map<HTMLElement, ReturnType<typeof animate>>();
 
-      const gestures = new Map<
-        HTMLElement,
-        ReturnType<typeof animate>
-      >();
+      const gestures = new Map<HTMLElement, ReturnType<typeof animate>>();
 
       const hovering = new Set<HTMLElement>();
       const pressing = new Set<HTMLElement>();
@@ -121,20 +106,13 @@ export function PortfolioMotion() {
         if (element.contains(document.activeElement)) return;
 
         const distance =
-          element === portrait
-            ? 32
-            : window.innerWidth < 700
-              ? 56
-              : 80;
+          element === portrait ? 32 : window.innerWidth < 700 ? 56 : 80;
 
         const animation = animate(
           element,
           {
             opacity: [0.15, 1],
-            translate: [
-              `0px ${distance}px`,
-              "0px 0px",
-            ],
+            translate: [`0px ${distance}px`, "0px 0px"],
           },
           {
             duration: 0.85,
@@ -153,24 +131,19 @@ export function PortfolioMotion() {
       }
 
       function updateGesture(element: HTMLElement) {
-        const disabled = element.matches(
-          ":disabled, [aria-disabled='true']",
-        );
+        const disabled = element.matches(":disabled, [aria-disabled='true']");
 
-        const isPressed =
-          !disabled && pressing.has(element);
+        const isPressed = !disabled && pressing.has(element);
 
-        const isHovered =
-          !disabled && hovering.has(element);
+        const isHovered = !disabled && hovering.has(element);
 
         const isButton = buttonSet.has(element);
 
-        let transform =
-          "translateY(0px) scale(1) rotate(0deg)";
-
+        let transform = "translateY(0px) scale(1) rotate(0deg)";
         if (isPressed) {
-          transform =
-            "translateY(2px) scale(0.96) rotate(0deg)";
+          transform = isButton
+            ? "translateY(2px) scale(0.97) rotate(0deg)"
+            : "translateY(2px) scale(0.99) rotate(0deg)";
         } else if (isHovered) {
           transform =
             element === portrait
@@ -241,11 +214,7 @@ export function PortfolioMotion() {
         press(buttons, (target) => {
           const element = target as HTMLElement;
 
-          if (
-            element.matches(
-              ":disabled, [aria-disabled='true']",
-            )
-          ) {
+          if (element.matches(":disabled, [aria-disabled='true']")) {
             return;
           }
 
@@ -258,7 +227,99 @@ export function PortfolioMotion() {
           };
         }),
       );
+      // Touch feedback for cards and the portrait.
+      // Native scrolling remains enabled.
+      let activeTouch: {
+        element: HTMLElement;
+        pointerId: number;
+        startX: number;
+        startY: number;
+      } | null = null;
 
+      function releaseTouch() {
+        if (!activeTouch) return;
+
+        const { element } = activeTouch;
+        activeTouch = null;
+
+        pressing.delete(element);
+        updateGesture(element);
+      }
+
+      function onTouchStart(event: PointerEvent) {
+        if (event.pointerType !== "touch" || !event.isPrimary) return;
+        if (!(event.target instanceof Element)) return;
+
+        // Buttons and links keep their own interaction behavior.
+        if (
+          event.target.closest(
+            "a, button, input, textarea, select, summary, [role='button']",
+          )
+        ) {
+          return;
+        }
+
+        const element = event.target.closest<HTMLElement>("[data-motion-ui]");
+
+        if (!element || !root!.contains(element)) return;
+
+        releaseTouch();
+
+        activeTouch = {
+          element,
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+        };
+
+        pressing.add(element);
+        updateGesture(element);
+      }
+
+      function onTouchMove(event: PointerEvent) {
+        if (!activeTouch || event.pointerId !== activeTouch.pointerId) {
+          return;
+        }
+
+        const distance = Math.hypot(
+          event.clientX - activeTouch.startX,
+          event.clientY - activeTouch.startY,
+        );
+
+        // Stop the press effect when the gesture becomes a scroll.
+        if (distance > 10) releaseTouch();
+      }
+
+      function onTouchEnd(event: PointerEvent) {
+        if (event.pointerId === activeTouch?.pointerId) {
+          releaseTouch();
+        }
+      }
+
+      root!.addEventListener("pointerdown", onTouchStart, {
+        passive: true,
+      });
+
+      window.addEventListener("pointermove", onTouchMove, {
+        passive: true,
+      });
+
+      window.addEventListener("pointerup", onTouchEnd);
+      window.addEventListener("pointercancel", onTouchEnd);
+      window.addEventListener("blur", releaseTouch);
+
+      cleanups.push(() => {
+        root!.removeEventListener("pointerdown", onTouchStart);
+        window.removeEventListener("pointermove", onTouchMove);
+        window.removeEventListener("pointerup", onTouchEnd);
+        window.removeEventListener("pointercancel", onTouchEnd);
+        window.removeEventListener("blur", releaseTouch);
+
+        if (activeTouch) {
+          pressing.delete(activeTouch.element);
+          activeTouch = null;
+        }
+      });
       if ("IntersectionObserver" in window) {
         observer = new IntersectionObserver(
           (entries) => {
@@ -269,10 +330,7 @@ export function PortfolioMotion() {
 
               observer?.unobserve(entry.target);
 
-              reveal(
-                entry.target as HTMLElement,
-                Math.min(order++, 3) * 0.1,
-              );
+              reveal(entry.target as HTMLElement, Math.min(order++, 3) * 0.1);
             }
           },
           {

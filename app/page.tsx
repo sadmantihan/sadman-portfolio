@@ -20,6 +20,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 import { CvPreview } from "@/components/cv-preview";
+import { ProjectPreview } from "@/components/project-preview";
 import { ArticleCards } from "@/components/article-cards";
 import { AnimatedName } from "@/components/animated-name";
 import { Certifications } from "@/components/certifications";
@@ -97,6 +98,7 @@ const projects: Project[] = [
 
 export default function Home() {
   const [active, setActive] = useState("");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Highlight the navigation item for the current section.
   useEffect(() => {
@@ -389,7 +391,33 @@ export default function Home() {
                 const CoverIcon = project.coverIcon;
 
                 return (
-                  <article className="project" key={project.url}>
+                  <article
+                    className="project project-preview-card"
+                    key={project.url}
+                    onClick={(event) => {
+                      if (!(event.target instanceof Element)) return;
+
+                      // Preserve the behavior of links and controls inside the card.
+                      if (
+                        event.target.closest(
+                          "a, button, input, textarea, select, summary",
+                        )
+                      ) {
+                        return;
+                      }
+
+                      // Allow visitors to select and copy the project description.
+                      if (window.getSelection()?.toString()) return;
+
+                      event.currentTarget
+                        .querySelector<HTMLButtonElement>(
+                          ".project-preview-trigger",
+                        )
+                        ?.focus({ preventScroll: true });
+
+                      setSelectedProject(project);
+                    }}
+                  >
                     <div className="project-cover">
                       {project.image ? (
                         <Image
@@ -417,7 +445,17 @@ export default function Home() {
 
                     <div className="project-content">
                       <div className="project-title">
-                        <h3>{project.name}</h3>
+                        <h3>
+                          <button
+                            type="button"
+                            className="project-preview-trigger"
+                            aria-haspopup="dialog"
+                            aria-label={`Preview ${project.name}`}
+                            onClick={() => setSelectedProject(project)}
+                          >
+                            {project.name}
+                          </button>
+                        </h3>
                       </div>
 
                       {project.supervisor && project.supervisorUrl && (
@@ -607,6 +645,12 @@ export default function Home() {
               </div>
 
               <ContactForm />
+              {selectedProject && (
+                <ProjectPreview
+                  project={selectedProject}
+                  onClose={() => setSelectedProject(null)}
+                />
+              )}
             </div>
           </div>
         </section>
