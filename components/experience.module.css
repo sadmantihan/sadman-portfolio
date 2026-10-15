@@ -206,3 +206,146 @@
     flex: none;
   }
 }
+
+/* Work role and employment details */
+.header.workHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px 24px;
+}
+
+.employmentDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 0;
+  text-align: right;
+}
+
+.employmentDetails > .date {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.employmentTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.employmentTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(
+    in srgb,
+    var(--ink) 8%,
+    var(--surface)
+  );
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+@media (max-width: 699px) {
+  .header.workHeader {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .employmentDetails {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .employmentTags {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 699px) {
+  /* Consistent mobile card spacing */
+  .entry.workEntry {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* Title → date → employment tags */
+  .workEntry .header.workHeader {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .workEntry .role {
+    margin: 0;
+    padding: 0;
+  }
+
+  .workEntry .employmentDetails {
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .workEntry .employmentTags {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  /* Remove old paragraph margins */
+  .workEntry > .organization,
+  .workEntry > .meta {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Identical logo columns and text alignment */
+  .workEntry .withLogo {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+  }
+
+  .workEntry .organizationLogo {
+    display: block;
+    width: 40px;
+    height: 32px;
+    object-fit: contain;
+    justify-self: center;
+  }
+
+  .workEntry .withLogo > a,
+  .workEntry .withLogo > span {
+    min-width: 0;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Compact, readable responsibility list */
+  .workEntry > .points {
+    margin: 0;
+    padding-left: 24px;
+  }
+
+  .workEntry .points li + li {
+    margin-top: 8px;
+  }
+}

@@ -313,3 +313,68 @@
     padding: 0;
   }
 }
+
+/* Work role and employment details */
+.header.workHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px 24px;
+}
+
+.employmentDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-width: 0;
+  text-align: right;
+}
+
+.employmentDetails > .date {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.employmentTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.employmentTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: color-mix(
+    in srgb,
+    var(--ink) 8%,
+    var(--surface)
+  );
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+@media (max-width: 699px) {
+  .header.workHeader {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .employmentDetails {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .employmentTags {
+    justify-content: flex-start;
+  }
+}

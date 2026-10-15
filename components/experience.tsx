@@ -29,11 +29,53 @@ export function Experience() {
 
       <div className={`section-body ${styles.body}`}>
         <h2>Work Experience</h2>
+        <article className={`${styles.entry} ${styles.workEntry}`}>
+          <div className={`${styles.header} ${styles.workHeader}`}>
+            <h3 className={styles.role}>Machine Learning Intern</h3>
 
-        <article className={styles.entry}>
-          <div className={styles.header}>
+            <div className={styles.employmentDetails}>
+              <span className={styles.date}>Oct 2026 – Present</span>
+
+              <div className={styles.employmentTags}>
+                <span className={styles.employmentTag}>Part-time</span>
+                <span className={styles.employmentTag}>Remote</span>
+              </div>
+            </div>
+          </div>
+
+          <p className={`${styles.organization} ${styles.withLogo}`}>
+            <Image
+              src="/logos/flyrank-ai-logo.png"
+              alt=""
+              width={48}
+              height={36}
+              className={styles.organizationLogo}
+            />
+
+            <a
+              href="https://flyrank.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="profile-link"
+            >
+              FlyRank AI
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </p>
+        </article>
+
+        <article className={`${styles.entry} ${styles.workEntry}`}>
+          <div className={`${styles.header} ${styles.workHeader}`}>
             <h3 className={styles.role}>Data Annotator</h3>
-            <span className={styles.date}>Apr 2026 – Sep 2026</span>
+
+            <div className={styles.employmentDetails}>
+              <span className={styles.date}>Apr 2026 – Sep 2026</span>
+
+              <div className={styles.employmentTags}>
+                <span className={styles.employmentTag}>Part-time</span>
+                <span className={styles.employmentTag}>Hybrid</span>
+              </div>
+            </div>
           </div>
 
           <p className={`${styles.organization} ${styles.withLogo}`}>
@@ -69,10 +111,15 @@ export function Experience() {
 
           <ul className={styles.points}>
             <li>
-              Mentored a team of Scrum Level 3 students in collecting raw socio-economic data for a research project, overseeing annotation quality and running consistency checks under research guidelines.
+              Mentored a team of Scrum Level 3 students in collecting raw
+              socio-economic data for a research project, overseeing annotation
+              quality and running consistency checks under research guidelines.
             </li>
             <li>
-              Helped design the sector's ER diagram and used Python (pandas) and Google Sheets to organize, count, and clean dataset files into structured tables, producing a 130-file dataset with over 223K rows and 3.64M values.
+              Helped design the sector's ER diagram and used Python (pandas) and
+              Google Sheets to organize, count, and clean dataset files into
+              structured tables, producing a 130-file dataset with over 223K
+              rows and 3.64M values.
             </li>
           </ul>
         </article>
@@ -82,8 +129,8 @@ export function Experience() {
         </h3>
 
         {voluntaryRoles.map((role) => (
-          <article className={styles.entry} key={role.title}>
-            <div className={styles.header}>
+          <article className={`${styles.entry} ${styles.workEntry}`} key={role.title}>
+            <div className={`${styles.header} ${styles.workHeader}`}>
               <h4 className={styles.role}>{role.title}</h4>
               <span className={styles.date}>{role.date}</span>
             </div>
