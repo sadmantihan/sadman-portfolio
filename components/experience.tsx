@@ -43,7 +43,14 @@ export function Experience() {
                 className={styles.organizationLogo}
               />
 
-              <span>FlyRank AI</span>
+              <a
+                  href="https://flyrank.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="profile-link name-link"
+                >
+                  FlyRank AI
+                </a>
             </p>
 
             <div className={styles.employmentTags}>
@@ -68,7 +75,14 @@ export function Experience() {
                 className={styles.organizationLogo}
               />
 
-              <span>BDAI-HEAT Sub-project (HEAT-13211-CU)</span>
+              <a
+                  href="https://bdai-csecu.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="profile-link name-link"
+                >
+                  BDAI-HEAT Sub-Project (HEAT-13211-CU)
+                </a>
             </p>
 
             <div className={styles.employmentTags}>

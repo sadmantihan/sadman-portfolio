@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import styles from "./experience.module.css";
 
 const certificates = [
@@ -8,7 +8,7 @@ const certificates = [
   },
   {
     title: "Chittagong Science Carnival 4.0 (Organizer)",
-    href: "/certificates/Chitagong-science-carnival-4.0.pdf",
+    href: "/certificates/chittagong-science-carnival-4.0.pdf",
   },
   {
     title: "IT Fiesta 2024 (Organizer)",
@@ -38,7 +38,6 @@ export function VoluntaryCertificates() {
               aria-label={`${certificate.title} (PDF, opens in a new tab)`}
             >
               <span>{certificate.title}</span>
-              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </li>
         ))}
