@@ -44,7 +44,7 @@ const contact = {
 const navigation = [
   { id: "news", label: "Recent News" },
   { id: "about", label: "About" },
-  { id: "projects", label: "Projects & Thesis" },
+  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "articles", label: "Articles" },
   { id: "skills", label: "Skills" },
@@ -79,10 +79,10 @@ const projects: Project[] = [
     url: "https://github.com/sadmantihan/buildmaster",
   },
   {
-    category: "Research",
+    category: "Undergraduate Thesis",
     coverIcon: Network,
     image: "",
-    type: "RESEARCH · UNDERGRADUATE THESIS",
+    type: "RESEARCH",
     name: "AdaPruner-KGQA",
     desc: "Making multi-hop knowledge graph reasoning more efficient with adaptive, uncertainty-aware search-space pruning. Evaluated on WebQSP and CWQ within the RoG reasoning pipeline.",
     tags: ["Python", "PyTorch", "Knowledge graphs"],
@@ -343,9 +343,19 @@ export default function Home() {
                 >
                   University of Chittagong
                 </a>
-                , currently seeking my first full-time role in Data Science or
-                Machine Learning Engineering. My work focuses on turning messy,
-                real-world data into reliable and usable systems.
+                , seeking my first full-time role in Data Science or Machine
+                Learning Engineering. Currently, I am learning as an Machine
+                Learning Intern at{" "}
+                <a
+                  href="https://flyrank.ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="profile-link name-link"
+                >
+                  FlyRank AI.
+                </a>{" "}
+                 My work focuses on turning messy, real-world data into reliable
+                and usable systems.
               </p>
 
               <p>
@@ -379,12 +389,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects and thesis */}
+        {/* Projects */} 
         <section id="projects" className="section wrap">
           <div className="section-label">SELECTED WORKS</div>
 
           <div className="section-body">
-            <h2>Projects and Research</h2>
+            <h2>Projects</h2>
 
             <div className="projects">
               {projects.map((project) => {

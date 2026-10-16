@@ -1512,3 +1512,28 @@ nav.mobile-menu-links a[aria-current="location"] {
     animation: availability-dot-pulse 2s ease-in-out infinite;
   }
 }
+
+/* Prevent project category tags from overlapping icons on mobile. */
+@media (max-width: 699px) {
+  #projects .project-cover {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(64px, 1fr);
+    gap: 16px;
+    min-height: 160px;
+    aspect-ratio: auto;
+    padding: 16px;
+  }
+
+  #projects .project-cover-label {
+    position: static;
+    grid-row: 1;
+    justify-self: end;
+    z-index: 1;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  #projects .project-cover > svg {
+    grid-row: 2;
+  }
+}

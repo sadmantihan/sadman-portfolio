@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const links = [
   ["news", "Recent News"],
   ["about", "About"],
-  ["projects", "Projects & Thesis"],
+  ["projects", "Projects"],
   ["experience", "Experience"],
   ["articles", "Articles"],
   ["skills", "Skills"],
