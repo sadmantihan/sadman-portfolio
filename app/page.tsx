@@ -213,18 +213,43 @@ export default function Home() {
 
         <section className="hero wrap">
           <div className="hero-shell">
-            <div className="hero-introduction">
-              <div className="eyebrow">HELLO, THIS IS</div>
+            <div className="hero-copy">
+              <div className="hero-introduction">
+                <div className="eyebrow">HELLO, THIS IS</div>
 
-              <h1 className="hero-name">
-                <AnimatedName />
-              </h1>
+                <h1 className="hero-name">
+                  <AnimatedName />
+                </h1>
+              </div>
+
+              <p className="hero-availability">
+                <span aria-hidden="true" />
+                Open to new opportunities
+              </p>
+
+              <p className="hero-career-line">
+                CSE Graduate | Data Science &amp; ML Enthusiast
+              </p>
+
+              <div className="hero-bottom">
+                <div>
+                  <p className="intro">
+                    Working at the intersection of data, machine learning, and AI
+                    research to build real-world applications that turn complex
+                    data into meaningful insights and practical solutions.
+                  </p>
+
+                  <div className="actions">
+                    <a className="button solid" href="#projects">
+                      Explore my work
+                      <ArrowUpRight size={18} aria-hidden="true" />
+                    </a>
+
+                    <CvPreview />
+                  </div>
+                </div>
+              </div>
             </div>
-
-            <p className="hero-availability">
-              <span aria-hidden="true" />
-              Open to new opportunities
-            </p>
 
             <aside className="hero-aside hero-photo-card">
               <div className="hero-portrait">
@@ -283,29 +308,6 @@ export default function Home() {
                 </a>
               </div>
             </aside>
-
-            <p className="hero-career-line">
-              CSE Graduate | Data Science &amp; ML Enthusiast
-            </p>
-
-            <div className="hero-bottom">
-              <div>
-                <p className="intro">
-                  Working at the intersection of data, machine learning, and AI
-                  research to build real-world applications that turn complex
-                  data into meaningful insights and practical solutions.
-                </p>
-
-                <div className="actions">
-                  <a className="button solid" href="#projects">
-                    Explore my work
-                    <ArrowUpRight size={18} aria-hidden="true" />
-                  </a>
-
-                  <CvPreview />
-                </div>
-              </div>
-            </div>
           </div>
         </section>
         {/* Recent news */}

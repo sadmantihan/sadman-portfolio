@@ -47,11 +47,12 @@
   --space-12: 96px;
   --space-16: 128px;
 
-  --gutter: clamp(48px, 4vw, 80px);
+  --gutter: var(--space-8);
   --section-space: var(--space-12);
   --card-padding: var(--space-4);
   --layout-columns: 12;
   --layout-gap: var(--space-4);
+  --grid-size: var(--space-6);
   --radius: 16px;
   --dialog-radius: 24px;
 
@@ -120,7 +121,7 @@ body::before {
   background-image:
     linear-gradient(rgb(34 211 238 / 5%) 1px, transparent 1px),
     linear-gradient(90deg, rgb(34 211 238 / 5%) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: var(--grid-size) var(--grid-size);
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -141,6 +142,70 @@ body::after {
     rgb(34 211 238 / 6%),
     transparent 70%
   );
+}
+
+/* A soft moving highlight reveals the existing grid and its intersections. */
+.grid-shimmer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grid-shimmer::before,
+.grid-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-size: var(--grid-size) var(--grid-size);
+  mask-image: linear-gradient(115deg, transparent 40%, #000 50%, transparent 60%);
+  mask-size: 300% 100%;
+  mask-repeat: no-repeat;
+}
+
+.grid-shimmer::before {
+  background-image:
+    linear-gradient(rgb(34 211 238 / 16%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 211 238 / 16%) 1px, transparent 1px);
+}
+
+.grid-shimmer::after {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgb(165 243 252 / 65%) 1px,
+    transparent 3px
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid-shimmer::before,
+  .grid-shimmer::after {
+    animation: grid-glitter 12s linear infinite;
+  }
+
+  .grid-shimmer::after {
+    animation-delay: -6s;
+    animation-duration: 16s;
+  }
+}
+
+@keyframes grid-glitter {
+  0% {
+    mask-position: 100% 0;
+    opacity: 0;
+  }
+
+  20%,
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    mask-position: 0% 0;
+    opacity: 0;
+  }
 }
 
 ::selection {
@@ -292,7 +357,7 @@ svg {
   top: 0;
   z-index: 40;
   background: rgb(8 15 28 / 96%);
-  border-bottom: 1px solid var(--line);
+  box-shadow: inset 0 -1px var(--line);
 }
 
 .nav {
@@ -420,8 +485,8 @@ svg {
   position: fixed;
   z-index: 51;
   inset: 16px 16px 16px auto;
-  width: min(384px, calc(100% - 32px));
-  padding: 24px;
+  width: min(320px, calc(100% - 32px));
+  padding: var(--space-2);
   border: 1px solid var(--control-border);
   border-radius: 24px;
   background: var(--surface);
@@ -441,9 +506,10 @@ svg {
 }
 
 .mobile-menu-scroll {
-  max-height: calc(100% - 64px);
+  height: calc(100% - 64px);
   overflow-y: auto;
-  margin-top: 32px;
+  overscroll-behavior: contain;
+  margin-top: var(--space-8);
 }
 
 .mobile-menu-links {
@@ -472,7 +538,7 @@ svg {
 .hero {
   position: relative;
   display: grid;
-  align-content: center;
+  align-content: start;
   min-height: calc(100svh - 80px);
   padding-block: var(--section-space);
 }
@@ -486,25 +552,34 @@ svg {
   position: relative;
   display: grid;
   grid-template-columns: repeat(var(--layout-columns), minmax(0, 1fr));
-  gap: 24px var(--layout-gap);
+  align-items: start;
+  gap: var(--space-3) var(--layout-gap);
+}
+
+.hero-copy {
+  display: grid;
+  grid-column: 1 / 9;
+  align-content: start;
+  gap: var(--space-3);
+  min-width: 0;
 }
 
 .hero-introduction,
 .hero-availability,
 .hero-career-line {
-  grid-column: 1 / 9;
   min-width: 0;
 }
 
 .hero-introduction .eyebrow {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-2);
+  line-height: 24px;
 }
 
 .hero-name {
   font-size: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);
   font-weight: 700;
   letter-spacing: -0.055em;
-  line-height: 1.1;
+  line-height: 80px;
 }
 
 .animated-name,
@@ -531,12 +606,14 @@ svg {
   gap: 8px;
   width: fit-content;
   max-width: 100%;
-  padding: 8px 16px;
+  min-height: var(--space-5);
+  padding: 0 var(--space-2);
   color: var(--primary);
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
   font-size: 0.875rem;
+  line-height: 24px;
 }
 
 .hero-availability > span {
@@ -571,19 +648,20 @@ svg {
   font-family: var(--font-body), sans-serif;
   font-size: clamp(1.25rem, 1rem + 1vw, 2rem);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 48px;
 }
 
 .hero-bottom {
   display: contents;
 }
 .hero-bottom > div {
-  grid-column: 1 / 8;
+  min-width: 0;
 }
 
 .intro {
   max-width: 65ch;
   color: var(--sub);
+  line-height: 24px;
 }
 
 .actions {
@@ -632,12 +710,14 @@ svg {
 .hero-aside {
   position: relative;
   grid-column: 9 / -1;
-  grid-row: 1 / 5;
-  align-self: center;
+  align-self: start;
   min-width: 0;
-  padding: 32px 16px;
-  background: var(--surface);
-  border: 4px solid var(--primary);
+  padding: var(--space-4) var(--space-2);
+  background: rgb(17 29 48 / 80%);
+  /* An inset outline keeps the 8px padding independent of border thickness. */
+  border: 0;
+  outline: 1px solid rgb(34 211 238 / 35%);
+  outline-offset: -1px;
   border-radius: 24px;
   box-shadow: var(--shadow);
   transition: box-shadow 180ms var(--ease);
@@ -695,11 +775,13 @@ svg {
   gap: 8px;
   margin-top: 24px;
   font-size: 0.875rem;
+  line-height: 24px;
   color: var(--sub);
 }
 
 .hero-location svg {
   margin-top: 4px;
+  flex-shrink: 0;
 }
 
 .socials {
@@ -1141,13 +1223,24 @@ svg {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .mobile-menu-panel[data-state="open"],
   dialog[open] {
     animation: panel-enter 200ms var(--ease);
   }
 
+  .mobile-menu-panel[data-state="open"] {
+    animation: menu-slide-in 320ms var(--ease);
+  }
+
   .mobile-menu-panel[data-state="closed"] {
-    animation: panel-exit 180ms var(--ease);
+    animation: menu-slide-out 240ms var(--ease);
+  }
+
+  .mobile-menu-overlay[data-state="open"] {
+    animation: menu-fade-in 240ms ease-out;
+  }
+
+  .mobile-menu-overlay[data-state="closed"] {
+    animation: menu-fade-out 240ms ease-in;
   }
 
   @keyframes panel-enter {
@@ -1162,11 +1255,45 @@ svg {
     }
   }
 
-  @keyframes panel-exit {
+  @keyframes menu-slide-in {
+    from {
+      transform: translateX(calc(100% + 16px));
+      opacity: 0;
+    }
+
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes menu-slide-out {
+    to {
+      transform: translateX(calc(100% + 16px));
+      opacity: 0;
+    }
+  }
+
+  @keyframes menu-fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes menu-fade-out {
     to {
       opacity: 0;
-      translate: 0 16px;
     }
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --gutter: var(--space-10);
   }
 }
 
@@ -1186,25 +1313,29 @@ svg {
     display: flex;
   }
 
-  .hero-introduction,
-  .hero-availability,
-  .hero-career-line,
-  .hero-bottom > div {
-    grid-column: 1 / 6;
+  .hero-shell {
+    /* Keep room for four 48px social controls and their 8px gaps. */
+    grid-template-columns: minmax(0, 5fr) minmax(256px, 3fr);
+  }
+
+  .hero-copy {
+    grid-column: 1;
   }
 
   .hero-aside {
-    grid-column: 6 / -1;
+    grid-column: 2;
     padding: 24px 16px;
   }
 
   .hero-name {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 64px;
   }
 
-  .hero-portrait {
-    width: 100%;
+  .hero-career-line {
+    line-height: 32px;
   }
+
 }
 
 /* Mobile */
@@ -1219,17 +1350,14 @@ svg {
     --card-padding: 24px;
     --layout-columns: 4;
     --layout-gap: 24px;
-  }
-
-  body::before {
-    background-size: 32px 32px;
+    --grid-size: var(--space-4);
   }
 
   .nav {
-    min-height: 72px;
+    min-height: var(--space-8);
   }
   html {
-    scroll-padding-top: 96px;
+    scroll-padding-top: 80px;
   }
 
   #home .hero-shell {
@@ -1238,6 +1366,7 @@ svg {
     gap: 24px;
   }
 
+  #home .hero-copy,
   #home .hero-bottom {
     display: contents;
   }
@@ -1257,6 +1386,8 @@ svg {
 
   #home .hero-availability {
     grid-row: 2;
+    min-height: var(--space-4);
+    font-size: 0.75rem;
   }
 
   #home .hero-aside {
@@ -1297,11 +1428,11 @@ svg {
   }
 
   #home .hero-introduction > .hero-name {
-    font-size: clamp(1.375rem, 6.2vw, 2.5rem);
-    line-height: 1.2;
+    font-size: clamp(1.5rem, 8.5vw, 3.5rem);
+    line-height: 48px;
     letter-spacing: -0.04em;
-    white-space: normal;
-    text-wrap: wrap;
+    white-space: nowrap;
+    text-wrap: nowrap;
   }
 
   .hero::after {
@@ -1326,6 +1457,12 @@ svg {
 
   .contact-grid > div {
     padding-block: 0;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  #home .hero-introduction > .hero-name {
+    line-height: 64px;
   }
 }
 
@@ -1358,6 +1495,7 @@ svg {
 
   body::before,
   body::after,
+  .grid-shimmer,
   .hero::before,
   .hero::after,
   .portfolio-header {
