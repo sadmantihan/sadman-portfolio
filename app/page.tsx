@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   BrainCircuit,
-  ChartColumn,
-  Database,
   Download,
   Mail,
   MapPin,
@@ -182,7 +180,7 @@ export default function Home() {
             aria-label="Sadman Sami Khan home"
           >
             <Image
-              src="/favicon.svg?v=3"
+              src="/favicon.svg?v=5"
               alt=""
               width={36}
               height={36}
@@ -211,6 +209,7 @@ export default function Home() {
       </header>
       <main id="home" tabIndex={-1}>
         <PortfolioMotion />
+        <div className="grid-shimmer" aria-hidden="true" />
 
         <section className="hero wrap">
           <div className="hero-shell">
@@ -227,9 +226,68 @@ export default function Home() {
               Open to new opportunities
             </p>
 
+            <aside className="hero-aside hero-photo-card">
+              <div className="hero-portrait">
+                <Image
+                  src="/images/sadman-profile.png"
+                  alt="Portrait of Md Sadman Sami Khan"
+                  fill
+                  priority
+                  sizes="(max-width: 359px) 70vw, 280px"
+                  className="hero-portrait-image"
+                />
+              </div>
+
+              <div className="hero-location">
+                <MapPin size={17} aria-hidden="true" />
+                <span>{contact.location}</span>
+              </div>
+
+              <div className="socials hero-socials">
+                <a
+                  href={contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  title="GitHub"
+                >
+                  <FaGithub size={22} aria-hidden="true" />
+                </a>
+
+                <a
+                  href={contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                >
+                  <FaLinkedin size={22} aria-hidden="true" />
+                </a>
+
+                <a
+                  href={`mailto:${contact.email}`}
+                  aria-label="Email"
+                  title="Email me"
+                >
+                  <SiGmail size={22} aria-hidden="true" />
+                </a>
+
+                <a
+                  href={contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Contact me on WhatsApp"
+                  title="WhatsApp"
+                >
+                  <FaWhatsapp size={23} aria-hidden="true" />
+                </a>
+              </div>
+            </aside>
+
             <p className="hero-career-line">
               CSE Graduate | Data Science &amp; ML Enthusiast
             </p>
+
             <div className="hero-bottom">
               <div>
                 <p className="intro">
@@ -247,81 +305,9 @@ export default function Home() {
                   <CvPreview />
                 </div>
               </div>
-
-              <aside className="hero-aside hero-photo-card">
-                <div className="hero-decoration" aria-hidden="true">
-                  <span>
-                    <BrainCircuit size={28} strokeWidth={1.8} />
-                  </span>
-
-                  <span>
-                    <Database size={24} strokeWidth={1.8} />
-                  </span>
-
-                  <span>
-                    <ChartColumn size={24} strokeWidth={1.8} />
-                  </span>
-                </div>
-                <div className="hero-portrait">
-                  <Image
-                    src="/images/sadman-profile.jpeg"
-                    alt="Portrait of Md Sadman Sami Khan"
-                    fill
-                    priority
-                    sizes="(max-width: 359px) 65vw, 280px"
-                    className="hero-portrait-image"
-                  />
-                </div>
-
-                <div className="hero-location">
-                  <MapPin size={17} aria-hidden="true" />
-                  <span>{contact.location}</span>
-                </div>
-
-                <div className="socials hero-socials">
-                  <a
-                    href={contact.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    title="GitHub"
-                  >
-                    <FaGithub size={22} aria-hidden="true" />
-                  </a>
-
-                  <a
-                    href={contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    title="LinkedIn"
-                  >
-                    <FaLinkedin size={22} aria-hidden="true" />
-                  </a>
-
-                  <a
-                    href={`mailto:${contact.email}`}
-                    aria-label="Email"
-                    title="Email me"
-                  >
-                    <SiGmail size={22} aria-hidden="true" />
-                  </a>
-
-                  <a
-                    href={contact.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Contact me on WhatsApp"
-                    title="WhatsApp"
-                  >
-                    <FaWhatsapp size={23} aria-hidden="true" />
-                  </a>
-                </div>
-              </aside>
             </div>
           </div>
         </section>
-
         {/* Recent news */}
         <RecentNews />
 
@@ -354,7 +340,7 @@ export default function Home() {
                 >
                   FlyRank AI.
                 </a>{" "}
-                 My work focuses on turning messy, real-world data into reliable
+                My work focuses on turning messy, real-world data into reliable
                 and usable systems.
               </p>
 
@@ -389,7 +375,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Projects */} 
+        {/* Projects */}
         <section id="projects" className="section wrap">
           <div className="section-label">SELECTED WORKS</div>
 

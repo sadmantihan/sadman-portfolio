@@ -14,7 +14,7 @@ const CARD_SELECTOR = [
   "#skills .section-body > div > div",
   "#education .education > div:not(.school-stack)",
   "#education .school-card",
-  "#education .section-body ul > li",
+  "#education .section-body > div > div > ul > li",
   "#contact .contact-form",
 ].join(", ");
 
@@ -51,7 +51,14 @@ export function PortfolioMotion() {
 
     const contact = root.querySelector<HTMLElement>(".contact-grid > div");
 
+    const heroCopy = Array.from(
+      root.querySelectorAll<HTMLElement>(
+        ".hero-career-line, .hero-availability, .hero-bottom > div",
+      ),
+    );
+
     const targets = [
+      ...heroCopy,
       ...cards,
       ...(contact ? [contact] : []),
       ...(portrait ? [portrait] : []),
@@ -102,11 +109,10 @@ export function PortfolioMotion() {
 
         seen.add(element);
 
-        // Keep focused content still and immediately readable.
+        // Focused content must remain immediately readable.
         if (element.contains(document.activeElement)) return;
 
-        const distance =
-          element === portrait ? 32 : window.innerWidth < 700 ? 56 : 80;
+        const distance = 16;
 
         const animation = animate(
           element,
@@ -115,9 +121,10 @@ export function PortfolioMotion() {
             translate: [`0px ${distance}px`, "0px 0px"],
           },
           {
-            duration: 0.85,
+            duration:
+              element === portrait || heroCopy.includes(element) ? 0.4 : 0.3,
             delay,
-            ease: [0.22, 0.75, 0.25, 1],
+            ease: [0.22, 1, 0.36, 1],
           },
         );
 
@@ -140,19 +147,19 @@ export function PortfolioMotion() {
         const isButton = buttonSet.has(element);
 
         let transform = "translateY(0px) scale(1) rotate(0deg)";
+
         if (isPressed) {
           transform = isButton
-            ? "translateY(2px) scale(0.97) rotate(0deg)"
-            : "translateY(2px) scale(0.99) rotate(0deg)";
+            ? "translateY(0px) scale(0.98) rotate(0deg)"
+            : "translateY(0px) scale(0.99) rotate(0deg)";
         } else if (isHovered) {
           transform =
             element === portrait
-              ? "translateY(-6px) scale(1.025) rotate(-1deg)"
+              ? "translateY(-4px) scale(1) rotate(0deg)"
               : isButton
-                ? "translateY(-4px) scale(1.04) rotate(0deg)"
-                : "translateY(-8px) scale(1.008) rotate(0deg)";
+                ? "translateY(-2px) scale(1) rotate(0deg)"
+                : "translateY(-4px) scale(1) rotate(0deg)";
         }
-
         // Start from the current position if a gesture is interrupted.
         const current = getComputedStyle(element).transform;
 
@@ -164,7 +171,7 @@ export function PortfolioMotion() {
             transform: [current, transform],
           },
           {
-            duration: isPressed ? 0.12 : 0.3,
+            duration: isPressed ? 0.12 : isButton ? 0.16 : 0.18,
             ease: [0.22, 1, 0.36, 1],
           },
         );
@@ -330,7 +337,7 @@ export function PortfolioMotion() {
 
               observer?.unobserve(entry.target);
 
-              reveal(entry.target as HTMLElement, Math.min(order++, 3) * 0.1);
+              reveal(entry.target as HTMLElement, Math.min(order++, 3) * 0.05);
             }
           },
           {
@@ -343,7 +350,10 @@ export function PortfolioMotion() {
           const bounds = element.getBoundingClientRect();
 
           // The portrait receives its own entrance.
-          if (element === portrait && window.scrollY < 40) {
+          if (
+            (element === portrait || heroCopy.includes(element)) &&
+            window.scrollY < 40
+          ) {
             observer?.observe(element);
           } else if (bounds.top < window.innerHeight) {
             // Do not hide content already visible on initial load.

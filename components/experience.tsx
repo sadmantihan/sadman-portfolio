@@ -1,7 +1,6 @@
 import { VoluntaryCertificates } from "./voluntary-certificates";
 import Image from "next/image";
 import styles from "./experience.module.css";
-import { ArrowUpRight } from "lucide-react";
 
 const voluntaryRoles = [
   {
@@ -33,70 +32,51 @@ export function Experience() {
           <div className={`${styles.header} ${styles.workHeader}`}>
             <h3 className={styles.role}>Machine Learning Intern</h3>
 
-            <div className={styles.employmentDetails}>
-              <span className={styles.date}>Oct 2026 – Present</span>
+            <span className={styles.date}>Oct 2026 – Present</span>
 
-              <div className={styles.employmentTags}>
-                <span className={styles.employmentTag}>Part-time</span>
-                <span className={styles.employmentTag}>Remote</span>
-              </div>
+            <p className={`${styles.organization} ${styles.withLogo}`}>
+              <Image
+                src="/logos/flyrank-ai-logo.png"
+                alt=""
+                width={48}
+                height={36}
+                className={styles.organizationLogo}
+              />
+
+              <span>FlyRank AI</span>
+            </p>
+
+            <div className={styles.employmentTags}>
+              <span className={styles.employmentTag}>Part-time</span>
+              <span className={styles.employmentTag}>Remote</span>
             </div>
           </div>
-
-          <p className={`${styles.organization} ${styles.withLogo}`}>
-            <Image
-              src="/logos/flyrank-ai-logo.png"
-              alt=""
-              width={48}
-              height={36}
-              className={styles.organizationLogo}
-            />
-
-            <a
-              href="https://flyrank.ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="profile-link"
-            >
-              FlyRank AI
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </p>
         </article>
 
         <article className={`${styles.entry} ${styles.workEntry}`}>
           <div className={`${styles.header} ${styles.workHeader}`}>
             <h3 className={styles.role}>Data Annotator</h3>
 
-            <div className={styles.employmentDetails}>
-              <span className={styles.date}>Apr 2026 – Sep 2026</span>
+            <span className={styles.date}>Apr 2026 – Sep 2026</span>
 
-              <div className={styles.employmentTags}>
-                <span className={styles.employmentTag}>Part-time</span>
-                <span className={styles.employmentTag}>Hybrid</span>
-              </div>
+            <p className={`${styles.organization} ${styles.withLogo}`}>
+              <Image
+                src="/logos/bdai.png"
+                alt=""
+                width={48}
+                height={36}
+                className={styles.organizationLogo}
+              />
+
+              <span>BDAI-HEAT Sub-project (HEAT-13211-CU)</span>
+            </p>
+
+            <div className={styles.employmentTags}>
+              <span className={styles.employmentTag}>Part-time</span>
+              <span className={styles.employmentTag}>Hybrid</span>
             </div>
           </div>
 
-          <p className={`${styles.organization} ${styles.withLogo}`}>
-            <Image
-              src="/logos/bdai.png"
-              alt=""
-              width={48}
-              height={36}
-              className={styles.organizationLogo}
-            />
-
-            <a
-              href="https://bdai-csecu.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="profile-link"
-            >
-              BDAI-HEAT Sub-project (HEAT-13211-CU)
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </p>
           <p className={`${styles.meta} ${styles.withLogo}`}>
             <Image
               src="/logos/world-bank.png"
@@ -123,13 +103,15 @@ export function Experience() {
             </li>
           </ul>
         </article>
-
         <h3 className={styles.subheading}>
           Leadership &amp; Voluntary Activities
         </h3>
 
         {voluntaryRoles.map((role) => (
-          <article className={`${styles.entry} ${styles.workEntry}`} key={role.title}>
+          <article
+            className={`${styles.entry} ${styles.workEntry}`}
+            key={role.title}
+          >
             <div className={`${styles.header} ${styles.workHeader}`}>
               <h4 className={styles.role}>{role.title}</h4>
               <span className={styles.date}>{role.date}</span>

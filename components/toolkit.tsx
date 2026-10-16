@@ -117,7 +117,7 @@ export function Toolkit() {
                 >
                   <Icon
                     className={styles.logo}
-                    style={{ color }}
+                    style={{ color: monochrome ? "var(--ink)" : color }}
                     aria-hidden="true"
                     focusable="false"
                   />

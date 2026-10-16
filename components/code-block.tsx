@@ -45,7 +45,7 @@ export function CodeBlock({
         </button>
       </div>
 
-      <pre>
+      <pre tabIndex={0}>
         <code>{code}</code>
       </pre>
 

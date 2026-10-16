@@ -1,23 +1,20 @@
 .dialog {
-  width: min(1100px, calc(100% - 32px));
-  height: min(840px, calc(100dvh - 32px));
+  position: fixed;
+  inset: 0;
+  width: min(1104px,calc(100% - 32px));
+  height: min(840px,calc(100dvh - 32px));
   max-width: none;
   max-height: none;
   margin: auto;
   padding: 0;
-
   color: var(--ink);
   background: var(--surface);
-  border: 2px solid var(--clay-outline);
-  border-radius: 24px;
-  box-shadow: 8px 8px 0 var(--clay-outline);
+  border: 1px solid var(--control-border);
+  border-radius: var(--dialog-radius);
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
-
-.dialog::backdrop {
-  background: rgb(0 0 0 / 60%);
-}
-
+.dialog::backdrop { background: rgb(0 0 0 / 75%); }
 .panel {
   display: flex;
   flex-direction: column;
@@ -25,7 +22,6 @@
   height: 100%;
   min-height: 0;
 }
-
 .header {
   display: flex;
   align-items: center;
@@ -35,57 +31,38 @@
   padding: 16px 24px;
   border-bottom: 1px solid var(--line);
 }
-
-.title {
-  margin: 0;
-  font-family: var(--font-display), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.download,
-.close {
+.title { margin: 0; font-size: 1.5rem; }
+.actions { display: flex; align-items: center; gap: 8px; }
+.download,.close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  border: 2px solid var(--ink);
-  font-family: var(--font-body), sans-serif;
+  border: 1px solid var(--control-border);
+  border-radius: 8px;
+  font-family: var(--font-body),sans-serif;
   cursor: pointer;
+  transition: transform var(--fast) var(--ease);
 }
-
 .download {
   gap: 8px;
   padding: 8px 16px;
-  border-radius: 16px;
-  background: var(--ink);
-  color: var(--surface);
-  font-size: 0.875rem;
-  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  font-size: .875rem;
+  font-weight: 600;
+}
+.download:hover,.download:visited {
+  color: var(--primary-foreground);
   text-decoration: none;
 }
-
 .close {
   width: 48px;
   padding: 0;
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--elevated);
+  color: var(--primary);
 }
-
-.download:focus-visible,
-.close:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 4px;
-}
-
 .viewer {
   flex: 1 1 0;
   min-width: 0;
@@ -94,287 +71,49 @@
   overscroll-behavior: contain;
   touch-action: pan-x pan-y pinch-zoom;
   padding: 8px;
+  background: var(--background);
 }
-
-/* Keep the controls visible while the document scrolls */
-.header,
-.note {
-  flex-shrink: 0;
-}
-
-.documentContainer {
-  width: 100%;
-  min-width: 0;
-}
-
+.viewer:focus-visible { outline-offset: -4px; }
+.header,.note { flex-shrink: 0; }
+.documentContainer { width: 100%; min-width: 0; }
 .pdfDocument {
   display: flex;
   flex-direction: column;
   gap: 16px;
   min-width: 0;
 }
-
 .pdfPage {
   width: fit-content;
   max-width: 100%;
   margin-inline: auto;
 }
-
-.pdfPage canvas {
-  display: block;
-}
-
+.pdfPage canvas { display: block; }
 .previewMessage {
   margin: 0;
   padding: 24px 16px;
-  color: var(--ink);
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  color: var(--sub);
+  font-size: .875rem;
   text-align: center;
 }
-
-.viewer:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: -4px;
-}
-
-/* Feedback for controls inside the dialog */
-.download,
-.close {
-  transition: transform 160ms ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .download:hover,
-  .close:hover {
-    transform: translateY(-2px);
-  }
-}
-
-.download:active,
-.close:active {
-  transform: scale(0.97);
-}
-
-@media (max-width: 699px) {
-  :global(#home) .dialog {
-    width: calc(100% - 24px);
-    height: calc(100dvh - 32px);
-    max-height: calc(100dvh - 32px);
-    border-radius: 24px;
-    box-shadow: 4px 4px 0 var(--clay-outline);
-  }
-
-  :global(#home) .dialog .viewer {
-    padding: 8px;
-  }
-
-  :global(#home) .dialog .header {
-    padding: 8px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .download,
-  .close {
-    transition: none;
-  }
-
-  .download:hover,
-  .close:hover,
-  .download:active,
-  .close:active {
-    transform: none;
-  }
-}
-
 .note {
   margin: 0;
   padding: 8px 16px;
   border-top: 1px solid var(--line);
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  color: var(--sub);
+  font-size: .875rem;
   text-align: center;
 }
-
-@media (max-width: 699px) {
-  :global(#home) .dialog .header {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-  }
-
-  :global(#home) .dialog .title {
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    line-height: 1.25;
-    letter-spacing: 0;
-  }
-
-  :global(#home) .dialog .actions {
-    gap: 8px;
-    margin: 0;
-  }
-
-  :global(#home) .dialog .download {
-    min-height: 44px;
-    gap: 8px;
-    padding: 8px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    border-radius: 12px;
-  }
-
-  :global(#home) .dialog .close {
-    width: 44px;
-    min-height: 44px;
-    padding: 0;
-  }
-
-  :global(#home) .dialog .note {
-    padding: 8px;
-    font-size: 0.75rem;
-    line-height: 1.4;
-  }
+@media(hover:hover) and (pointer:fine) {
+  .download:hover,.close:hover { transform: translateY(-2px); }
 }
-
-/* Keep the download label visible in every interaction state */
-:global(#home) .dialog .download,
-:global(#home) .dialog .download:visited,
-:global(#home) .dialog .download:hover,
-:global(#home) .dialog .download:focus-visible,
-:global(#home) .dialog .download:active {
-  background: var(--ink);
-  color: var(--surface);
-  text-decoration: none;
+.download:active,.close:active { transform: scale(.98); }
+@media(max-width:767px) {
+  .header { padding: 16px; gap: 8px; }
+  .title { font-size: 1rem; }
+  .download { padding-inline: 8px; }
 }
-
-:global(#home) .dialog .download > svg {
-  color: inherit;
-  flex-shrink: 0;
-}
-
-/* Desktop and tablet header alignment */
-@media (min-width: 700px) {
-  :global(#home) .dialog .header {
-    position: static;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 24px;
-    margin: 0;
-    padding: 16px 24px;
-  }
-
-  :global(#home) .dialog .title {
-    min-width: 0;
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-display), sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 32px;
-    letter-spacing: 0;
-  }
-
-  :global(#home) .dialog .actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    width: auto;
-    margin: 0;
-    padding: 0;
-  }
-
-  :global(#home) .dialog .download {
-    box-sizing: border-box;
-    min-height: 48px;
-    padding: 8px 16px;
-    gap: 8px;
-    font-size: 0.875rem;
-    line-height: 24px;
-    white-space: nowrap;
-  }
-
-  :global(#home) .dialog .close {
-    box-sizing: border-box;
-    flex: 0 0 48px;
-    width: 48px;
-    height: 48px;
-    min-height: 48px;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* Work role and employment details */
-.header.workHeader {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 16px 24px;
-}
-
-.employmentDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  min-width: 0;
-  text-align: right;
-}
-
-.employmentDetails > .date {
-  margin: 0;
-  line-height: 1.5;
-}
-
-.employmentTags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-.employmentTag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: color-mix(
-    in srgb,
-    var(--ink) 8%,
-    var(--surface)
-  );
-  color: var(--ink);
-  font-family: var(--font-body), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-
-@media (max-width: 699px) {
-  .header.workHeader {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-  }
-
-  .employmentDetails {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .employmentTags {
-    justify-content: flex-start;
-  }
+@media(prefers-reduced-motion:reduce) {
+  .download,.close { transition: none; }
+  .download:hover,.close:hover,
+  .download:active,.close:active { transform: none; }
 }

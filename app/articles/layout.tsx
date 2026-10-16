@@ -16,7 +16,7 @@ export default function ArticlesLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const [headings, setHeadings] = useState<Heading[]>([]);
 
   const categories = [...new Set(articles.map((article) => article.category))];
@@ -27,7 +27,7 @@ export default function ArticlesLayout({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("portfolio-theme");
-    const isDark = savedTheme === "dark";
+    const isDark = savedTheme !== "light";
 
     setDark(isDark);
     document.documentElement.dataset.theme = isDark ? "dark" : "light";
