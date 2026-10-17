@@ -144,7 +144,9 @@ body::after {
   );
 }
 
-/* A soft moving highlight reveals the existing grid and its intersections. */
+/* A soft moving highlight reveals the existing grid and its intersections.
+   The mask is heavily feathered and the intensity is low so the glow blends
+   into the background instead of competing with the content. */
 .grid-shimmer {
   position: fixed;
   inset: 0;
@@ -160,34 +162,43 @@ body::after {
   inset: 0;
   opacity: 0;
   background-size: var(--grid-size) var(--grid-size);
-  mask-image: linear-gradient(115deg, transparent 40%, #000 50%, transparent 60%);
+  mask-image: linear-gradient(
+    115deg,
+    transparent 15%,
+    rgb(0 0 0 / 8%) 28%,
+    rgb(0 0 0 / 40%) 40%,
+    #000 50%,
+    rgb(0 0 0 / 40%) 60%,
+    rgb(0 0 0 / 8%) 72%,
+    transparent 85%
+  );
   mask-size: 300% 100%;
   mask-repeat: no-repeat;
 }
 
 .grid-shimmer::before {
   background-image:
-    linear-gradient(rgb(34 211 238 / 16%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(34 211 238 / 16%) 1px, transparent 1px);
+    linear-gradient(rgb(34 211 238 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 211 238 / 10%) 1px, transparent 1px);
 }
 
 .grid-shimmer::after {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(165 243 252 / 65%) 1px,
-    transparent 3px
+    rgb(165 243 252 / 42%) 1px,
+    transparent 2.5px
   );
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .grid-shimmer::before,
   .grid-shimmer::after {
-    animation: grid-glitter 12s linear infinite;
+    animation: grid-glitter 8s linear infinite;
   }
 
   .grid-shimmer::after {
-    animation-delay: -6s;
-    animation-duration: 16s;
+    animation-delay: -5s;
+    animation-duration: 11s;
   }
 }
 
@@ -197,9 +208,9 @@ body::after {
     opacity: 0;
   }
 
-  20%,
-  80% {
-    opacity: 1;
+  25%,
+  75% {
+    opacity: 0.8;
   }
 
   100% {
@@ -484,8 +495,11 @@ svg {
 .mobile-menu-panel {
   position: fixed;
   z-index: 51;
-  inset: 16px 16px 16px auto;
+  inset: 16px 16px auto auto;
+  display: flex;
+  flex-direction: column;
   width: min(320px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
   padding: var(--space-2);
   border: 1px solid var(--control-border);
   border-radius: 24px;
@@ -506,15 +520,15 @@ svg {
 }
 
 .mobile-menu-scroll {
-  height: calc(100% - 64px);
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  margin-top: var(--space-8);
+  margin-top: 56px;
 }
 
 .mobile-menu-links {
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 
 .mobile-menu-links a {
@@ -1354,10 +1368,16 @@ svg {
   }
 
   .nav {
-    min-height: var(--space-8);
+    min-height: 56px;
   }
+
+  .mobile-menu-button {
+    width: 44px;
+    height: 44px;
+  }
+
   html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: 72px;
   }
 
   #home .hero-shell {

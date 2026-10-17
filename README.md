@@ -8,7 +8,7 @@ I am a Computer Science and Engineering graduate from the University of Chittago
 
 ## Overview
 
-The portfolio uses a responsive, light-only claymorphism design with forest accents and a cream background.
+The portfolio uses a responsive dark design with a deep navy background, cyan accents, and a subtle grid backdrop.
 
 It includes:
 
@@ -30,8 +30,9 @@ It includes:
 | Next.js App Router | Application framework, routing, metadata, and builds |
 | React | User interface components |
 | TypeScript | Static type checking |
-| Tailwind CSS | Utility styling |
+| Tailwind CSS and `tw-animate-css` | Utility styling and animation utilities |
 | CSS and CSS Modules | Theme, responsive layouts, and component styling |
+| `clsx`, `tailwind-merge`, and `class-variance-authority` | Class-name composition for UI primitives |
 | Motion | Name animation, scroll reveals, and interaction feedback |
 | React-PDF and PDF.js | In-page CV rendering |
 | Radix UI | Accessible UI primitives, including mobile navigation |
@@ -48,11 +49,13 @@ See `package.json` for declared dependencies and `pnpm-lock.yaml` for resolved v
 
 ## Design and Responsive Layout
 
-- Forest-and-cream color theme.
-- Rounded cards with outlines, offset shadows, and inner highlights.
-- Fredoka display typography and locally loaded Nunito body typography.
+- Dark navy-and-cyan color theme, defined as CSS custom properties in `app/globals.css`.
+- Rounded surface cards with subtle borders, soft shadows, and a cyan glow on hover and focus.
+- Space Grotesk display typography and Inter body typography, loaded with `next/font/google`.
+- A subtle grid background with a soft, slow-moving shimmer, disabled for reduced motion and print.
 - Spacing organized primarily around an 8px scale.
-- Persistent navigation and a compact mobile sidebar.
+- Persistent navigation and a compact mobile sidebar opened from a three-line menu button.
+- A light/dark theme toggle on article pages.
 - Responsive project grids and education cards.
 - Wrapping technology and coursework tags.
 - Original brand colors for technology logos.
@@ -65,7 +68,7 @@ The hero includes:
 
 - “HELLO, THIS IS”
 - Md Sadman Sami Khan
-- An availability badge with a pulsing green dot
+- An availability badge with a pulsing cyan dot
 - “CSE Graduate | Data Science & ML Enthusiast”
 - A professional introduction
 - Explore My Work and Download CV actions
@@ -238,11 +241,14 @@ Paths below are relative to the repository root.
 | --- | --- |
 | `app/page.tsx` | Homepage content, navigation, project data, education, and section composition |
 | `app/layout.tsx` | Fonts, root layout, metadata, and stylesheet imports |
-| `app/globals.css` | Base and shared styles |
-| `app/clay.css` | Clay component styling |
-| `app/forest.css` | Forest-and-cream theme |
-| `app/spacing.css` | Spacing, alignment, and responsive adjustments |
-| `app/fonts/Nunito-Variable.ttf` | Local body font |
+| `app/globals.css` | Design tokens, base, layout, component, responsive, and motion styles; imports Tailwind CSS, `tw-animate-css`, and the vendored shadcn utilities |
+| `vendor/shadcn-tailwind-4.13.0.css` | Vendored shadcn Tailwind utilities imported by `app/globals.css` |
+| `postcss.config.mjs` | Tailwind CSS PostCSS plugin configuration |
+| `app/articles/articles.css` | Article page layout and light/dark theme styling |
+| `components/article-cards.css` | Article preview card styling |
+| `components/animated-name.module.css` | Hero name animation styling |
+| `components/ui/` | Input, textarea, and empty-state UI primitives |
+| `lib/utils.ts` | Class-name merge helper |
 | `app/robots.ts` | Crawler instructions |
 | `app/sitemap.ts` | Sitemap generation |
 | `components/mobile-nav.tsx` | Mobile sidebar navigation |
@@ -271,16 +277,15 @@ Paths below are relative to the repository root.
 | `package.json` | Dependencies, scripts, and package-manager version |
 | `pnpm-lock.yaml` | Resolved dependency versions |
 
-### Stylesheet Order
+### Stylesheets
 
-The root layout imports styles in this order:
+The root layout imports a single global stylesheet:
 
 ```tsx
 import "./globals.css";
-import "./clay.css";
-import "./forest.css";
-import "./spacing.css";
 ```
+
+`app/globals.css` imports Tailwind CSS, `tw-animate-css`, and `vendor/shadcn-tailwind-4.13.0.css` before defining the design tokens and shared styles. Article routes also import `app/articles/articles.css`, and individual components import their own CSS files or CSS Modules.
 
 Later rules can override earlier rules depending on specificity. When adjusting layouts, update the relevant existing rules and remove obsolete overrides.
 
@@ -345,7 +350,7 @@ Keep the article array explicitly typed when it is empty. Only list published pa
 
 | Asset | Location |
 | --- | --- |
-| Portrait | `public/images/sadman-profile.jpeg` |
+| Portrait | `public/images/sadman-profile.png` |
 | Favicon | `public/favicon.svg` |
 | Organization logos | `public/logos/` |
 | Project covers | `public/projects/` |
