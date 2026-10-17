@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Dialog } from "radix-ui";
-import { Ellipsis, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   ["news", "Recent News"],
@@ -36,7 +36,7 @@ export function MobileNav({ active }: { active: string }) {
           className="mobile-menu-button"
           aria-label="Open navigation menu"
         >
-          <Ellipsis size={24} aria-hidden="true" />
+          <Menu size={24} aria-hidden="true" />
         </button>
       </Dialog.Trigger>
 
