@@ -44,7 +44,7 @@ export function AnimatedName() {
                 transform: ["translateY(105%)", "translateY(0%)"],
               },
               {
-                duration: 0.45,
+                duration: 0.28,
                 delay: index * 0.05,
                 ease: [0.22, 1, 0.36, 1],
               },
@@ -53,8 +53,8 @@ export function AnimatedName() {
               word,
               { backgroundPosition: ["100% 0%", "0% 0%"] },
               {
-                duration: 0.9,
-                delay: 0.45 + index * 0.05,
+                duration: 0.28,
+                delay: 0.28 + index * 0.05,
                 ease: "easeOut",
               },
             ),

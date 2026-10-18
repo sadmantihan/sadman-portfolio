@@ -164,13 +164,15 @@ body::after {
   background-size: var(--grid-size) var(--grid-size);
   mask-image: linear-gradient(
     115deg,
-    transparent 15%,
-    rgb(0 0 0 / 8%) 28%,
-    rgb(0 0 0 / 40%) 40%,
+    transparent 8%,
+    rgb(0 0 0 / 5%) 20%,
+    rgb(0 0 0 / 22%) 34%,
+    rgb(0 0 0 / 55%) 44%,
     #000 50%,
-    rgb(0 0 0 / 40%) 60%,
-    rgb(0 0 0 / 8%) 72%,
-    transparent 85%
+    rgb(0 0 0 / 55%) 56%,
+    rgb(0 0 0 / 22%) 66%,
+    rgb(0 0 0 / 5%) 80%,
+    transparent 92%
   );
   mask-size: 300% 100%;
   mask-repeat: no-repeat;
@@ -178,27 +180,27 @@ body::after {
 
 .grid-shimmer::before {
   background-image:
-    linear-gradient(rgb(34 211 238 / 10%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(34 211 238 / 10%) 1px, transparent 1px);
+    linear-gradient(rgb(34 211 238 / 6%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(34 211 238 / 6%) 1px, transparent 1px);
 }
 
 .grid-shimmer::after {
   background-image: radial-gradient(
     circle at 1px 1px,
-    rgb(165 243 252 / 42%) 1px,
-    transparent 2.5px
+    rgb(165 243 252 / 24%) 1px,
+    transparent 2px
   );
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .grid-shimmer::before,
   .grid-shimmer::after {
-    animation: grid-glitter 8s linear infinite;
+    animation: grid-glitter 30s linear infinite;
   }
 
   .grid-shimmer::after {
-    animation-delay: -5s;
-    animation-duration: 11s;
+    animation-delay: -16s;
+    animation-duration: 42s;
   }
 }
 
@@ -208,9 +210,14 @@ body::after {
     opacity: 0;
   }
 
-  25%,
-  75% {
-    opacity: 0.8;
+  20%,
+  80% {
+    opacity: 0.35;
+  }
+
+  40%,
+  60% {
+    opacity: 0.6;
   }
 
   100% {
@@ -454,7 +461,7 @@ svg {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   :where(a, button, summary):not(:disabled):not([aria-disabled="true"]):hover {
-    animation: interaction-glow 480ms var(--ease) 1;
+    animation: interaction-glow 280ms var(--ease) 1;
   }
 }
 
@@ -462,7 +469,7 @@ svg {
   :where(a, button, summary):not(:disabled):not(
       [aria-disabled="true"]
     ):focus-visible {
-    animation: interaction-glow 480ms var(--ease) 1;
+    animation: interaction-glow 280ms var(--ease) 1;
   }
 }
 
@@ -1242,7 +1249,7 @@ svg {
   }
 
   .mobile-menu-panel[data-state="open"] {
-    animation: menu-slide-in 320ms var(--ease);
+    animation: menu-slide-in 280ms var(--ease);
   }
 
   .mobile-menu-panel[data-state="closed"] {

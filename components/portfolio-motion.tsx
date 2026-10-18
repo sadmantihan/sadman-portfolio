@@ -121,8 +121,7 @@ export function PortfolioMotion() {
             translate: [`0px ${distance}px`, "0px 0px"],
           },
           {
-            duration:
-              element === portrait || heroCopy.includes(element) ? 0.4 : 0.3,
+            duration: 0.28,
             delay,
             ease: [0.22, 1, 0.36, 1],
           },
