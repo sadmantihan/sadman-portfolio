@@ -17,7 +17,7 @@
 .article-category {
   color: var(--highlight);
   font-size: .875rem;
-  letter-spacing: .08em;
+  letter-spacing: .0785em;
   text-transform: uppercase;
 }
 .article-preview h3 { margin: 16px 0; font-size: 1.5rem; }
