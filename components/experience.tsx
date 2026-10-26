@@ -76,7 +76,7 @@ export function Experience() {
               />
 
               <a
-                  href="https://bdai-csecu.vercel.app/"
+                  href="https://bdai.bike-csecu.com/team"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="profile-link name-link"
