@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles } from "./articles/article-list";
-
-const SITE_URL = "https://sadman-sami-khan.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

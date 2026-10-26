@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { articleRobots } from "../article-list";
 import { CodeBlock } from "@/components/code-block";
 
 export const metadata: Metadata = {
+  robots: articleRobots("getting-started-with-python"),
+  
   title: "Getting Started with Python",
 
   description:

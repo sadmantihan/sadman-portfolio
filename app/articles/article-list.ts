@@ -20,3 +20,10 @@ export const articles: Article[] = [
   //     "Learn Python basics with practical examples covering variables, input, conditions, loops, lists, and functions.",
   // },
 ];
+
+export function articleRobots(slug: string) {
+  return {
+    index: articles.some((article) => article.slug === slug),
+    follow: true,
+  };
+}

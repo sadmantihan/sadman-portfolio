@@ -1,4 +1,26 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { articleRobots } from "../article-list";
+
+export const metadata: Metadata = {
+  title: "My First Article",
+
+  description:
+    "An unpublished article draft by Md Sadman Sami Khan.",
+
+  alternates: {
+    canonical: "/articles/my-first-article",
+  },
+
+  robots: articleRobots("my-first-article"),
+
+  openGraph: {
+    type: "article",
+    title: "My First Article",
+    description:
+      "An unpublished article draft by Md Sadman Sami Khan.",
+    url: "/articles/my-first-article",
+  },
+};
 
 export default function MyFirstArticle() {
   return (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const displayFont = Space_Grotesk({
@@ -16,11 +17,13 @@ const bodyFont = Inter({
   variable: "--font-body",
 });
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sadman-sami-khan.vercel.app"),
+  metadataBase: new URL(SITE_URL),
 
-  alternates: {
-    canonical: "/",
-  },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? {
+        google: process.env.GOOGLE_SITE_VERIFICATION,
+      }
+    : undefined,
 
   title: {
     default: "Md Sadman Sami Khan | Data Science and ML Enthusiast",
