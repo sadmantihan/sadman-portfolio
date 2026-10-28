@@ -16,6 +16,7 @@ const bodyFont = Inter({
   display: "swap",
   variable: "--font-body",
 });
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
