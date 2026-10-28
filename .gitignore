@@ -29,3 +29,5 @@ Desktop.ini
 
 # Keep package.json and package-lock.json tracked.
 # Only put placeholder values in .env.example and .env.sample.
+
+.claude/worktrees/
