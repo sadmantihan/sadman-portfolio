@@ -234,9 +234,10 @@ export default function Home() {
               <div className="hero-bottom">
                 <div>
                   <p className="intro">
-                    Working at the intersection of data, machine learning, and AI
-                    research to build real-world applications that turn complex
-                    data into meaningful insights and practical solutions.
+                    Working at the intersection of data, machine learning, and
+                    AI research to build real-world applications that turn
+                    complex data into meaningful insights and practical
+                    solutions.
                   </p>
 
                   <div className="actions">
@@ -333,17 +334,8 @@ export default function Home() {
                 </a>
                 , seeking my first full-time role in Data Science or Machine
                 Learning Engineering. Currently, I am learning as an Machine
-                Learning Intern at{" "}
-                <a
-                  href="https://flyrank.ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="profile-link name-link"
-                >
-                  FlyRank AI.
-                </a>{" "}
-                My work focuses on turning messy, real-world data into reliable
-                and usable systems.
+                Learning Intern at FlyRank AI. My work focuses on turning messy,
+                real-world data into reliable and usable systems.
               </p>
 
               <p>
