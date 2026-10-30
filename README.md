@@ -81,7 +81,7 @@ On mobile, the portrait block appears below the availability badge, followed by 
 1. Hero
 2. Recent News
 3. About
-4. Projects & Thesis
+4. Projects
 5. Experience
 6. Articles
 7. Skills
