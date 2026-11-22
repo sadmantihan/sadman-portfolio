@@ -1433,7 +1433,7 @@ svg {
 
   #home .hero-bottom .actions {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
     gap: 8px;
     align-items: stretch;
   }
@@ -1443,8 +1443,9 @@ svg {
     min-width: 0;
     padding: 8px;
     font-size: 0.875rem;
+    white-space: nowrap;
   }
-
+  
   #home .hero-bottom .actions > .button svg {
     flex-shrink: 0;
   }
