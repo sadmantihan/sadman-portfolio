@@ -242,7 +242,7 @@ export default function Home() {
 
                   <div className="actions">
                     <a className="button solid" href="#projects">
-                      View selected work
+                      View selected works
                       <ArrowUpRight size={18} aria-hidden="true" />
                     </a>
 
