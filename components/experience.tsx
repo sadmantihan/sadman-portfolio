@@ -1,25 +1,214 @@
-import { VoluntaryCertificates } from "./voluntary-certificates";
 import Image from "next/image";
+import { VoluntaryCertificates } from "./voluntary-certificates";
 import styles from "./experience.module.css";
 
-const voluntaryRoles = [
+type Organization = {
+  name: string;
+  logo: string;
+  url?: string;
+};
+
+type ExperienceEntry = {
+  id: string;
+  title: string;
+  date: string;
+  organization: Organization;
+  tags?: string[];
+  location?: string;
+  sponsor?: Organization;
+  points?: string[];
+  showCertificates?: boolean;
+};
+
+const organizations = {
+  flyrank: {
+    name: "FlyRank AI",
+    logo: "/logos/flyrank-ai-logo.png",
+    url: "https://flyrank.ai/",
+  },
+  bdai: {
+    name: "BDAI-HEAT Sub-Project (HEAT-13211-CU)",
+    logo: "/logos/bdai.png",
+    url: "https://bdai.bike-csecu.com/team",
+  },
+  worldBank: {
+    name: "World Bank-funded",
+    logo: "/logos/world-bank.png",
+  },
+  aspire: {
+    name: "Aspire Institute",
+    logo: "/logos/aspire-institute.png",
+    url: "https://www.aspireleaders.org/",
+  },
+  cuss: {
+    name: "Chittagong University Scientific Society",
+    logo: "/logos/cuss.png",
+    url: "https://cusscu.org/",
+  },
+} satisfies Record<string, Organization>;
+
+const workExperience: ExperienceEntry[] = [
   {
-    title: "Assistant Website Management Secretary",
-    date: "Jun 2025 – Apr 2026",
-    points: [
-      "Rebuilt and relaunched the club’s previously non-functional website, restoring its primary digital presence.",
-      "Named Best Performer for the 2025/2026 committee session for outstanding performance and dedication as Assistant Website Management Secretary (2025).",
-    ],
+    id: "flyrank-ml-intern",
+    title: "Machine Learning Intern",
+    date: "Oct 2026 – Present",
+    organization: organizations.flyrank,
+    tags: ["Part-time", "Remote"],
   },
   {
-    title: "General Member",
-    date: "Feb 2024 – Jun 2025",
+    id: "bdai-data-annotator",
+    title: "Data Annotator",
+    date: "Apr 2026 – Sep 2026",
+    organization: organizations.bdai,
+    tags: ["Part-time", "Hybrid"],
+    sponsor: organizations.worldBank,
+    location: "Chattogram, Bangladesh",
     points: [
-      "Certified Organizer of IT Fiesta 2024, managed the programming contest’s technical setup across 3 labs for 50 teams of 3, resolving technical issues during an event with 500 school, college, and university participants.",
-      "Volunteered at Chittagong University Science Carnival 4.0 in February 2025, an event with approximately 1,000 participants, and was recognized as one of its best volunteers.",
+      "Mentored a team of Scrum Level 3 students in collecting raw socio-economic data, overseeing annotation quality and consistency checks; helped design the ER diagram and used Python (pandas) and Google Sheets to produce a 130-file dataset with over 223K rows and 3.64M values.",
     ],
   },
 ];
+
+const leadershipExperience: ExperienceEntry[] = [
+  {
+    id: "aspire-leaders-2026",
+    title: "Aspire Leaders Program (Cohort 4 - 2026)",
+    date: "Oct 2026 – Dec 2026",
+    organization: organizations.aspire,
+    points: [
+      "Selective masterclass and leadership development program with HarvardX coursework and Harvard faculty; applicants from 100+ countries; proposal for a free guide to help graduates reach their first data job.",
+    ],
+  },
+  {
+    id: "cuss-website-secretary",
+    title: "Assistant Website Management Secretary",
+    date: "Jun 2025 – Apr 2026",
+    organization: organizations.cuss,
+    location: "Chattogram, Bangladesh",
+    points: [
+      "Assisted in rebuilding the club's previously non-functional website, restoring its primary digital presence; named Best Performer for the 2025/2026 committee session for outstanding performance and dedication (2025).",
+    ],
+  },
+  {
+    id: "cuss-general-member",
+    title: "General Member",
+    date: "Feb 2024 – Jun 2025",
+    organization: organizations.cuss,
+    location: "Chattogram, Bangladesh",
+    points: [
+      "Certified Organizer of IT Fiesta 2024, managing technical setup for the programming contest (500 school, college, and university participants), handling 3 labs and 50 teams of three, and resolving technical issues; volunteered at Chittagong University Science Carnival 4.0 (Feb 2025, approximately 1,000 participants) and recognized as one of the event's best volunteers.",
+    ],
+    showCertificates: true,
+  },
+];
+
+function OrganizationRow({
+  organization,
+}: {
+  organization: Organization;
+}) {
+  return (
+    <p className={`${styles.organization} ${styles.withLogo}`}>
+      <Image
+        src={organization.logo}
+        alt=""
+        width={48}
+        height={40}
+        className={styles.organizationLogo}
+      />
+
+      {organization.url ? (
+        <a
+          href={organization.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="profile-link name-link"
+        >
+          {organization.name}
+        </a>
+      ) : (
+        <span>{organization.name}</span>
+      )}
+    </p>
+  );
+}
+
+type ExperienceCardProps = {
+  entry: ExperienceEntry;
+  headingLevel: "h3" | "h4";
+  organizationInHeader?: boolean;
+};
+
+function ExperienceCard({
+  entry,
+  headingLevel: Heading,
+  organizationInHeader = false,
+}: ExperienceCardProps) {
+  const {
+    title,
+    date,
+    organization,
+    tags,
+    location,
+    sponsor,
+    points,
+    showCertificates,
+  } = entry;
+
+  return (
+    <article className={`${styles.entry} ${styles.workEntry}`}>
+      <div className={`${styles.header} ${styles.workHeader}`}>
+        <Heading className={styles.role}>{title}</Heading>
+        <span className={styles.date}>{date}</span>
+
+        {organizationInHeader && (
+          <OrganizationRow organization={organization} />
+        )}
+
+        {tags && tags.length > 0 && (
+          <div className={styles.employmentTags}>
+            {tags.map((tag) => (
+              <span className={styles.employmentTag} key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {!organizationInHeader && (
+        <OrganizationRow organization={organization} />
+      )}
+
+      {sponsor ? (
+        <p className={`${styles.meta} ${styles.withLogo}`}>
+          <Image
+            src={sponsor.logo}
+            alt=""
+            width={48}
+            height={40}
+            className={styles.organizationLogo}
+          />
+          <span>
+            {sponsor.name}
+            {location ? `, ${location}` : ""}
+          </span>
+        </p>
+      ) : (
+        location && <p className={styles.meta}>{location}</p>
+      )}
+
+      {points && points.length > 0 && (
+        <ul className={styles.points}>
+          {points.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      )}
+
+    </article>
+  );
+}
 
 export function Experience() {
   return (
@@ -28,132 +217,29 @@ export function Experience() {
 
       <div className={`section-body ${styles.body}`}>
         <h2>Work Experience</h2>
-        <article className={`${styles.entry} ${styles.workEntry}`}>
-          <div className={`${styles.header} ${styles.workHeader}`}>
-            <h3 className={styles.role}>Machine Learning Intern</h3>
 
-            <span className={styles.date}>Oct 2026 – Present</span>
+        {workExperience.map((entry) => (
+          <ExperienceCard
+            key={entry.id}
+            entry={entry}
+            headingLevel="h3"
+            organizationInHeader
+          />
+        ))}
 
-            <p className={`${styles.organization} ${styles.withLogo}`}>
-              <Image
-                src="/logos/flyrank-ai-logo.png"
-                alt=""
-                width={48}
-                height={36}
-                className={styles.organizationLogo}
-              />
-
-              <a
-                  href="https://flyrank.ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="profile-link name-link"
-                >
-                  FlyRank AI
-                </a>
-            </p>
-
-            <div className={styles.employmentTags}>
-              <span className={styles.employmentTag}>Part-time</span>
-              <span className={styles.employmentTag}>Remote</span>
-            </div>
-          </div>
-        </article>
-
-        <article className={`${styles.entry} ${styles.workEntry}`}>
-          <div className={`${styles.header} ${styles.workHeader}`}>
-            <h3 className={styles.role}>Data Annotator</h3>
-
-            <span className={styles.date}>Apr 2026 – Sep 2026</span>
-
-            <p className={`${styles.organization} ${styles.withLogo}`}>
-              <Image
-                src="/logos/bdai.png"
-                alt=""
-                width={48}
-                height={36}
-                className={styles.organizationLogo}
-              />
-
-              <a
-                  href="https://bdai.bike-csecu.com/team"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="profile-link name-link"
-                >
-                  BDAI-HEAT Sub-Project (HEAT-13211-CU)
-                </a>
-            </p>
-
-            <div className={styles.employmentTags}>
-              <span className={styles.employmentTag}>Part-time</span>
-              <span className={styles.employmentTag}>Hybrid</span>
-            </div>
-          </div>
-
-          <p className={`${styles.meta} ${styles.withLogo}`}>
-            <Image
-              src="/logos/world-bank.png"
-              alt=""
-              width={48}
-              height={36}
-              className={styles.organizationLogo}
-            />
-
-            <span>World Bank-funded, Chattogram, Bangladesh</span>
-          </p>
-
-          <ul className={styles.points}>
-            <li>
-              Mentored a team of Scrum Level 3 students in collecting raw
-              socio-economic data for a research project, overseeing annotation
-              quality and running consistency checks under research guidelines.
-            </li>
-            <li>
-              Helped design the sector's ER diagram and used Python (pandas) and
-              Google Sheets to organize, count, and clean dataset files into
-              structured tables, producing a 130-file dataset with over 223K
-              rows and 3.64M values.
-            </li>
-          </ul>
-        </article>
         <h3 className={styles.subheading}>
           Leadership &amp; Voluntary Activities
         </h3>
 
-        {voluntaryRoles.map((role) => (
-          <article
-            className={`${styles.entry} ${styles.workEntry}`}
-            key={role.title}
-          >
-            <div className={`${styles.header} ${styles.workHeader}`}>
-              <h4 className={styles.role}>{role.title}</h4>
-              <span className={styles.date}>{role.date}</span>
-            </div>
-
-            <p className={`${styles.organization} ${styles.withLogo}`}>
-              <Image
-                src="/logos/cuss.png"
-                alt=""
-                width={48}
-                height={36}
-                className={styles.organizationLogo}
-              />
-
-              <span>Chittagong University Scientific Society</span>
-            </p>
-
-            <p className={styles.meta}>Chattogram, Bangladesh</p>
-
-            <ul className={styles.points}>
-              {role.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-
-            {role.title === "General Member" && <VoluntaryCertificates />}
-          </article>
+        {leadershipExperience.map((entry) => (
+          <ExperienceCard
+            key={entry.id}
+            entry={entry}
+            headingLevel="h4"
+          />
         ))}
+
+        <VoluntaryCertificates />
       </div>
     </section>
   );
